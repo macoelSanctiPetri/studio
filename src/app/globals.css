@@ -8,10 +8,10 @@ html {
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* #FFFFFF - blanco_puro */
+    --background: 40 30% 96%; /* claro_sepia */
     --foreground: 0 0% 10%; /* #1A1A1A - gris_oscuro */
 
-    --card: 0 0% 100%;
+    --card: 40 30% 96%;
     --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;

@@ -7,7 +7,7 @@ export default function Footer() {
     const t = translations[language].footer;
 
     return (
-        <footer className="bg-white" aria-labelledby="footer-heading">
+        <footer className="bg-background" aria-labelledby="footer-heading">
             <h2 id="footer-heading" className="sr-only">
                 {t.srHeading}
             </h2>
@@ -15,13 +15,13 @@ export default function Footer() {
                 <div className="flex flex-col items-center">
                     <div className="flex items-center space-x-3">
                         <Logo className="h-10 w-auto text-secondary" />
-                        <span className="font-headline text-xl font-bold text-gray-900">
+                        <span className="font-headline text-xl font-bold text-foreground">
                             NovaMvsica
                         </span>
                     </div>
                     <nav className="mt-8 flex gap-x-6" aria-label="Footer">
                         {t.nav.map((item) => (
-                            <a key={item.name} href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900 font-headline">
+                            <a key={item.name} href={item.href} className="text-sm leading-6 text-secondary-foreground hover:text-foreground font-headline">
                                 {item.name}
                             </a>
                         ))}
