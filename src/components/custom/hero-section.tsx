@@ -14,19 +14,19 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative bg-primary text-primary-foreground">
-      <div className="absolute inset-0">
-        {heroImage && (
-          <Image
-            src={heroImage.imageUrl}
-            alt={imageDescription}
-            fill
-            className="object-cover"
-            data-ai-hint={heroImage.imageHint}
-            priority
-          />
-        )}
-        <div className="absolute inset-0 bg-primary/80" />
-      </div>
+      {heroImage && (
+        <div className="absolute inset-0">
+            <Image
+                src={heroImage.imageUrl}
+                alt={imageDescription}
+                fill
+                className="object-cover"
+                data-ai-hint={heroImage.imageHint}
+                priority
+            />
+            <div className="absolute inset-0 bg-primary/80" aria-hidden="true" />
+        </div>
+      )}
       <div className="relative container mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 min-h-screen content-center">
           <div className="py-24 sm:py-32 lg:py-48">
