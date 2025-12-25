@@ -1,4 +1,4 @@
-import type {Config} from 'tailwindcss';
+import type { Config } from 'tailwindcss';
 
 export default {
   darkMode: ['class'],
@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['Georgia', 'Times New Roman', 'serif'],
+        headline: ['system-ui', 'ui-sans-serif', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -48,6 +48,10 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        link: 'hsl(var(--link))',
+        'purple-border': 'hsl(var(--purple-border))',
+        'lavender-start': 'hsl(var(--lavender-start))',
+        'lavender-end': 'hsl(var(--lavender-end))',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -68,8 +72,11 @@ export default {
       },
       borderRadius: {
         lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius))',
+        sm: 'calc(var(--radius))',
+      },
+      backgroundImage: {
+        'lavender-gradient': 'linear-gradient(135deg, hsl(var(--lavender-start)) 0%, hsl(var(--lavender-end)) 100%)',
       },
       keyframes: {
         'accordion-down': {
