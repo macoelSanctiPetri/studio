@@ -18,7 +18,7 @@ export const translations = {
     },
     heroSection: {
       subtitle: 'Music & The Spoken Word',
-      title: 'Celebrating Sacred Music',
+      title: 'Celebrating Renaissance Music',
       description: 'Experience the sublime power and beauty of choral music that transcends time. Join NovaMvsica on a journey through centuries of divine harmony and vocal excellence.',
       button1: 'View Schedule',
       button2: 'Learn More',
@@ -118,7 +118,7 @@ export const translations = {
     },
     heroSection: {
       subtitle: 'Música y la Palabra Hablada',
-      title: 'Celebrando la Música Sacra',
+      title: 'Celebrando la Música Renacentista',
       description: 'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. Únete a NovaMvsica en un viaje a través de siglos de armonía divina y excelencia vocal.',
       button1: 'Ver Programa',
       button2: 'Saber Más',
