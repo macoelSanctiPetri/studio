@@ -30,9 +30,9 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-primary/95 text-primary-foreground backdrop-blur supports-[backdrop-filter]:bg-primary/60">
         <div className="container flex h-16 max-w-7xl items-center">
           <a href="#home" className="mr-6 flex items-center space-x-2">
-            <Logo className="h-6 w-6" />
+            <Logo className="h-8 w-auto" />
             <span className="hidden font-bold sm:inline-block font-headline">
-              Sacred Echoes
+              NovaMvsica
             </span>
           </a>
 
@@ -68,9 +68,9 @@ export default function Header() {
               <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-primary text-primary-foreground">
                 <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
                    <a href="#home" className="mb-4 flex items-center space-x-2" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Logo className="h-8 w-8" />
+                      <Logo className="h-8 w-auto" />
                       <span className="font-bold font-headline">
-                        Sacred Echoes
+                        NovaMvsica
                       </span>
                     </a>
                   {navLinks.map((link) => (

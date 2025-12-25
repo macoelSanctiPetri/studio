@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Sacred Echoes',
-  description: 'A website for the Sacred Echoes choir.',
+  title: 'NovaMvsica',
+  description: 'A website for the NovaMvsica choir.',
 };
 
 export default function RootLayout({

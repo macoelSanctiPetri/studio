@@ -16,9 +16,9 @@ export default function Footer() {
             <div className="container mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
                 <div className="flex flex-col items-center">
                     <div className="flex items-center space-x-3">
-                        <Logo className="h-8 w-8 text-secondary" />
+                        <Logo className="h-8 w-auto text-secondary" />
                         <span className="font-headline text-xl font-bold text-gray-900">
-                            Sacred Echoes
+                            NovaMvsica
                         </span>
                     </div>
                     <nav className="mt-8 flex gap-x-6" aria-label="Footer">
@@ -31,7 +31,7 @@ export default function Footer() {
                 </div>
                 <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
                     <p className="text-center text-xs leading-5 text-gray-500 font-body">
-                        &copy; {new Date().getFullYear()} Sacred Echoes. All rights reserved.
+                        &copy; {new Date().getFullYear()} NovaMvsica. All rights reserved.
                     </p>
                 </div>
             </div>

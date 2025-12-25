@@ -31,7 +31,7 @@ export default function HeroSection() {
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-300 font-body">
               Experience the sublime power and beauty of choral music that
-              transcends time. Join Sacred Echoes on a journey through centuries
+              transcends time. Join NovaMvsica on a journey through centuries
               of divine harmony and vocal excellence.
             </p>
             <div className="mt-10 flex items-center gap-x-4">
