@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Georgia', 'Times New Roman', 'serif'],
-        headline: ['system-ui', 'ui-sans-serif', 'sans-serif'],
+        body: ['var(--font-montserrat)'],
+        headline: ['var(--font-eb-garamond)'],
         code: ['monospace'],
       },
       colors: {
