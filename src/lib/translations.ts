@@ -19,7 +19,7 @@ export const translations = {
     heroSection: {
       subtitle: 'NovaMvsica Chamber Choir',
       title: 'Celebrating Renaissance Music',
-      description: 'Experience the sublime power and beauty of choral music that transcends time. Join NovaMvsica on a journey through centuries of divine harmony and vocal excellence.',
+      description: 'Experience the sublime power and beauty of choral music that transcends time. On these pages, you will find information about our journey. We also invite you to explore our Blog for the latest news, watch videos on our YouTube Channel, view photos in our Flickr gallery, or connect with us through our Facebook Profile. Feel free to reach out via email; we are always delighted to receive and answer your messages.',
       button1: 'View Schedule',
       button2: 'Learn More',
     },
@@ -31,7 +31,7 @@ export const translations = {
     aboutSection: {
         title: "Our Timeless Tradition",
         p1: "For over two decades, NovaMvsica has been dedicated to the preservation and performance of sacred choral music. Since 1991, our ensemble has focused on Renaissance polyphony, bringing together passionate vocalists from diverse backgrounds, united by a shared love for the power of harmony and the spiritual depth of the repertoire.",
-        p2: "From Renaissance polyphony to contemporary compositions, our mission is to create moving experiences that resonate with audiences and honor the rich history of sacred music. On these pages, you will find information about our journey. We also invite you to explore our Blog for the latest news, watch videos on our YouTube Channel, view photos in our Flickr gallery, or connect with us through our Facebook Profile. Feel free to reach out via email; we are always delighted to receive and answer your messages."
+        p2: "From Renaissance polyphony to contemporary compositions, our mission is to create moving experiences that resonate with audiences and honor the rich history of sacred music."
     },
     eventsSection: {
       title: 'Upcoming Performances',
@@ -110,7 +110,7 @@ export const translations = {
     heroSection: {
       subtitle: 'Coro de Cámara NovaMvsica',
       title: 'Celebrando la Música Renacentista',
-      description: 'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. Únete a NovaMvsica en un viaje a través de siglos de armonía divina y excelencia vocal.',
+      description: 'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. En estas páginas encontraréis información sobre gran parte de nuestro camino recorrido. También os invitamos a visitar nuestro Blog para conocer las últimas noticias, ver vídeos en nuestro Canal de Youtube, explorar fotos en nuestra galería de Flickr o contactar con nosotros a través de nuestro Perfil de Facebook. No dudéis en escribirnos; estaremos encantados de recibir y contestar vuestros mensajes.',
       button1: 'Ver Programa',
       button2: 'Saber Más',
     },
@@ -122,7 +122,7 @@ export const translations = {
     aboutSection: {
         title: "Nuestra Tradición Eterna",
         p1: "Llevamos desde 1991 dedicados a la polifonía del renacimiento y hemos querido añadir a nuestro grupo las enormes posibilidades que nos brindan las tecnologías de la información y la comunicación. Desde entonces, nuestro conjunto ha reunido a vocalistas apasionados de diversos orígenes, unidos por un amor compartido por el poder de la armonía y la profundidad espiritual del repertorio.",
-        p2: "Nuestra misión es crear experiencias conmovedoras que resuenen con el público y honren la rica historia de la música sacra. En estas páginas encontraréis información sobre gran parte de nuestro camino recorrido. También os invitamos a visitar nuestro Blog para conocer las últimas noticias, ver vídeos en nuestro Canal de Youtube, explorar fotos en nuestra galería de Flickr o contactar con nosotros a través de nuestro Perfil de Facebook. No dudéis en escribirnos; estaremos encantados de recibir y contestar vuestros mensajes."
+        p2: "Nuestra misión es crear experiencias conmovedoras que resuenen con el público y honren la rica historia de la música sacra."
     },
     eventsSection: {
       title: 'Próximas Actuaciones',
