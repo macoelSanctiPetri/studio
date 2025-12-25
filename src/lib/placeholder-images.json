@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-choir",
-      "description": "A dramatic shot of the choir singing on stage.",
-      "imageUrl": "https://images.unsplash.com/photo-1558616224-f81c89962dc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2hvaXIlMjBzaW5naW5nfGVufDB8fHx8MTc2NjY2NzYzN3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "choir singing"
+      "description": "El coro NovaMvsica posando en un altar de una iglesia ornamentada.",
+      "imageUrl": "https://images.unsplash.com/photo-1718734620321-361625902ab5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaG9pciUyMGluJTIwY2h1cmNofGVufDB8fHx8MTcxODczNDYyMXww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "choir church"
     },
     {
       "id": "event-cathedral",
