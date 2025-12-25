@@ -19,7 +19,7 @@ export const translations = {
     heroSection: {
       subtitle: 'NovaMvsica Chamber Choir',
       title: 'Celebrating Renaissance Music',
-      description: 'Experience the sublime power and beauty of choral music that transcends time. On these pages, you will find information about our journey. We also invite you to explore our Blog for the latest news, watch videos on our YouTube Channel, view photos in our Flickr gallery, or connect with us through our Facebook Profile. Feel free to reach out via email; we are always delighted to receive and answer your messages.',
+      description: 'Experience the sublime power and beauty of choral music that transcends time. Join NovaMvsica on a journey through centuries of divine harmony and vocal excellence.',
       button1: 'View Schedule',
       button2: 'Learn More',
     },
@@ -110,7 +110,7 @@ export const translations = {
     heroSection: {
       subtitle: 'Coro de Cámara NovaMvsica',
       title: 'Celebrando la Música Renacentista',
-      description: 'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. En estas páginas encontraréis información sobre gran parte de nuestro camino recorrido. También os invitamos a visitar nuestro Blog para conocer las últimas noticias, ver vídeos en nuestro Canal de Youtube, explorar fotos en nuestra galería de Flickr o contactar con nosotros a través de nuestro Perfil de Facebook. No dudéis en escribirnos; estaremos encantados de recibir y contestar vuestros mensajes.',
+      description: 'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. Únete a NovaMvsica en un viaje a través de siglos de armonía divina y excelencia vocal.',
       button1: 'Ver Programa',
       button2: 'Saber Más',
     },
