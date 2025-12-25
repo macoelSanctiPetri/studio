@@ -30,8 +30,8 @@ export const translations = {
     },
     aboutSection: {
         title: "Our Timeless Tradition",
-        p1: "For over two decades, NovaMvsica has been dedicated to the preservation and performance of sacred choral music. Our ensemble brings together passionate vocalists from diverse backgrounds, united by a shared love for the power of harmony and the spiritual depth of the repertoire.",
-        p2: "From Renaissance polyphony to contemporary compositions, our mission is to create moving experiences that resonate with audiences and honor the rich history of sacred music."
+        p1: "For over two decades, NovaMvsica has been dedicated to the preservation and performance of sacred choral music. Since 1991, our ensemble has focused on Renaissance polyphony, bringing together passionate vocalists from diverse backgrounds, united by a shared love for the power of harmony and the spiritual depth of the repertoire.",
+        p2: "From Renaissance polyphony to contemporary compositions, our mission is to create moving experiences that resonate with audiences and honor the rich history of sacred music. On these pages, you will find information about our journey. We also invite you to explore our Blog for the latest news, watch videos on our YouTube Channel, view photos in our Flickr gallery, or connect with us through our Facebook Profile. Feel free to reach out via email; we are always delighted to receive and answer your messages."
     },
     directorMessage: {
       title: "A Message from the Director",
@@ -130,8 +130,8 @@ export const translations = {
     },
     aboutSection: {
         title: "Nuestra Tradición Eterna",
-        p1: "Durante más de dos décadas, NovaMvsica se ha dedicado a la preservación e interpretación de la música coral sacra. Nuestro conjunto reúne a vocalistas apasionados de diversos orígenes, unidos por un amor compartido por el poder de la armonía y la profundidad espiritual del repertorio.",
-        p2: "Desde la polifonía renacentista hasta las composiciones contemporáneas, nuestra misión es crear experiencias conmovedoras que resuenen con el público y honren la rica historia de la música sacra."
+        p1: "Durante más de dos décadas, NovaMvsica se ha dedicado a la preservación e interpretación de la música coral sacra. Desde 1991, nuestro conjunto se ha centrado en la polifonía renacentista, reuniendo a vocalistas apasionados de diversos orígenes, unidos por un amor compartido por el poder de la armonía y la profundidad espiritual del repertorio.",
+        p2: "Desde la polifonía renacentista hasta las composiciones contemporáneas, nuestra misión es crear experiencias conmovedoras que resuenen con el público y honren la rica historia de la música sacra. En estas páginas encontraréis información sobre gran parte de nuestro camino recorrido. También os invitamos a visitar nuestro Blog para conocer las últimas noticias, ver vídeos en nuestro Canal de Youtube, explorar fotos en nuestra galería de Flickr o contactar con nosotros a través de nuestro Perfil de Facebook. No dudéis en escribirnos; estaremos encantados de recibir y contestar vuestros mensajes."
     },
     directorMessage: {
       title: "Un Mensaje del Director",
