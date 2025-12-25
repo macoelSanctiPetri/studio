@@ -3,36 +3,42 @@
     {
       "id": "hero-choir",
       "description": "El coro NovaMvsica posando en un altar de una iglesia ornamentada.",
+      "alt_en": "The NovaMvsica choir posing in an ornate church altar.",
       "imageUrl": "https://images.unsplash.com/photo-1599421497992-94939c3a4b62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaG9pciUyMGluJTIwY2h1cmNofGVufDB8fHx8MTcyMDIxNjAzNHww&ixlib=rb-4.0.3&q=80&w=1080",
       "imageHint": "choir church"
     },
     {
       "id": "event-cathedral",
-      "description": "Interior of a grand cathedral.",
+      "description": "Interior de una gran catedral.",
+      "alt_en": "Interior of a grand cathedral.",
       "imageUrl": "https://images.unsplash.com/photo-1715807965660-19eb06c1e25d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYXRoZWRyYWwlMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjY1ODA3MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cathedral interior"
     },
     {
       "id": "event-concert-hall",
-      "description": "An empty, elegant concert hall.",
+      "description": "Una sala de conciertos elegante y vacía.",
+      "alt_en": "An empty, elegant concert hall.",
       "imageUrl": "https://images.unsplash.com/photo-1639408396873-4a284924bc3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwaGFsbHxlbnwwfHx8fDE3NjY2MTEwMTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "concert hall"
     },
     {
       "id": "event-organ",
-      "description": "Close-up of organ pipes.",
+      "description": "Primer plano de los tubos de un órgano.",
+      "alt_en": "Close-up of organ pipes.",
       "imageUrl": "https://images.unsplash.com/photo-1648351089697-b265a46e3bfb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b3JnYW4lMjBwaXBlc3xlbnwwfHx8fDE3NjY2Njc2Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "organ pipes"
     },
     {
       "id": "music-sheets",
-      "description": "Sheet music on a stand.",
+      "description": "Partituras en un atril.",
+      "alt_en": "Sheet music on a stand.",
       "imageUrl": "https://images.unsplash.com/photo-1648461513491-c8dc79739211?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaGVldCUyMG11c2ljfGVufDB8fHx8MTc2NjYxMTc5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "sheet music"
     },
     {
       "id": "about-choir",
-      "description": "The choir posing for a group photo.",
+      "description": "El coro posando para una foto grupal.",
+      "alt_en": "The choir posing for a group photo.",
       "imageUrl": "https://images.unsplash.com/photo-1762158008445-8355e4137bd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaG9pciUyMGdyb3VwfGVufDB8fHx8MTc2NjY2NzYzOHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "choir group"
     }

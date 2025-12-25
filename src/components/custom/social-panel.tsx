@@ -1,4 +1,6 @@
 import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
+import { translations } from '@/lib/translations';
 
 const socialLinks = [
   { name: 'Facebook', href: '#', icon: Facebook },
@@ -7,15 +9,17 @@ const socialLinks = [
 ];
 
 export default function SocialPanel() {
+  const { language } = useLanguage();
+  const t = translations[language].socialPanel;
+  
   return (
     <section id="contact" className="bg-lavender-gradient py-24 sm:py-32">
       <div className="container mx-auto max-w-7xl px-6 text-center text-primary-foreground lg:px-8">
         <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
-          Join Our Community
+          {t.title}
         </h2>
         <p className="mt-6 max-w-2xl mx-auto text-lg leading-8 font-body">
-          Follow us on social media to stay updated with our latest news,
-          behind-the-scenes content, and upcoming concert announcements.
+          {t.description}
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-8">
           {socialLinks.map((link) => (

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { EB_Garamond, Montserrat } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { LanguageProvider } from '@/context/language-context';
 
 const ebGaramond = EB_Garamond({
   subsets: ['latin'],
@@ -17,7 +18,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: 'NovaMvsica',
-  description: 'A website for the NovaMvsica choir.',
+  description: 'Un sitio web para el coro NovaMvsica.',
 };
 
 export default function RootLayout({
@@ -26,10 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${ebGaramond.variable} ${montserrat.variable}`}>
-      <head>
-      </head>
-      <body className="font-body antialiased">{children}<Toaster /></body>
-    </html>
+    <LanguageProvider>
+      <html lang="en" className={`dark ${ebGaramond.variable} ${montserrat.variable}`}>
+        <head>
+        </head>
+        <body className="font-body antialiased">{children}<Toaster /></body>
+      </html>
+    </LanguageProvider>
   );
 }

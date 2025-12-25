@@ -1,8 +1,16 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useLanguage } from '@/context/language-context';
+import { translations } from '@/lib/translations';
 
 export default function AboutSection() {
+  const { language } = useLanguage();
+  const t = translations[language].aboutSection;
   const aboutImage = PlaceHolderImages.find(p => p.id === 'about-choir');
+  const imageDescription = language === 'es' 
+    ? (aboutImage?.description || 'El coro posando para una foto grupal.')
+    : (aboutImage?.alt_en || 'The choir posing for a group photo.');
+
 
   return (
     <section id="about" className="bg-background py-24 sm:py-32">
@@ -11,20 +19,20 @@ export default function AboutSection() {
             <div>
                  <div className="w-10 h-0.5 bg-secondary mb-4"></div>
                 <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                  Our Timeless Tradition
+                  {t.title}
                 </h2>
                 <p className="mt-6 text-lg leading-8 text-secondary-foreground font-body">
-                  For over two decades, Sacred Echoes has been dedicated to the preservation and performance of sacred choral music. Our ensemble brings together passionate vocalists from diverse backgrounds, united by a shared love for the power of harmony and the spiritual depth of the repertoire.
+                  {t.p1}
                 </p>
                 <p className="mt-4 text-lg leading-8 text-secondary-foreground font-body">
-                  From Renaissance polyphony to contemporary compositions, our mission is to create moving experiences that resonate with audiences and honor the rich history of sacred music.
+                  {t.p2}
                 </p>
             </div>
             {aboutImage && (
               <div className="aspect-[3/2] w-full max-w-lg justify-self-center lg:aspect-[1/1] lg:max-w-none">
                 <Image
                   src={aboutImage.imageUrl}
-                  alt={aboutImage.description}
+                  alt={imageDescription}
                   width={600}
                   height={600}
                   className="object-cover w-full h-full"
