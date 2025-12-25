@@ -30,6 +30,7 @@ export default function RootLayout({
     <LanguageProvider>
       <html lang="en" className={`dark ${ebGaramond.variable} ${montserrat.variable}`}>
         <head>
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         </head>
         <body className="font-body antialiased">{children}<Toaster /></body>
       </html>
