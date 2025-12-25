@@ -17,7 +17,7 @@ export const translations = {
       },
     },
     heroSection: {
-      subtitle: 'Music & The Spoken Word',
+      subtitle: 'NovaMvsica Chamber Choir',
       title: 'Celebrating Renaissance Music',
       description: 'Experience the sublime power and beauty of choral music that transcends time. Join NovaMvsica on a journey through centuries of divine harmony and vocal excellence.',
       button1: 'View Schedule',
@@ -117,7 +117,7 @@ export const translations = {
       },
     },
     heroSection: {
-      subtitle: 'Música y la Palabra Hablada',
+      subtitle: 'Coro de Cámara NovaMvsica',
       title: 'Celebrando la Música Renacentista',
       description: 'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. Únete a NovaMvsica en un viaje a través de siglos de armonía divina y excelencia vocal.',
       button1: 'Ver Programa',
