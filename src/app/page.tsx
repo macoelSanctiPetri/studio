@@ -4,6 +4,7 @@ import Header from '@/components/custom/header';
 import HeroSection from '@/components/custom/hero-section';
 import AnnouncementBar from '@/components/custom/announcement-bar';
 import AboutSection from '@/components/custom/about-section';
+import DirectorMessage from '@/components/custom/director-message';
 import EventsSection from '@/components/custom/events-section';
 import MusicSection from '@/components/custom/music-section';
 import SocialPanel from '@/components/custom/social-panel';
@@ -27,6 +28,7 @@ export default function Home() {
         <HeroSection />
         <AnnouncementBar />
         <AboutSection />
+        <DirectorMessage />
         <EventsSection />
         <MusicSection />
         <SocialPanel />

@@ -33,6 +33,15 @@ export const translations = {
         p1: "For over two decades, NovaMvsica has been dedicated to the preservation and performance of sacred choral music. Our ensemble brings together passionate vocalists from diverse backgrounds, united by a shared love for the power of harmony and the spiritual depth of the repertoire.",
         p2: "From Renaissance polyphony to contemporary compositions, our mission is to create moving experiences that resonate with audiences and honor the rich history of sacred music."
     },
+    directorMessage: {
+      title: "A Message from the Director",
+      p1: "As the director of the Nova Mvsica Chamber Choir, I extend a warm greeting to you. It is a true pleasure for me to present this site to you.",
+      p2: "Since 1991, we have been dedicated to Renaissance polyphony and have wanted to add to our group the enormous possibilities that information and communication technologies offer us.",
+      p3: "On these pages, you will find information about much of our journey. You can also visit our Blog, where you will find the latest updates and news, watch some videos on our YouTube Channel, see some photos in the Flickr photo gallery, or contact us through our Facebook Profile. Finally, our email address is also at your disposal, where we will be delighted to receive and answer your messages.",
+      p4: "Without further ado, a greeting and... Much Music!!",
+      signature: "Eduardo Gallardo de Gomar",
+      signatureTitle: "Director of the Nova Mvsica Chamber Choir"
+    },
     eventsSection: {
       title: 'Upcoming Performances',
       description: 'Join us for a season of unforgettable music. Secure your seats for these upcoming performances.',
@@ -123,6 +132,15 @@ export const translations = {
         title: "Nuestra Tradición Eterna",
         p1: "Durante más de dos décadas, NovaMvsica se ha dedicado a la preservación e interpretación de la música coral sacra. Nuestro conjunto reúne a vocalistas apasionados de diversos orígenes, unidos por un amor compartido por el poder de la armonía y la profundidad espiritual del repertorio.",
         p2: "Desde la polifonía renacentista hasta las composiciones contemporáneas, nuestra misión es crear experiencias conmovedoras que resuenen con el público y honren la rica historia de la música sacra."
+    },
+    directorMessage: {
+      title: "Un Mensaje del Director",
+      p1: "Como director del Coro de Cámara Nova Mvsica os doy un cordial saludo. Es para mí un verdadero placer presentaros este sitio.",
+      p2: "Llevamos desde 1991 dedicados a la polifonía del renacimiento y hemos querido añadir a nuestro grupo las enormes posibilidades que nos brindan las tecnologías de la información y la comunicación.",
+      p3: "En estas páginas encontraréis información sobre gran parte de nuestro camino recorrido. También podéis visitar nuestro Blog, donde encontraréis las últimas actualizaciones y noticias, ver algunos videos en nuestro Canal de Youtube, algunas fotos en la galería de fotos de Flickr o contactar con nosotros desde nuestro Perfil de Facebook . Por último, también tenéis a vuestra disposición nuestra cuenta de correo electrónico, donde estaremos encantados de recibir y contestar a vuestros mensajes.",
+      p4: "Sin más, un saludo y ... ¡¡Mucha Música!!",
+      signature: "Eduardo Gallardo de Gomar",
+      signatureTitle: "Director del Coro de Cámara Nova Mvsica"
     },
     eventsSection: {
       title: 'Próximas Actuaciones',
