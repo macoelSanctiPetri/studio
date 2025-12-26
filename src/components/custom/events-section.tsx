@@ -28,7 +28,7 @@ export default function EventsSection() {
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
             {t.title}
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-300 font-body">
+          <p className="mt-6 text-lg leading-8 text-primary-foreground font-body">
             {t.description}
           </p>
         </div>
@@ -48,13 +48,13 @@ export default function EventsSection() {
                   )}
                 </div>
                 <div className="mt-6 w-full">
-                  <p className="text-xs uppercase tracking-wider text-gray-400 font-headline">
+                  <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
                     {event.date}
                   </p>
                   <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">
                       {event.title}
                   </h3>
-                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-gray-300 font-body">
+                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-primary-foreground font-body">
                     {event.description}
                   </p>
                   <Button variant="link" className="p-0 h-auto mt-4 text-accent rounded-none">
