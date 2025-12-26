@@ -3,10 +3,15 @@ import { ArrowUp } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
 export default function FloatingHomeButton() {
-  const [y, setY] = useState<number>(() => window?.innerHeight ? window.innerHeight * 0.75 : 0);
+  const [y, setY] = useState<number>(() =>
+    typeof window !== 'undefined' && typeof window.innerHeight === 'number'
+      ? window.innerHeight * 0.75
+      : 0
+  );
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleMove = (e: MouseEvent) => {
       const targetY = Math.min(Math.max(e.clientY, 80), window.innerHeight - 80);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
