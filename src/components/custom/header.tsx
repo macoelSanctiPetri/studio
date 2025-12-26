@@ -48,7 +48,7 @@ export default function Header() {
             className="mr-6 flex items-center space-x-2 group"
             aria-label="Ir al inicio"
           >
-            <Logo className="h-[6.1rem] w-auto transition-transform duration-200 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(196,168,80,0.45)]" />
+            <Logo className="h-[5rem] w-auto transition-transform duration-200 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(196,168,80,0.45)]" />
           </a>
 
           <div className="flex flex-1 items-center justify-end space-x-6">
