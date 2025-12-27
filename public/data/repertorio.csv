@@ -1,0 +1,282 @@
+﻿update_date,period,group_num,group_name,number,parent_number,is_collection,title,composer,composer_inherited,arranger,voices,voices_inherited,note,page,raw_text
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,101,,1,De la misa “Ave Maris Stella” a 4 v.m. de T. L. de Victoria,T. L. de Victoria,T. L. de Victoria,,,,,1,De la misa “Ave Maris Stella” a 4 v.m. de T. L. de Victoria:
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,101.1,101,0,Kyrie,,T. L. de Victoria,,,,,1,Kyrie
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,101.2,101,0,Sanctus,,T. L. de Victoria,,,,,1,Sanctus
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,101.3,101,0,Agnus Dei,,T. L. de Victoria,,,,,1,Agnus Dei
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102,,1,Tenebrae Responsories de T. L. de Victoria,T. L. de Victoria,T. L. de Victoria,,,,,1,Tenebrae Responsories de T. L. de Victoria:
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1,102,1,Jueves Santo,,T. L. de Victoria,,,,,1,Jueves Santo:
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1.1,102.1,0,Amicus Meus,,T. L. de Victoria,,4 v.m.,4 v.m.,,1,Amicus Meus (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1.2,102.1,0,Iudas Mercator Pessimus,,T. L. de Victoria,,SSCT,SSCT,,1,Iudas Mercator Pessimus (SSCT)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1.3,102.1,0,Unus Ex Discipulis Meis,,T. L. de Victoria,,4 v.m.,4 v.m.,,1,Unus Ex Discipulis Meis (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1.4,102.1,0,Eram Quasi Agnus,,T. L. de Victoria,,4 v.m.,4 v.m.,,1,Eram Quasi Agnus (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1.5,102.1,0,Una Hora,,T. L. de Victoria,,SSCT,SSCT,,1,Una Hora (SSCT)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.1.6,102.1,0,Seniores Populi,,T. L. de Victoria,,4 v.m.,4 v.m.,,1,Seniores Populi (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2,102,1,Viernes Santo,,T. L. de Victoria,,,,,1,Viernes Santo:
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2.1,102.2,0,Tamquam Ad Latronem,,T. L. de Victoria,,,,,1,Tamquam Ad Latronem
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2.2,102.2,0,Tenebrae Factae Sunt,,T. L. de Victoria,,TTBrB,TTBrB,,1,Tenebrae Factae Sunt (TTBrB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2.3,102.2,0,Animam Meam Dilectam,,T. L. de Victoria,,,,,1,Animam Meam Dilectam
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2.4,102.2,0,Tradiderunt Me,,T. L. de Victoria,,,,,1,Tradiderunt Me
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2.5,102.2,0,Iesum Tradidit Impius,,T. L. de Victoria,,SSCT,SSCT,,1,Iesum Tradidit Impius (SSCT)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.2.6,102.2,0,Caligaverunt Oculi Mei,,T. L. de Victoria,,,,,1,Caligaverunt Oculi Mei
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3,102,1,Sábado Santo,,T. L. de Victoria,,,,,1,Sábado Santo:
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3.1,102.3,0,Recessit Pastor Noster,,T. L. de Victoria,,,,,1,Recessit Pastor Noster
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3.2,102.3,0,O Vos Omnes,,T. L. de Victoria,,,,,1,O Vos Omnes
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3.3,102.3,0,Ecce Quomodo Moritur Iustus,,T. L. de Victoria,,,,,1,Ecce Quomodo Moritur Iustus
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3.4,102.3,0,Astiterunt Reges,,T. L. de Victoria,,,,,1,Astiterunt Reges
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3.5,102.3,0,Aestimatus Sum,,T. L. de Victoria,,TTBrB,TTBrB,,1,Aestimatus Sum (TTBrB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,102.3.6,102.3,0,Sepulto Domino,,T. L. de Victoria,,,,,1,Sepulto Domino
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,103,,1,del Ciclo Pascual de T. L. de Victoria,T. L. de Victoria,T. L. de Victoria,,,,,1,del Ciclo Pascual de T. L. de Victoria:
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,103.1,103,0,Pueri Hebraeorum,,T. L. de Victoria,,4 v.m.,4 v.m.,,1,Pueri Hebraeorum (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,103.2,103,0,O Vos Omnes,,T. L. de Victoria,,4 v.m.,4 v.m.,,1,O Vos Omnes (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,104,,0,Vinea Mea Electa,G. P. Palestrina,G. P. Palestrina,,4 v.m.,4 v.m.,,1,Vinea Mea Electa ....................................................... G. P. Palestrina (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,105,,0,Ay Mi Dios,P. de Cristo,P. de Cristo,,4 v.m.,4 v.m.,,1,Ay Mi Dios ................................................................. P. de Cristo (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,106,,0,Peccantem Me Quotidie,C. de Morales,C. de Morales,,4 v.m.,4 v.m.,,1,Peccantem Me Quotidie .............................................. C. de Morales (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,107,,0,Ecce Virgo Concipiet,C. de Morales,C. de Morales,,4 v.m.,4 v.m.,,1,Ecce Virgo Concipiet ............................................... C. de Morales (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,108,,0,Per Signum Crucis,F. Guerrero,F. Guerrero,,4 v.m.,4 v.m.,,1,Per Signum Crucis ..................................................... F. Guerrero (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,109,,0,Domine Ad Adjuvandum,Anónimo,Anónimo,,4 v. m.,4 v. m.,,1,Domine Ad Adjuvandum ............................................ Anónimo (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,110,,0,O Jesu Mi Dulcissime,F. Anerio,F. Anerio,,3 v. m.,3 v. m.,,1,O Jesu Mi Dulcissime ................................................. F. Anerio (3 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,111,,0,In Te Domine Speravi,J. Desprez,J. Desprez,,4 v. m.,4 v. m.,,1,In Te Domine Speravi ................................................ J. Desprez (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,112,,0,Ave Vera Virginitas,J. Desprez,J. Desprez,,4 v. m.,4 v. m.,,1,Ave Vera Virginitas ................................................... J. Desprez (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113,,1,Misa “Brevis” a 4 v.m. de G. P. Palestrina,G. P. Palestrina,G. P. Palestrina,,4 v. m.,4 v. m.,,1,Misa “Brevis” a 4 v.m. de G. P. Palestrina (4 v. m.):
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113.1,113,0,Kyrie,,G. P. Palestrina,,,4 v. m.,,1,Kyrie
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113.2,113,0,Gloria,,G. P. Palestrina,,,4 v. m.,,1,Gloria
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113.3,113,0,Credo,,G. P. Palestrina,,,4 v. m.,,1,Credo
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113.4,113,0,Sanctus - Benedictus,,G. P. Palestrina,,,4 v. m.,,2,Sanctus - Benedictus
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113.5,113,0,Agnus Dei I,,G. P. Palestrina,,,4 v. m.,,2,Agnus Dei I
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,113.6,113,0,Agnus Dei II,,G. P. Palestrina,,,4 v. m.,,2,Agnus Dei II
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,114,,0,Emendemus In Melius,C. de Morales,C. de Morales,,SCTTB,SCTTB,,2,Emendemus In Melius ............................................... C. de Morales (SCTTB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,115,,0,In Manus Tuas,C. Cortés,C. Cortés,,4 v.m.,4 v.m.,,2,In Manus Tuas .......................................................... C. Cortés (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,116,,0,Ave Maria,J. Arcadelt,J. Arcadelt,,4 v.m.,4 v.m.,,2,Ave Maria ................................................................. J. Arcadelt (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,117,,0,Ave Verum,W. Byrd,W. Byrd,,4 v. M.,4 v. M.,,2,Ave Verum ............................................................... W. Byrd (4 v. M.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,118,,0,Tenebrae Factae Sunt,M. A. Ingegneri,M. A. Ingegneri,,4 v. m.,4 v. m.,,2,Tenebrae Factae Sunt ………………………………. M. A. Ingegneri (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,119,,0,Stabat Mater,F. Padilla,F. Padilla,,4 v. m.,4 v. m.,,2,Stabat Mater ............................................................. F. Padilla (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,120,,0,Introito de la “Misa Pro Defunctis”,M. Cardoso,M. Cardoso,,SSCCTB,SSCCTB,,2,Introito de la “Misa Pro Defunctis” ........................... M. Cardoso (SSCCTB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,121,,0,Justorum Animae,W. Byrd,W. Byrd,,SSCTB,SSCTB,,2,Justorum Animae ………………………………….. W. Byrd (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,122,,0,Salve Regina,J. de Riscos,J. de Riscos,,4 v. m.,4 v. m.,,2,Salve Regina ……………………………………….. J. de Riscos (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,123,,0,Adjuva Nos,M. Ruiz,M. Ruiz,,4 v. m.,4 v. m.,,2,Adjuva Nos ………………………………………… M. Ruiz (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,124,,0,O Salutaris Hostia,P. de la Rue,P. de la Rue,,4 v. m.,4 v. m.,,2,O Salutaris Hostia ………………………………….. P. de la Rue (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,125,,0,Pange Lingua,G. P. da Palestrina,G. P. da Palestrina,,4 v. m.,4 v. m.,,2,Pange Lingua ………………………………………. G. P. da Palestrina (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,126,,0,Pan Divino y Gracioso,F. Guerrero,F. Guerrero,,4 v. m.,4 v. m.,,2,Pan Divino y Gracioso ……………………………... F. Guerrero (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,127,,0,Domine Non Sum Dignus,T. L. de Victoria,T. L. de Victoria,,4 v. m.,4 v. m.,,2,Domine Non Sum Dignus ………………………….. T. L. de Victoria (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,128,,0,Vigilate et Orate,C. de Morales,C. de Morales,,4 v. m,4 v. m,,2,Vigilate et Orate ......................................................... C. de Morales (4 v. m)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,129,,0,Surrexit Pastor Bonus,O. di Lassus,O. di Lassus,,5 v. m.,5 v. m.,,2,Surrexit Pastor Bonus ................................................ O. di Lassus (5 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,130,,0,Hoc Corpus,M. Robledo,M. Robledo,,4 v. m.,4 v. m.,,2,Hoc Corpus ................................................................ M. Robledo (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,131,,0,Misa gregoriana,Anónimo,Anónimo,,v. i.,v. i.,,2,Misa gregoriana ......................................................... Anónimo (v. i.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,132,,0,If Ye Love Me,Thomas Tallis,Thomas Tallis,,4 v. m.,4 v. m.,,2,If Ye Love Me ........................................................... Thomas Tallis (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,133,,0,"O Lord, Give Thy Holy Spirit",Thomas Tallis,Thomas Tallis,,4 v. m.,4 v. m.,,2,"O Lord, Give Thy Holy Spirit .................................... Thomas Tallis (4 v. m.)"
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,134,,0,Leroy Kyrie,John Taverner,John Taverner,,4 v. m.,4 v. m.,,2,Leroy Kyrie ................................................................ John Taverner (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,135,,0,Quam Pulchri Sunt,T. L. de Victoria,T. L. de Victoria,,4 v. m.,4 v. m.,,2,Quam Pulchri Sunt ..................................................... T. L. de Victoria (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,136,,0,Pater Peccavi,Duarte Lobo,Duarte Lobo,,SSCTB,SSCTB,,2,Pater Peccavi ……………………………………….. Duarte Lobo (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,137,,0,Virgen Bendita Sin Par,Pedro Escobar,Pedro Escobar,,,,,2,Virgen Bendita Sin Par …………………………….. Pedro Escobar
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,138,,0,"Huyd, huyd",F. Guerrero,F. Guerrero,,4 v. m.,4 v. m.,,2,"Huyd, huyd ………………………………………… F. Guerrero (4 v. m.)"
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,139,,0,Christe Qui Lux Es et Dies I,R. White,R. White,,,,SCCTB,2,Christe Qui Lux Es et Dies I……………………….. R. White (SCCTB)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,140,,0,Antes Que Comáis a Dios,F. Guerrero,F. Guerrero,,4 v. m.,4 v. m.,,2,Antes Que Comáis a Dios ………………………….. F. Guerrero (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,141,,0,O Quam Gloriosum Est Regnum,T. L. de Victoria,T. L. de Victoria,,4 v. m.,4 v. m.,,2,O Quam Gloriosum Est Regnum …………………… T. L. de Victoria (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,142,,1,Misa a 4 de William Byrd,William Byrd,William Byrd,,4 v. m.,4 v. m.,,2,Misa a 4 de William Byrd (4 v. m.):
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,142.1,142,0,Kyrie,,William Byrd,,,4 v. m.,,2,Kyrie
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,142.2,142,0,Sanctus – Benedictus,,William Byrd,,,4 v. m.,,2,Sanctus – Benedictus
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,142.3,142,0,Agnus Dei,,William Byrd,,,4 v. m.,,2,Agnus Dei
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,143,,0,El Jubilate,M. Flecha,M. Flecha,,4 v. m.,4 v. m.,,2,El Jubilate …………………………………………… M. Flecha (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,144,,0,Ave Maria,T. L. de Victoria?,T. L. de Victoria?,,4 v. m.,4 v. m.,,2,Ave Maria …………………………………………… T. L. de Victoria? (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,145,,0,Parce Mihi Domine,C. de Morales,C. de Morales,,4 v. m.,4 v. m.,,2,Parce Mihi Domine ………………………………… C. de Morales (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,146,,0,"Vivo Ego, Dicit Dominus",Alonso Lobo,Alonso Lobo,,4 v. m.,4 v. m.,,2,"Vivo Ego, Dicit Dominus ……………...………….... Alonso Lobo (4 v. m.)"
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,147,,0,Jesu Dulcis Memoria,T. L. de Victoria,T. L. de Victoria,,4 v. m.,4 v. m.,,2,Jesu Dulcis Memoria ……………………….… Atrib. T. L. de Victoria (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,148,,0,Pange Lingua,,,,,,Gregoriano,2,Pange Lingua ……………………………………….. (Gregoriano)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,149,,0,O Bone Jesu,Palestrina,Palestrina,,4 v. m.,4 v. m.,,2,O Bone Jesu …………………………………………. Palestrina (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,150,,0,O Salutaris Hostia,J. Desprez,J. Desprez,,4 v. m.,4 v. m.,,2,O Salutaris Hostia ……………………………………. J. Desprez (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,151,,0,Versa Est in Luctum,F. de Peñalosa,F. de Peñalosa,,4 v. m.,4 v. m.,,2,Versa Est in Luctum …………………………………. F. de Peñalosa (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,152,,0,Si Tus Penas no Pruebo,F. Guerrero,F. Guerrero,,SSC,SSC,,3,Si Tus Penas no Pruebo …………………………….... F. Guerrero (SSC)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,153,,0,Ego Flos Campi,Alonso Lobo,Alonso Lobo,,4 v. m.,4 v. m.,,3,Ego Flos Campi …………………………………….... Alonso Lobo (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,1,OBRAS RELIGIOSAS,154,,0,In Pace,John Sheppard,John Sheppard,,4 v. m.,4 v. m.,,3,In Pace ……………………………………………….. John Sheppard (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,201,,0,Muchos Van D´Amor Heridos,Anónimo,Anónimo,,4 v.m.,4 v.m.,,3,Muchos Van D´Amor Heridos ..................................... Anónimo (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,202,,0,Llaman A Teresica,C. M. de Upsala,C. M. de Upsala,,4 v.m.,4 v.m.,,3,Llaman A Teresica ....................................................... C. M. de Upsala (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,203,,0,Mi Libertad En Sosiego,J. del Enzina,J. del Enzina,,4 v.m.,4 v.m.,,3,Mi Libertad En Sosiego ................................................ J. del Enzina (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,204,,0,Los Sospiros No Sosiegan,J. del Enzina,J. del Enzina,,4 v.m.,4 v.m.,,3,Los Sospiros No Sosiegan ............................................ J. del Enzina (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,205,,0,Es La Causa Bien Amar,J. del Enzina,J. del Enzina,,3 v.m.,3 v.m.,,3,Es La Causa Bien Amar ................................................. J. del Enzina (3 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,206,,0,Oy Comamos Y Bebamos,J. del Enzina,J. del Enzina,,4 v.m.,4 v.m.,,3,Oy Comamos Y Bebamos ............................................. J. del Enzina (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,207,,0,Por Unos Puertos Arriba,J. del Enzina,J. del Enzina,,4 v.m.,4 v.m.,,3,Por Unos Puertos Arriba .............................................. J. del Enzina (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,208,,0,Pase El Agua,Anónimo,Anónimo,,4 v.m.,4 v.m.,,3,Pase El Agua ................................................................ Anónimo (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,209,,0,Viver Lieto Voglio,G. Gastoldi,G. Gastoldi,,4 v.m.,4 v.m.,,3,Viver Lieto Voglio ...................................................... G. Gastoldi (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,210,,0,Sepamos Cómo Cayó,J. Brudieu,J. Brudieu,,4 v.m.,4 v.m.,,3,Sepamos Cómo Cayó .................................................. J. Brudieu (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,211,,0,Bonzorno Madonna,A. Scandelli,A. Scandelli,,4 v.m.,4 v.m.,,3,Bonzorno Madonna .................................................... A. Scandelli (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,212,,0,Il Bianco E Dolce Cigno,J. Arcadelt,J. Arcadelt,,4 v.m.,4 v.m.,,3,Il Bianco E Dolce Cigno .............................................. J. Arcadelt (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,213,,0,No Pueden Dormir Mis Ojos,Escobar,Escobar,,4 v.m.,4 v.m.,,3,No Pueden Dormir Mis Ojos ....................................... Escobar (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,214,,0,Pavana,T. Arbeau,T. Arbeau,,4 v.m.,4 v.m.,,3,Pavana ........................................................................ T. Arbeau (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,215,,0,Tourdion,P. Attaignant,P. Attaignant,,4 v.m.,4 v.m.,,3,Tourdion ..................................................................... P. Attaignant (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,216,,0,Now Is The Month Of Maying,T. Morley,T. Morley,,SCTTB,SCTTB,,3,Now Is The Month Of Maying .................................... T. Morley (SCTTB)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,217,,0,Et La La La,N. Le Petit,N. Le Petit,,4 v.m.,4 v.m.,,3,Et La La La ................................................................ N. Le Petit (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,218,,0,De Los Álamos,J. Vásquez,J. Vásquez,,4 v.m.,4 v.m.,,3,De Los Álamos ........................................................... J. Vásquez (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,219,,0,El Grillo,J. des Prez,J. des Prez,,4 v.m.,4 v.m.,,3,El Grillo ...................................................................... J. des Prez (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,220,,0,Zagaleja De Lo Verde,J. Vásquez,J. Vásquez,,4v.m.,4v.m.,,3,Zagaleja De Lo Verde ................................................. J. Vásquez (4v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,221,,0,Il Est Bel Et Bon,P. Passereau,P. Passereau,,4v.m.,4v.m.,,3,Il Est Bel Et Bon ......................................................... P. Passereau (4v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,222,,0,Tres Morillas M´Enamoran,C. M. Palacio,C. M. Palacio,,SCT,SCT,,3,Tres Morillas M´Enamoran ........................................... C. M. Palacio (SCT)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,223,,0,La Tricotea Samartín La Vea,Alonso (SCBr),Alonso (SCBr),,4 v.m.,4 v.m.,,3,La Tricotea Samartín La Vea ........................................ Alonso (SCBr) (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,224,,0,Teresica Hermana,C.M. de Upsala,C.M. de Upsala,,4 v.m.,4 v.m.,,3,Teresica Hermana ......................................................... C.M. de Upsala (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,225,,0,Lágrimas De Mi Consuelo,A. Cebrián,A. Cebrián,,4v.m.,4v.m.,,3,Lágrimas De Mi Consuelo ............................................ A. Cebrián (4v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,226,,0,Puse Mis Amores,C. Medinaceli,C. Medinaceli,,4 v.m.,4 v.m.,,3,Puse Mis Amores ......................................................... C. Medinaceli (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,227,,0,Si No Os Uviera Mirado,J. Vásquez,J. Vásquez,,4 v.m.,4 v.m.,,3,Si No Os Uviera Mirado ............................................... J. Vásquez (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,228,,0,Corten Espadas Afiladas,C. Medinaceli,C. Medinaceli,,4 v.m.,4 v.m.,,3,Corten Espadas Afiladas ............................................... C. Medinaceli (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,229,,0,The Silver Swan,O. Gibbons,O. Gibbons,,SCTTB,SCTTB,,3,The Silver Swan ........................................................... O. Gibbons (SCTTB)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,230,,0,Come Again,J. Dowland,J. Dowland,,4 v.m.,4 v.m.,,3,Come Again ................................................................. J. Dowland (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,231,,0,Matona Mia Cara,O. di Lassus,O. di Lassus,,4 v.m.,4 v.m.,,3,Matona Mia Cara .......................................................... O. di Lassus (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,232,,0,Mon Coeur Se Recommande a Vous,O. di Lassus,O. di Lassus,,4 v.m.,4 v.m.,,3,Mon Coeur Se Recommande a Vous ............................ O. di Lassus (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,233,,0,Con Amores La Mi Madre,J. de Anchieta,J. de Anchieta,,,,,3,Con Amores La Mi Madre ............................................ J. de Anchieta
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,234,,0,Ach Weh Des Leiden,Hassler,Hassler,,4 v. m.,4 v. m.,,3,Ach Weh Des Leiden .................................................. Hassler (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,235,,0,Prado Verde Y Florido,F. Guerrero,F. Guerrero,,4 v. m.,4 v. m.,,3,Prado Verde Y Florido ................................................ F. Guerrero (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,236,,0,Amor Vittorioso,Gastoldi,Gastoldi,,SSCTB,SSCTB,,3,Amor Vittorioso ........................................................... Gastoldi (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,237,,0,Contrapunto Bestiale alla Mente,A. Banchieri,A. Banchieri,,SSCTB,SSCTB,,3,Contrapunto Bestiale alla Mente .................................. A. Banchieri (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,238,,0,Sing We and Chant It,T. Morley,T. Morley,,SSCTB,SSCTB,,3,Sing We and Chant It ................................................... T. Morley (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,239,,0,Mas Vale Trocar,J. del Enzina,J. del Enzina,,4 v. m.,4 v. m.,,4,Mas Vale Trocar ........................................................... J. del Enzina (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,240,,0,This Sweet and Merry Month of May,W. Byrd,W. Byrd,,SSCTB,SSCTB,,4,This Sweet and Merry Month of May ……………….. W. Byrd (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,241,,0,La Girigonza (fragmento de la ensalada El Jubilate),M. Flecha,M. Flecha,,4 v. m.,4 v. m.,,4,La Girigonza (fragmento de la ensalada El Jubilate) ... M. Flecha (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,242,,0,"Weep, O Mine Eyes",John Bennet,John Bennet,,4 v. m.,4 v. m.,,4,"Weep, O Mine Eyes ………………………………….. John Bennet (4 v. m.)"
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,243,,0,Fair Phyllis I saw,John Farmer,John Farmer,,4 v. m.,4 v. m.,,4,Fair Phyllis I saw …………………………………….. John Farmer (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,244,,0,Un Sarao de la Chacona,J. Arañés,J. Arañés,,4 v.m.,4 v.m.,,4,Un Sarao de la Chacona ……………………………….. J. Arañés (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,2,PROFANAS,245,,0,Vecchie Letrose,A. Willaert,A. Willaert,,4 v.m.,4 v.m.,,4,Vecchie Letrose ……………………………………….. A. Willaert (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301,,1,Ciclo de Navidad del Cancionero Mayor de Upsala,anónimo,anónimo,,,,,4,Ciclo de Navidad del Cancionero Mayor de Upsala (anónimo):
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.1,301,0,No La Devemos Dormir,,anónimo,,4 v.m.,4 v.m.,,4,No La Devemos Dormir (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.2,301,0,Rey A Quien Reyes Adoran,,anónimo,,4 v.m.,4 v.m.,,4,Rey A Quien Reyes Adoran (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.3,301,0,Verbum Caro Factum Est,,anónimo,,4 v.m.,4 v.m.,,4,Verbum Caro Factum Est (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.4,301,0,Alta Reina Soberana,,anónimo,,4 v.m.,4 v.m.,,4,Alta Reina Soberana (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.5,301,0,Gózate Virgen Sagrada,,anónimo,,,,SSMsC,4,Gózate Virgen Sagrada (SSMsC)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.6,301,0,Un Niño Nos Es Nascido,,anónimo,,4 v.m.,4 v.m.,,4,Un Niño Nos Es Nascido (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.7,301,0,Dadme Albricias Hijos De Eva,Eva,Eva,,4 v.m.,4 v.m.,,4,Dadme Albricias Hijos De Eva (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.8,301,0,Yo Me Soy La Morenica,,anónimo,,4 v.m.,4 v.m.,,4,Yo Me Soy La Morenica (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.9,301,0,Ela Don Don Verges María,,anónimo,,4 v.m.,4 v.m.,,4,Ela Don Don Verges María (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,301.10,301,0,Riu Riu Chiu,,anónimo,,4 v.m.,4 v.m.,,4,Riu Riu Chiu (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,302,,0,O Magnum Mysterium,T. L. de Victoria,T. L. de Victoria,,4 v.m.,4 v.m.,,4,O Magnum Mysterium ................................................ T. L. de Victoria (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,303,,0,Niño Dios D´Amor Herido,F. Guerrero,F. Guerrero,,4 v.m.,4 v.m.,,4,Niño Dios D´Amor Herido .......................................... F. Guerrero (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,304,,0,A Un Niño Llorando Al Yelo,F. Guerrero,F. Guerrero,,SSCTB,SSCTB,,4,A Un Niño Llorando Al Yelo...................................... F. Guerrero (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,305,,0,Los Reyes Siguen La´Strella,F. Guerrero,F. Guerrero,,4 v.m.,4 v.m.,,4,Los Reyes Siguen La´Strella ....................................... F. Guerrero (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,306,,0,Coventry Carol,Trad. Inglés,Trad. Inglés,,4 v.m.,4 v.m.,,4,Coventry Carol .......................................................... Trad. Inglés (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,307,,0,El Rey Wenceslao,Trad. Inglés,Trad. Inglés,,4 v.m.,4 v.m.,,4,El Rey Wenceslao ...................................................... Trad. Inglés (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,308,,0,"Once, As I Remember","Italia, s. XVII","Italia, s. XVII",,4 v.m.,4 v.m.,,4,"Once, As I Remember ................................................ Italia, s. XVII (4 v.m.)"
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,309,,0,Deck The Hall,Trad. de Gales,Trad. de Gales,,4 v.m.,4 v.m.,,4,Deck The Hall ............................................................ Trad. de Gales (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,310,,0,Aquela Gusto,Anónimo Mex.,Anónimo Mex.,,4 v.m.,4 v.m.,,4,Aquela Gusto ............................................................. Anónimo Mex. (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,311,,0,In Dulci Jubilo,M. Praetorius,M. Praetorius,,4 v.m.,4 v.m.,,4,In Dulci Jubilo ............................................................ M. Praetorius (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,312,,0,Christmas Night,Arbeau/ Rutter,Arbeau/ Rutter,,4 v.m.,4 v.m.,,4,Christmas Night .......................................................... Arbeau/ Rutter (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,313,,0,The Truth From Above,Trad,Trad,V. William,,,,4,The Truth From Above ............................................... Trad. Arr: V. William
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,314,,0,De La Piel De Sus Ovejas,P. Ruimonte,P. Ruimonte,,SSCTB,SSCTB,,4,De La Piel De Sus Ovejas ........................................... P. Ruimonte (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,315,,0,Quita Enojos,P. Ruimonte,P. Ruimonte,,SSCTB,SSCTB,,4,Quita Enojos ………………………………………… P. Ruimonte (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,316,,0,Madre La Mi Madre,P. Ruimonte,P. Ruimonte,,SSCTB,SSCTB,,4,Madre La Mi Madre ………………………………… P. Ruimonte (SSCTB)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,317,,0,Mit Ernst O Menschen Kinder,H. L. Hassler,H. L. Hassler,,4 v.m.,4 v.m.,,4,Mit Ernst O Menschen Kinder .................................... H. L. Hassler (4 v.m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,318,,0,La Bomba (fragmento),M. Flecha,M. Flecha,,4 v. m.,4 v. m.,,4,La Bomba (fragmento) ................................................ M. Flecha (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,319,,0,Es Nascido,P. de Cristo,P. de Cristo,,4 v. m.,4 v. m.,,4,Es Nascido .................................................................... P. de Cristo (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,320,,0,Regem Natum,Gallus,Gallus,,4 v. m.,4 v. m.,,4,Regem Natum .............................................................. Gallus (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,321,,0,Niño de Mil Sales,M. de Durango,M. de Durango,,SAT-SATB,SAT-SATB,,4,Niño de Mil Sales ...................................................... M. de Durango (SAT-SATB)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,322,,0,Gaudete!,"Anónimo, Piae Cantiones. s. XVI","Anónimo, Piae Cantiones. s. XVI",,4 v. m.,4 v. m.,,4,"Gaudete! …………………………………….....… Anónimo, Piae Cantiones. s. XVI (4 v. m.)"
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,323,,0,Es Ist Ein Ros Entsprungen,M. Praetorius,M. Praetorius,,4 v. m.,4 v. m.,,4,Es Ist Ein Ros Entsprungen ……………………….. M. Praetorius (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,324,,0,Puer Natus Est Nobis,C. de Morales,C. de Morales,,SCT,SCT,,4,Puer Natus Est Nobis …………………………………. C. de Morales (SCT)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,325,,0,Hodie,P. de Cristo,P. de Cristo,,4 v. m.,4 v. m.,,5,Hodie ………………………………………………… P. de Cristo (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,326,,0,El Jubilate,M. Flecha,M. Flecha,,4 v. m.,4 v. m.,,5,El Jubilate ……………………………………………. M. Flecha (4 v. m.)
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,327,,0,"Hoy, Joseph",F. Guerrero,F. Guerrero,,4 v. m.,4 v. m.,,5,"Hoy, Joseph ………………………………………….. F. Guerrero (4 v. m.)"
+2025-01-09,Polifonía Del Renacimiento,3,NAVIDEÑAS,328,,0,Audivi Vocem de Coelo,J. Taverner,J. Taverner,,4 v.m.,4 v.m.,,5,Audivi Vocem de Coelo ……………………………… J. Taverner (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,401,,0,Inter Vestibulum Et Altare,D. Muelas,D. Muelas,,4 v.m.,4 v.m.,,5,Inter Vestibulum Et Altare .......................................... D. Muelas (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,402,,0,Canticorum Jubilo,G. F. Haendel,G. F. Haendel,,4 v.m.,4 v.m.,,5,Canticorum Jubilo ...................................................... G. F. Haendel (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,403,,0,Misa Brevis,Antonio Lotti,Antonio Lotti,,4 v.m.,4 v.m.,,5,Misa Brevis ............................. .................................... Antonio Lotti (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,404,,0,Christus Factus Est,M. Haydn,M. Haydn,,4 v.m.,4 v.m.,,5,Christus Factus Est .................................................... M. Haydn (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,405,,0,Ave Verum Corpus,W. A. Mozart,W. A. Mozart,,4 v.m.,4 v.m.,,5,Ave Verum Corpus .................................................... W. A. Mozart (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,406,,0,Wenn Ich Einmal Soll Scheiden,J. S. Bach,J. S. Bach,,4 v.m.,4 v.m.,,5,Wenn Ich Einmal Soll Scheiden .................................. J. S. Bach (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,407,,0,Alta Trinita Beata,Anónimo,Anónimo,,4 v.m.,4 v.m.,,5,Alta Trinita Beata ....................................................... Anónimo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,408,,0,Música Para Los Funerales De La Reina Mary,H. Purcell,H. Purcell,,4 v.m.,4 v.m.,,5,Música Para Los Funerales De La Reina Mary ............ H. Purcell (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,409,,0,Turba Multa,J. D. Vidal,J. D. Vidal,,4 v.m.,4 v.m.,,5,Turba Multa ............................................................... J. D. Vidal (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,410,,0,Panis Angelicus,E. Gallardo ((S)SCTB),E. Gallardo ((S)SCTB),,,,,5,Panis Angelicus ........................................................... E. Gallardo ((S)SCTB)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,411,,0,Let My Prayer Come Up,J. Blow,J. Blow,,4 v.m.,4 v.m.,,5,Let My Prayer Come Up ............................................ J. Blow (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,412,,0,Let Thy Hand Be Strengthened,J. Blow,J. Blow,,4 v.m.,4 v.m.,,5,Let Thy Hand Be Strengthened .................................. J. Blow (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,413,,0,Ich Bin Ein Gast Auf Erden,J. H. Schein,J. H. Schein,,4 v.m.,4 v.m.,,5,Ich Bin Ein Gast Auf Erden ........................................ J. H. Schein (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,414,,0,"Nun Lob, Mein Seel, Den Herren",H. Schütz,H. Schütz,,4 v.m.,4 v.m.,,5,"Nun Lob, Mein Seel, Den Herren ............................... H. Schütz (4 v.m.)"
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,415,,0,Panis Angelicus,C. Franck,C. Franck,,S-SCTB,S-SCTB,,5,Panis Angelicus .......................................................... C. Franck (S-SCTB)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,416,,0,Misa Brevis,D. Andreo,D. Andreo,,4 v.m,4 v.m,,5,Misa Brevis .................................................................... D. Andreo (4 v.m)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,417,,0,Cantate Domino,G. Pittoni,G. Pittoni,,4 v.m.,4 v.m.,,5,Cantate Domino .............................................................. G. Pittoni (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,418,,0,O Esca Viatorum,J. Haydn,J. Haydn,,4 v.m.,4 v.m.,,5,O Esca Viatorum ............................................................ J. Haydn (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,419,,0,Oh Happy Day!,Espiritual,Espiritual,,S+Coro+Pno,S+Coro+Pno,,5,Oh Happy Day! .............................................................. Espiritual (S+Coro+Pno)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,420,,0,Alleluia,W. Bradbury,W. Bradbury,,4 v. m.,4 v. m.,,5,Alleluia ………………………………………………..W. Bradbury (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,421,,0,Lamentaciones de Jeremías,J. D. Vidal,J. D. Vidal,,4 v. m.,4 v. m.,,5,Lamentaciones de Jeremías ...........................................J. D. Vidal (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,422,,0,Miserere,M. Corpas,M. Corpas,,4 v. m.,4 v. m.,,5,Miserere ………………………………………………. M. Corpas (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,423,,0,Pange Lingua,A. Bruckner,A. Bruckner,,4 v. m.,4 v. m.,,5,Pange Lingua ………………………………………… A. Bruckner (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,424,,0,O Salutaris Hostia,V. Ruiz Aznar,V. Ruiz Aznar,,4 v. m.,4 v. m.,,5,O Salutaris Hostia ………………………………….. V. Ruiz Aznar (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,425,,0,Adoro Te Devote,J. S. Bach,J. S. Bach,,4 v. m.,4 v. m.,,5,Adoro Te Devote ...........................................................J. S. Bach (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,426,,0,Missa « Tertia »,Haller,Haller,,4 v. m. + org,4 v. m. + org,,5,Missa « Tertia » .............................................................Haller (4 v. m. + org)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,427,,0,Kyrie KV 90,W. A. Mozart,W. A. Mozart,,4 v.m.,4 v.m.,,5,Kyrie KV 90 ..................................................................W. A. Mozart (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,428,,0,Ave Maria Guaraní,E. Morricone,E. Morricone,,4 v.m.,4 v.m.,,5,Ave Maria Guaraní ........................................................ E. Morricone (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,429,,0,The Last Supper (fragmento),,,,,,,5,The Last Supper (fragmento) .........................................
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,430,,0,Misa Brevis “In Nomine Amadei”,E. Gallardo,E. Gallardo,,4 v. m.,4 v. m.,,5,Misa Brevis “In Nomine Amadei” .............................. E. Gallardo (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,431,,0,Hallelujah,E. Gallardo,E. Gallardo,,4 v. m.,4 v. m.,,5,Hallelujah ..................................................................... E. Gallardo (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,432,,0,Hallelujah,H. Purcell,H. Purcell,,4 v. m.,4 v. m.,,5,Hallelujah ......................................................................H. Purcell (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,433,,0,It’s Me Oh Lord!,Espiritual,Espiritual,,4 v + pno,4 v + pno,,5,It’s Me Oh Lord! ...........................................................Espiritual (4 v + pno)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,434,,0,Salve Festa Dies,Anónimo Códex Calixtinus,Anónimo Códex Calixtinus,,v. i.,v. i.,,5,Salve Festa Dies ............................................................Anónimo Códex Calixtinus (v. i.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,435,,0,Hanacpachap cussicuinin,Anónimo,Anónimo,J. P. Bocanegra,,,,6,Hanacpachap cussicuinin ............................................. Anónimo. Arm. J. P. Bocanegra
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,436,,0,Christum Regem,M. de Sumaya,M. de Sumaya,,4 v. m.,4 v. m.,,6,Christum Regem ............................................................M. de Sumaya (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,437,,0,O Haupt voll Blut und Wunden,J. S. Bach,J. S. Bach,,4 v. m.,4 v. m.,,6,O Haupt voll Blut und Wunden ..................................... J. S. Bach (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,438,,0,"Alleluia. Dic Nobis, Maria",F. López Capillas,F. López Capillas,,4 v. m.,4 v. m.,,6,"Alleluia. Dic Nobis, Maria ............................................ F. López Capillas (4 v. m.)"
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,439,,0,Christus Factus Est,H. Franco,H. Franco,,4 v. m.,4 v. m.,,6,Christus Factus Est ......................................................... H. Franco (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,440,,0,Tristis Est Anima Mea,J. G. de Padilla,J. G. de Padilla,,4 v. m.,4 v. m.,,6,Tristis Est Anima Mea ................................................... J. G. de Padilla (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,441,,0,Aufer a Nobis,F. López Capillas,F. López Capillas,,4 v. m.,4 v. m.,,6,Aufer a Nobis .................................................................F. López Capillas (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,442,,0,Aleluya,W. Boyce,W. Boyce,,Canon a 4,Canon a 4,,6,Aleluya ........................................................................... W. Boyce (Canon a 4)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,443,,0,Aeternae Rex Altissime,J. L. Aranda,J. L. Aranda,,4 v.m.,4 v.m.,,6,Aeternae Rex Altissime .................................................. J. L. Aranda (4 v.m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,444,,0,Misa “Plagal”,E. Gallardo,E. Gallardo,,4 v. m.,4 v. m.,,6,Misa “Plagal” ................................................................. E. Gallardo (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,445,,0,Sancta Maria,H. Franco,H. Franco,,4 v. m.,4 v. m.,,6,Sancta Maria .................................................................. H. Franco (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,446,,0,Laudate Dominum,G. Pittoni,G. Pittoni,,4 v. m.,4 v. m.,,6,Laudate Dominum ……………………………………. G. Pittoni (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,447,,0,"Jesu, Meine Freude",J. Crüger,J. Crüger,,4 v. m.,4 v. m.,,6,"Jesu, Meine Freude …………………………………… J. Crüger (4 v. m.)"
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,448,,0,Ubi Caritas,M. Duruflé,M. Duruflé,,SCTTBB,SCTTBB,,6,Ubi Caritas ………………………………...………… M. Duruflé (SCTTBB)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,449,,0,Aeternae Rex Altissime,E. Gallardo,E. Gallardo,,4 v. m.,4 v. m.,,6,Aeternae Rex Altissime ……………………………….. E. Gallardo (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,450,,0,Stabat Mater,Karl Jenkins,Karl Jenkins,,,,,6,Stabat Mater …………………………………………... Karl Jenkins
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,451,,0,Gloria,J. S. Bach,J. S. Bach,,,,,6,Gloria …………………………………………………. J. S. Bach
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,452,,0,Gloria,J. Rutter,J. Rutter,,,,,6,Gloria ………………………………………………….. J. Rutter
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,453,,0,Gloria,A. Vivaldi,A. Vivaldi,,,,,6,Gloria …………………………………………………. A. Vivaldi
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,454,,0,Abendlied,J. Rheinberger,J. Rheinberger,,SSCTTB,SSCTTB,,6,Abendlied ………………………………………… J. Rheinberger (SSCTTB)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,455,,0,"Ach, Bleib Bei Uns",J. S Bach,J. S Bach,,4 v. m.,4 v. m.,,6,"Ach, Bleib Bei Uns …………………………………… J. S Bach (4 v. m.)"
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,456,,0,Alle Menschen Müssen Sterben,J. S Bach,J. S Bach,,4 v. m.,4 v. m.,,6,Alle Menschen Müssen Sterben ……………………… J. S Bach (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,457,,0,Sancta Maria Stella do Día,Alfonso X,Alfonso X,,4 v. m.,4 v. m.,,6,Sancta Maria Stella do Día …………………………….. Alfonso X (4 v. m.)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,458,,0,A Hymn to the Virgin,Benajmin Britten,Benajmin Britten,,SCTB -SCTB,SCTB -SCTB,,6,A Hymn to the Virgin ………………………………….. Benajmin Britten (SCTB -SCTB)
+2025-01-09,Polifonía No Renacentista,4,RELIGIOSAS,459,,0,Ut Queant Laxis,Anónimo gregoriano,Anónimo gregoriano,,,,,6,Ut Queant Laxis ………………………………………… Anónimo gregoriano
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,501,,0,In These Delightful Pleasant Groves,H. Purcell,H. Purcell,,4 v.m.,4 v.m.,,6,In These Delightful Pleasant Groves ............................. H. Purcell (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,502,,0,Rosmarin,J. Brahms,J. Brahms,,4 v.m.,4 v.m.,,6,Rosmarin ........................................................................ J. Brahms (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,503,,0,Claros Y Hermosos Ojos,E. Gallardo,E. Gallardo,,4 v.m.,4 v.m.,,6,Claros Y Hermosos Ojos ............................................... E. Gallardo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,504,,0,Sign,G. F. Haendel,G. F. Haendel,,4 v.m.,4 v.m.,,6,Sign ................................................................................ G. F. Haendel (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,505,,0,In Stiller Nacht,J. Brahms,J. Brahms,,4 v.m.,4 v.m.,,6,In Stiller Nacht ............................................................... J. Brahms (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,506,,0,Come Let Us Drink,H. Purcell,H. Purcell,,,,TTBr,6,Come Let Us Drink ....................................................... H. Purcell (TTBr)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,507,,0,Canción del Columpio,,,M. Castillo,4 v.m.,4 v.m.,,6,Canción del Columpio .................................................. Arm: M. Castillo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,508,,0,Martha My Dear,Lennon/McCartney (“),Lennon/McCartney (“),E. Gallardo,,,,6,Martha My Dear ............................................................ Lennon/McCartney (“) Arr. E. Gallardo
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,509,,0,Ecco Mormorar L´Onde,C. Monteverdi,C. Monteverdi,,SSCTB,SSCTB,,6,Ecco Mormorar L´Onde ................................................ C. Monteverdi (SSCTB)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,510,,0,Luci Serene E Chiare,C. Monteverdi,C. Monteverdi,,SSCTB,SSCTB,,6,Luci Serene E Chiare ..................................................... C. Monteverdi (SSCTB)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,511,,0,O Primavera,C. Monteverdi,C. Monteverdi,,SSCTB,SSCTB,,6,O Primavera ................................................................... C. Monteverdi (SSCTB)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,512,,0,Brindis,W. A. Mozart,W. A. Mozart,,4 v.m.,4 v.m.,,6,Brindis ........................................................................... W. A. Mozart (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,513,,0,Gaudeamus Igitur,Anónimo,Anónimo,,4 v.m.,4 v.m.,,6,Gaudeamus Igitur .......................................................... Anónimo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,514,,0,Himno de Andalucía,Blas Infante/J. del Castillo,Blas Infante/J. del Castillo,,4 v.m.,4 v.m.,,7,Himno de Andalucía ...................................................... Blas Infante/J. del Castillo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,515,,0,"Vanitas, Vanitatum",¿Anónimo? Canon,¿Anónimo? Canon,,,,,7,"Vanitas, Vanitatum ............................................................ ¿Anónimo? Canon"
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,516,,0,Aeterne,E. Gallardo,E. Gallardo,,4 v.m.,4 v.m.,,7,Aeterne ………….. …………………………………… E. Gallardo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,517,,0,Oda a la Alegría,Beethoven,Beethoven,,4 v.m.,4 v.m.,,7,Oda a la Alegría ………………………………………. Beethoven (4 v.m.)
+2025-01-09,Polifonía No Renacentista,5,PROFANAS,518,,0,Himno Ciencias del Mar,Inmaculada Vallejo,Inmaculada Vallejo,,4 v.m.,4 v.m.,,7,Himno Ciencias del Mar ……………………………… Inmaculada Vallejo (4 v.m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,601,,0,Serenísima Una Noche,Fray G. González,Fray G. González,,4 v.m.,4 v.m.,,7,Serenísima Una Noche ........................................... Fray G. González (4 v.m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,602,,0,In The Bleak Midwinter,G. Holst,G. Holst,,4 v.m.,4 v.m.,,7,In The Bleak Midwinter ......................................... G. Holst (4 v.m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,603,,0,Adeste Fideles,Reading,Reading,,4 v.m,4 v.m,,7,Adeste Fideles ....................................................... Reading (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,604,,0,Nativity Carol,J. Rutter,J. Rutter,,4 v.m,4 v.m,,7,Nativity Carol ........................................................ J. Rutter (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,605,,0,Ding-Dong Merrily On High,"Francia, s. XVII","Francia, s. XVII",,4v.m,4v.m,,7,"Ding-Dong Merrily On High .................................. Francia, s. XVII (4v.m)"
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,606,,0,"God Rest You Merry, Gentlemen",Trad,Trad,D. Willcocks,,,,7,"God Rest You Merry, Gentlemen .......................... Trad. Arr: D. Willcocks"
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,607,,0,Away In A Manger,W. J. Kirkpatrick,W. J. Kirkpatrick,,4 v.m,4 v.m,,7,Away In A Manger ............................................... W. J. Kirkpatrick (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,608,,0,The Holly And The Ivy,Trad,Trad,W. Davies,,,“,7,The Holly And The Ivy ......................................... Trad. Arr: W. Davies (“)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,609,,0,I Saw A Maiden,Vasco. Estrib: E. Pettman,Vasco. Estrib: E. Pettman,,,,“,7,I Saw A Maiden .................................................... Vasco. Estrib: E. Pettman (“)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,610,,0,All My Heart This Night Rejoices,J. G. Ebeling,J. G. Ebeling,,4 v.m,4 v.m,,7,All My Heart This Night Rejoices ........................ J. G. Ebeling (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,611,,0,Krasna Panna,Trad. Chequia,Trad. Chequia,,4 v.m,4 v.m,,7,Krasna Panna ........................................................ Trad. Chequia (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,612,,0,Lute-book Lullaby,W. Ballet/G. Shaw,W. Ballet/G. Shaw,,4 v.m,4 v.m,,7,Lute-book Lullaby ……………………………… W. Ballet/G. Shaw (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,613,,0,A Penas Nace Este Niño,F. Losada,F. Losada,,4 v.m,4 v.m,,7,A Penas Nace Este Niño ………………………… F. Losada (4 v.m)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,614,,0,White Christmas,I. Berling,I. Berling,,4 v. m.,4 v. m.,,7,White Christmas ……………………………….... I. Berling (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,615,,0,Candlelight Carol,J. Rutter,J. Rutter,,5 v.m. + org/orq,5 v.m. + org/orq,,7,Candlelight Carol .................................................. J. Rutter (5 v.m. + org/orq)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,616,,0,In the Bleak Midwinter,Harold Darke,Harold Darke,,4 v.m. + org,4 v.m. + org,,7,In the Bleak Midwinter ......................................... Harold Darke (4 v.m. + org)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,617,,0,Eso Rigor e Repente,Gaspar Fernández,Gaspar Fernández,,4 v. m.,4 v. m.,,7,Eso Rigor e Repente .............................................. Gaspar Fernández (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,618,,0,Eterna Navidad,Rolando Suffos,Rolando Suffos,,4 v. m.,4 v. m.,,7,Eterna Navidad ...................................................... Rolando Suffos (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,619,,0,Noche de Paz,Grüber/Möhr,Grüber/Möhr,,4 v. m.,4 v. m.,,7,Noche de Paz ……………………………………. Grüber/Möhr (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,620,,0,Adeste Fideles,Reading,Reading,,4 v. m.,4 v. m.,,7,Adeste Fideles …………………………………... Reading (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,621,,0,La Primera Navidad,Trad. de Inglaterra,Trad. de Inglaterra,,4 v. m.,4 v. m.,,7,La Primera Navidad …………………………….. Trad. de Inglaterra (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,623,,0,Tambalagumbá,J. G. de Padilla,J. G. de Padilla,,5 v. m.,5 v. m.,,7,Tambalagumbá ………………………………….. J. G. de Padilla (5 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,624,,0,"Dormi, Dormi Bel Bambin",Italia. (4 v. m.),Italia. (4 v. m.),F. Briceño/E. Gallardo,,,,7,"Dormi, Dormi Bel Bambin ………………………. Italia. (4 v. m.) Arr. F. Briceño/E. Gallardo"
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,625,,0,Carol of the Bells,Mykola Leontovich,Mykola Leontovich,,4 v. m.,4 v. m.,,7,Carol of the Bells ………………………………... Mykola Leontovich (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,626,,0,Gloria,Francia,Francia,,4 v. m.,4 v. m.,,7,Gloria ……………………………………………. Francia (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,627,,0,Gloucestershire Wassail,Gales. (4 v. m.),Gales. (4 v. m.),E. L. Stauff,,,,7,Gloucestershire Wassail …………………………. Gales. (4 v. m.) Arm. E. L. Stauff
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,628,,0,Quem Pastores Laudavere,"Alemania, s. XIV. (SSCTB)","Alemania, s. XIV. (SSCTB)",John Rutter,,,,7,"Quem Pastores Laudavere ………………………. Alemania, s. XIV. (SSCTB) Arr. John Rutter"
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,629,,0,Jingle Bells,J. S. Pierpont,J. S. Pierpont,S. Karpiniec,,,,7,"Jingle Bells ………………………………………. J. S. Pierpont,Arr. S. Karpiniec"
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,630,,0,And All in the Morning,Tradicional,Tradicional,Ralph Vaughan Williams,,,,7,And All in the Morning…………………………… Tradicional. Arr.: Ralph Vaughan Williams
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,631,,0,Who Comes This Night,D. Grusin,D. Grusin,Sheldon Curry,,,,7,Who Comes This Night ………………………….. D. Grusin. Arr. Sheldon Curry
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,632,,0,A Mi Enamoradito Señores,Francisco Losada,Francisco Losada,,4 v. m.,4 v. m.,,7,A Mi Enamoradito Señores ………………………. Francisco Losada (4 v. m.)
+2025-01-09,Polifonía No Renacentista,6,NAVIDEÑAS,633,,0,"Lully, Lulla, Lullay",Phillip WJ Stopford,Phillip WJ Stopford,,4 v.m.,4 v.m.,,8,"Lully, Lulla, Lullay ………………………………. Phillip WJ Stopford (4 v.m.)"

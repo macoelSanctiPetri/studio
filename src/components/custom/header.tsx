@@ -28,7 +28,6 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [aboutOpen, setAboutOpen] = React.useState(false);
   const [eventsOpen, setEventsOpen] = React.useState(false);
-  const [repertoireOpen, setRepertoireOpen] = React.useState(false);
   const { language, setLanguage } = useLanguage();
   const t = translations[language].header;
 
@@ -113,39 +112,6 @@ export default function Header() {
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
                           <a href="#events-past" className="w-full">{t.eventsSub.past}</a>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </div>
-                  </DropdownMenu>
-                ) : link.href === '#repertoire' ? (
-                  <DropdownMenu
-                    key={link.name}
-                    open={repertoireOpen}
-                    onOpenChange={setRepertoireOpen}
-                  >
-                    <div
-                      onMouseEnter={() => setRepertoireOpen(true)}
-                      onMouseLeave={() => setRepertoireOpen(false)}
-                      className="relative"
-                    >
-                      <DropdownMenuTrigger asChild>
-                        <button className="transition-colors hover:text-[hsl(46,45%,54%)] focus:outline-none">
-                          {link.name}
-                        </button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        align="start"
-                        onMouseEnter={() => setRepertoireOpen(true)}
-                        onMouseLeave={() => setRepertoireOpen(false)}
-                      >
-                        <DropdownMenuItem asChild>
-                          <a href="#repertoire-religious" className="w-full">{t.repertoireSub.religious}</a>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem asChild>
-                          <a href="#repertoire-secular" className="w-full">{t.repertoireSub.secular}</a>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem asChild>
-                          <a href="#repertoire-christmas" className="w-full">{t.repertoireSub.christmas}</a>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </div>
@@ -260,31 +226,6 @@ export default function Header() {
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {t.eventsSub.past}
-                        </a>
-                      </div>
-                    ) : link.href === '#repertoire' ? (
-                      <div key={link.name} className="flex flex-col gap-3">
-                        <span className="text-lg">{link.name}</span>
-                        <a
-                          href="#repertoire-religious"
-                          className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {t.repertoireSub.religious}
-                        </a>
-                        <a
-                          href="#repertoire-secular"
-                          className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {t.repertoireSub.secular}
-                        </a>
-                        <a
-                          href="#repertoire-christmas"
-                          className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {t.repertoireSub.christmas}
                         </a>
                       </div>
                     ) : (
