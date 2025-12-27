@@ -100,7 +100,7 @@ director@novamvsica.com`;
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((member: { name: string; role: string; photoUrl?: string; photoAlt?: string }) => (
               <div
-                key={member.name}
+                key={`${member.name}-${member.role}`}
                 className="group rounded-2xl border border-border/60 bg-neutral-900/60 p-5 shadow-md backdrop-blur"
               >
                 <div className="mb-4 flex w-full justify-center">

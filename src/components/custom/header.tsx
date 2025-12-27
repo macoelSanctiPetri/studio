@@ -28,6 +28,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [aboutOpen, setAboutOpen] = React.useState(false);
   const [eventsOpen, setEventsOpen] = React.useState(false);
+  const [mediaOpen, setMediaOpen] = React.useState(false);
   const { language, setLanguage } = useLanguage();
   const t = translations[language].header;
 
@@ -112,6 +113,39 @@ export default function Header() {
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
                           <a href="#events-past" className="w-full">{t.eventsSub.past}</a>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </div>
+                  </DropdownMenu>
+                ) : link.href === '#media' ? (
+                  <DropdownMenu
+                    key={link.name}
+                    open={mediaOpen}
+                    onOpenChange={setMediaOpen}
+                  >
+                    <div
+                      onMouseEnter={() => setMediaOpen(true)}
+                      onMouseLeave={() => setMediaOpen(false)}
+                      className="relative"
+                    >
+                      <DropdownMenuTrigger asChild>
+                        <button className="transition-colors hover:text-[hsl(46,45%,54%)] focus:outline-none">
+                          {link.name}
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        align="start"
+                        onMouseEnter={() => setMediaOpen(true)}
+                        onMouseLeave={() => setMediaOpen(false)}
+                      >
+                        <DropdownMenuItem asChild>
+                          <a href="#photos" className="w-full">{t.multimediaSub.photos}</a>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <a href="#media-videos" className="w-full">{t.multimediaSub.videos}</a>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <a href="#media-audios" className="w-full">{t.multimediaSub.audios}</a>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </div>
@@ -226,6 +260,31 @@ export default function Header() {
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {t.eventsSub.past}
+                        </a>
+                      </div>
+                    ) : link.href === '#media' ? (
+                      <div key={link.name} className="flex flex-col gap-3">
+                        <span className="text-lg">{link.name}</span>
+                        <a
+                          href="#photos"
+                          className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {t.multimediaSub.photos}
+                        </a>
+                        <a
+                          href="#media-videos"
+                          className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {t.multimediaSub.videos}
+                        </a>
+                        <a
+                          href="#media-audios"
+                          className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {t.multimediaSub.audios}
                         </a>
                       </div>
                     ) : (

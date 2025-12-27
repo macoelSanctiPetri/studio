@@ -5,13 +5,18 @@ export const translations = {
         { name: 'About', href: '#about' },
         { name: 'Events', href: '#events' },
         { name: 'Repertoire', href: '#repertoire' },
-        { name: 'Music', href: '#music' },
+        { name: 'Multimedia', href: '#media' },
         { name: 'Contact', href: '#contact' },
       ],
       aboutSub: {
         overview: 'About',
         team: 'Members',
         photos: 'Photos',
+      },
+      multimediaSub: {
+        photos: 'Photos',
+        videos: 'Videos',
+        audios: 'Audios',
       },
       eventsSub: {
         upcoming: 'Upcoming',
@@ -33,7 +38,7 @@ export const translations = {
     },
     heroSection: {
       subtitle: 'NovaMvsica Chamber Choir',
-      title: 'Celebrating Renaissance Music',
+      title: 'Celebrating our XXXV anniversary',
       description:
         'Experience the sublime power and beauty of choral music that transcends time. Join NovaMvsica on a journey through centuries of divine harmony and vocal excellence.',
       button1: 'View Schedule',
@@ -168,13 +173,18 @@ export const translations = {
         { name: 'Nosotros', href: '#about' },
         { name: 'Eventos', href: '#events' },
         { name: 'Repertorio', href: '#repertoire' },
-        { name: 'Música', href: '#music' },
+        { name: 'Multimedia', href: '#media' },
         { name: 'Contacto', href: '#contact' },
       ],
       aboutSub: {
         overview: 'Nosotros',
         team: 'Componentes',
         photos: 'Fotos',
+      },
+      multimediaSub: {
+        photos: 'Fotos',
+        videos: 'Vídeos',
+        audios: 'Audios',
       },
       eventsSub: {
         upcoming: 'Próximos',
@@ -196,7 +206,7 @@ export const translations = {
     },
     heroSection: {
       subtitle: 'Coro de Cámara NovaMvsica',
-      title: 'Celebrando la Música Renacentista',
+      title: 'Celebrando nuestro XXXV aniversario',
       description:
         'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. Únete a NovaMvsica en un viaje a través de siglos de armonía divina y excelencia vocal.',
       button1: 'Ver Programa',
@@ -320,7 +330,7 @@ export const translations = {
       nav: [
         { name: 'Nosotros', href: '#about' },
         { name: 'Eventos', href: '#events' },
-        { name: 'Música', href: '#music' },
+        { name: 'Multimedia', href: '#media' },
         { name: 'Contacto', href: '#contact' },
       ],
     },

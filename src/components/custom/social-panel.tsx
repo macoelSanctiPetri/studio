@@ -5,7 +5,7 @@ import { translations } from '@/lib/translations';
 const socialLinks = [
   { name: 'Facebook', href: 'https://www.facebook.com/nmvsica', icon: Facebook },
   { name: 'Instagram', href: 'https://www.instagram.com/novamvsica', icon: Instagram },
-  { name: 'YouTube', href: 'https://www.youtube.com/user/novamvsica', icon: Youtube },
+  { name: 'YouTube', href: 'https://www.youtube.com/@novamvsica9623', icon: Youtube },
 ];
 
 export default function SocialPanel() {

@@ -3,11 +3,14 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useLanguage } from '@/context/language-context';
 import { translations } from '@/lib/translations';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useState } from 'react';
 
 export default function HeroSection() {
   const { language } = useLanguage();
   const t = translations[language].heroSection;
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-choir');
+  const [modalOpen, setModalOpen] = useState(false);
 
   // Use the local choir photo placed in /public/coro-hero.jpg
   const heroImageUrl = '/coro-hero.jpg';
@@ -49,12 +52,14 @@ export default function HeroSection() {
               <Button
                 variant="outline"
                 className="rounded-none border-2 border-white text-white hover:bg-white hover:text-black"
+                onClick={() => setModalOpen(true)}
               >
                 {t.button1}
               </Button>
               <Button
                 variant="ghost"
                 className="rounded-none border border-white/60 text-white hover:bg-white/10 hover:text-white"
+                onClick={() => setModalOpen(true)}
               >
                 {t.button2}
               </Button>
@@ -62,6 +67,22 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Próximamente</DialogTitle>
+          </DialogHeader>
+          <div className="flex justify-center">
+            <Image
+              src="/imagenes/XXXV_Aniversario_No_Disponible.png"
+              alt={language === 'es' ? 'Sección no disponible' : 'Section not available yet'}
+              width={900}
+              height={600}
+              className="rounded-xl border border-border shadow-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

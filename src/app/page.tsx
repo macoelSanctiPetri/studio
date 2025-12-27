@@ -7,9 +7,8 @@ import AboutSection from '@/components/custom/about-section';
 import EventsSection from '@/components/custom/events-section';
 import PastEventsSection from '@/components/custom/past-events-section';
 import RepertoireSection from '@/components/custom/repertoire-section';
-import MusicSection from '@/components/custom/music-section';
+import MediaSection from '@/components/custom/media-section';
 import SocialPanel from '@/components/custom/social-panel';
-import PhotosCarousel from '@/components/custom/photos-carousel';
 import ContactSection from '@/components/custom/contact-section';
 import Footer from '@/components/custom/footer';
 import FloatingHomeButton from '@/components/custom/floating-home-button';
@@ -35,9 +34,8 @@ export default function Home() {
         <EventsSection />
         <PastEventsSection />
         <RepertoireSection />
-        <MusicSection />
+        <MediaSection />
         <SocialPanel />
-        <PhotosCarousel />
         <ContactSection />
       </main>
       <FloatingHomeButton />
