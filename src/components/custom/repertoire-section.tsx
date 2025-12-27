@@ -22,14 +22,17 @@ import {
 
 type PeriodFilter = 'unset' | 'all' | 'renaissance' | 'non-renaissance';
 type TypeFilter = 'unset' | 'all' | 'religious' | 'secular' | 'christmas';
+type AuthorFilter = 'unset' | 'all' | string;
 
 export default function RepertoireSection() {
   const { language } = useLanguage();
   const [works, setWorks] = useState<RepertoireWork[]>([]);
   const [period, setPeriod] = useState<PeriodFilter>('unset');
   const [type, setType] = useState<TypeFilter>('unset');
+  const [author, setAuthor] = useState<AuthorFilter>('unset');
   const [query, setQuery] = useState('');
   const [pdfOpen, setPdfOpen] = useState(false);
+  const [authors, setAuthors] = useState<string[]>([]);
 
   useEffect(() => {
     loadRepertoire().then((list) =>
@@ -41,6 +44,14 @@ export default function RepertoireSection() {
         })),
       ),
     );
+    // derive authors (unique) once data is loaded
+    loadRepertoire().then((list) => {
+      const set = new Set<string>();
+      list.forEach((w) => {
+        if (w.composer) set.add(w.composer);
+      });
+      setAuthors(Array.from(set).sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' })));
+    });
   }, []);
 
   const normalize = (s: string) =>
@@ -52,19 +63,21 @@ export default function RepertoireSection() {
   const filtered = useMemo(() => {
     const q = normalize(query.trim());
     const shouldShow =
-      period !== 'unset' || type !== 'unset' || q.length > 0;
+      period !== 'unset' || type !== 'unset' || author !== 'unset' || q.length > 0;
     if (!shouldShow) return [];
 
     return works.filter((w) => {
       const periodOk = period === 'unset' || period === 'all' || w.period === period;
       const typeOk = type === 'unset' || type === 'all' || w.type === type;
-      if (!periodOk || !typeOk) return false;
+      const authorOk =
+        author === 'unset' || author === 'all' || normalize(w.composer || '') === normalize(author);
+      if (!periodOk || !typeOk || !authorOk) return false;
       if (!q) return true;
       const hay = (txt?: string) => (txt ? normalize(txt).includes(q) : false);
       const hayEnItems = w.items?.some((it) => hay(it));
       return hay(w.title) || hay(w.composer) || hay(w.voices) || hayEnItems;
     });
-  }, [works, period, type, query]);
+  }, [works, period, type, author, query]);
 
   const labels = {
     period: language === 'es' ? 'Periodo' : 'Period',
@@ -96,7 +109,7 @@ export default function RepertoireSection() {
         </h2>
         <p className="mt-4 text-lg text-secondary-foreground font-body max-w-3xl">{labels.intro}</p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
             {labels.period}
             <Select value={period} onValueChange={(v) => setPeriod(v as PeriodFilter)}>
@@ -144,8 +157,33 @@ export default function RepertoireSection() {
               </SelectContent>
             </Select>
           </label>
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
+            {language === 'es' ? 'Autor' : 'Composer'}
+            <Select value={author} onValueChange={(v) => setAuthor(v as AuthorFilter)}>
+              <SelectTrigger className="h-10 rounded-xl border border-border bg-card px-3 text-sm font-medium text-foreground shadow-sm focus:border-accent focus:ring-2 focus:ring-accent">
+                <SelectValue placeholder={language === 'es' ? 'Selecciona autor' : 'Select composer'} />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl border border-border bg-card text-foreground shadow-lg max-h-80">
+                <SelectItem value="unset" className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground">
+                  {language === 'es' ? 'Sin seleccionar' : 'Unset'}
+                </SelectItem>
+                <SelectItem value="all" className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground">
+                  {language === 'es' ? 'Todos' : 'All'}
+                </SelectItem>
+                {authors.map((a) => (
+                  <SelectItem
+                    key={a}
+                    value={a}
+                    className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground"
+                  >
+                    {a}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </label>
           <div className="flex items-end justify-end gap-3">
-            <div className="relative w-full sm:w-64">
+            <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary-foreground" />
               <Input
                 value={query}
@@ -188,6 +226,14 @@ export default function RepertoireSection() {
               ? labels.secular
               : labels.christmas}
           </span>
+          <span className="rounded-full bg-accent px-3 py-1 text-accent-foreground">
+            {language === 'es' ? 'Autor' : 'Composer'}:{' '}
+            {author === 'unset'
+              ? language === 'es' ? 'Sin seleccionar' : 'Unset'
+              : author === 'all'
+              ? language === 'es' ? 'Todos' : 'All'
+              : author}
+          </span>
           <span className="rounded-full bg-primary px-3 py-1 text-primary-foreground">
             {language === 'es' ? 'Obras' : 'Works'}: {filtered.length}
           </span>
@@ -196,17 +242,27 @@ export default function RepertoireSection() {
           <div
             className={`grid gap-0 bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-accent-foreground sm:text-sm ${
               // dynamic columns depending on filters
-              period === 'unset' || period === 'all'
-                ? type === 'unset' || type === 'all'
-                  ? 'grid-cols-[2fr,1fr,1fr,0.9fr,0.9fr]'
-                  : 'grid-cols-[2fr,1fr,1fr,0.9fr]'
-                : type === 'unset' || type === 'all'
-                ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
-                : 'grid-cols-[2fr,1fr,1fr]'
+              (period === 'unset' || period === 'all')
+                ? (type === 'unset' || type === 'all')
+                  ? (author === 'unset' || author === 'all')
+                    ? 'grid-cols-[2fr,1fr,1fr,0.9fr,0.9fr]'
+                    : 'grid-cols-[2fr,1fr,0.9fr,0.9fr]'
+                  : (author === 'unset' || author === 'all')
+                    ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                    : 'grid-cols-[2fr,1fr,0.9fr]'
+                : (type === 'unset' || type === 'all')
+                  ? (author === 'unset' || author === 'all')
+                    ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                    : 'grid-cols-[2fr,1fr,0.9fr]'
+                  : (author === 'unset' || author === 'all')
+                    ? 'grid-cols-[2fr,1fr,1fr]'
+                    : 'grid-cols-[2fr,1fr]'
             }`}
           >
             <span>{language === 'es' ? 'Obra / colección' : 'Work / collection'}</span>
-            <span>{language === 'es' ? 'Autor' : 'Composer'}</span>
+            {(author === 'unset' || author === 'all') && (
+              <span>{language === 'es' ? 'Autor' : 'Composer'}</span>
+            )}
             <span>{language === 'es' ? 'Voces' : 'Voices'}</span>
             {(period === 'unset' || period === 'all') && (
               <span>{language === 'es' ? 'Periodo' : 'Period'}</span>
@@ -223,13 +279,21 @@ export default function RepertoireSection() {
                 <li
                   key={work.id}
                   className={`grid items-start gap-2 px-4 py-3 text-sm sm:text-base ${
-                    period === 'unset' || period === 'all'
-                      ? type === 'unset' || type === 'all'
-                        ? 'grid-cols-[2fr,1fr,1fr,0.9fr,0.9fr]'
-                        : 'grid-cols-[2fr,1fr,1fr,0.9fr]'
-                      : type === 'unset' || type === 'all'
-                      ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
-                      : 'grid-cols-[2fr,1fr,1fr]'
+                    (period === 'unset' || period === 'all')
+                      ? (type === 'unset' || type === 'all')
+                        ? (author === 'unset' || author === 'all')
+                          ? 'grid-cols-[2fr,1fr,1fr,0.9fr,0.9fr]'
+                          : 'grid-cols-[2fr,1fr,0.9fr,0.9fr]'
+                        : (author === 'unset' || author === 'all')
+                          ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                          : 'grid-cols-[2fr,1fr,0.9fr]'
+                      : (type === 'unset' || type === 'all')
+                        ? (author === 'unset' || author === 'all')
+                          ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                          : 'grid-cols-[2fr,1fr,0.9fr]'
+                        : (author === 'unset' || author === 'all')
+                          ? 'grid-cols-[2fr,1fr,1fr]'
+                          : 'grid-cols-[2fr,1fr]'
                   }`}
                 >
                   <div className="flex flex-col gap-1">
@@ -249,9 +313,11 @@ export default function RepertoireSection() {
                       </ul>
                     )}
                   </div>
-                  <div className="text-secondary-foreground text-sm sm:text-base">
-                    {work.composer || '—'}
-                  </div>
+                  {(author === 'unset' || author === 'all') && (
+                    <div className="text-secondary-foreground text-sm sm:text-base">
+                      {work.composer || '—'}
+                    </div>
+                  )}
                   <div className="text-secondary-foreground text-sm sm:text-base">
                     {work.voices || '—'}
                   </div>
