@@ -13,6 +13,12 @@ import {
 import { Input } from '@/components/ui/input';
 import { Search, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 type PeriodFilter = 'unset' | 'all' | 'renaissance' | 'non-renaissance';
 type TypeFilter = 'unset' | 'all' | 'religious' | 'secular' | 'christmas';
@@ -23,6 +29,7 @@ export default function RepertoireSection() {
   const [period, setPeriod] = useState<PeriodFilter>('unset');
   const [type, setType] = useState<TypeFilter>('unset');
   const [query, setQuery] = useState('');
+  const [pdfOpen, setPdfOpen] = useState(false);
 
   useEffect(() => {
     loadRepertoire().then((list) =>
@@ -148,14 +155,12 @@ export default function RepertoireSection() {
               />
             </div>
             <Button
-              asChild
               variant="outline"
+              onClick={() => setPdfOpen(true)}
               className="h-10 shrink-0 rounded-xl border border-border bg-card text-sm font-semibold text-foreground hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2"
             >
-              <a href="/data/repertorio.pdf" download>
-                <Download className="h-4 w-4" />
-                {language === 'es' ? 'PDF' : 'PDF'}
-              </a>
+              <Download className="h-4 w-4" />
+              {language === 'es' ? 'PDF' : 'PDF'}
             </Button>
           </div>
         </div>
@@ -273,6 +278,36 @@ export default function RepertoireSection() {
             </ul>
           )}
         </div>
+
+        <Dialog open={pdfOpen} onOpenChange={setPdfOpen}>
+          <DialogContent className="max-w-5xl">
+            <DialogHeader>
+              <DialogTitle>{language === 'es' ? 'Repertorio completo (PDF)' : 'Full repertoire (PDF)'}</DialogTitle>
+            </DialogHeader>
+            <div className="h-[70vh] w-full">
+              <object data="/data/repertorio.pdf#toolbar=1" type="application/pdf" className="h-full w-full rounded-lg border border-border">
+                <p className="text-sm text-secondary-foreground">
+                  {language === 'es'
+                    ? 'Tu navegador no puede mostrar el PDF. Puedes descargarlo aquí:'
+                    : 'Your browser cannot display the PDF. You can download it here:'}{' '}
+                  <a href="/data/repertorio.pdf" className="text-link underline" download>
+                    {language === 'es' ? 'Descargar PDF' : 'Download PDF'}
+                  </a>
+                </p>
+              </object>
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button variant="ghost" onClick={() => setPdfOpen(false)}>
+                {language === 'es' ? 'Cerrar' : 'Close'}
+              </Button>
+              <Button asChild>
+                <a href="/data/repertorio.pdf" download>
+                  {language === 'es' ? 'Descargar' : 'Download'}
+                </a>
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
