@@ -130,6 +130,26 @@ export const translations = {
       description:
         'Follow us on social media to stay updated with our latest news, behind-the-scenes content, and upcoming concert announcements.',
     },
+    contactSection: {
+      title: 'Contact',
+      description: 'Write to us for bookings, collaborations, auditions, or any question.',
+      name: 'Name',
+      email: 'Email',
+      type: 'Topic',
+      message: 'Message',
+      typeOptions: {
+        general: 'General',
+        booking: 'Bookings',
+        auditions: 'Auditions',
+        press: 'Press',
+      },
+      send: 'Send message',
+      sending: 'Sending...',
+      success: 'Message sent. We will get back to you soon.',
+      error: 'We could not send your message. Please try again.',
+      consent: 'I accept the privacy policy.',
+      required: 'Please fill in all required fields.',
+    },
     footer: {
       srHeading: 'Footer',
       copy: 'All rights reserved.',
@@ -271,6 +291,26 @@ export const translations = {
       title: 'Únete a Nuestra Comunidad',
       description:
         'Síguenos en las redes sociales para mantenerte al día con nuestras últimas noticias, contenido exclusivo y anuncios de próximos conciertos.',
+    },
+    contactSection: {
+      title: 'Contacto',
+      description: 'Escríbenos para contrataciones, colaboraciones, audiciones o cualquier consulta.',
+      name: 'Nombre',
+      email: 'Email',
+      type: 'Motivo',
+      message: 'Mensaje',
+      typeOptions: {
+        general: 'General',
+        booking: 'Contrataciones',
+        auditions: 'Audiciones',
+        press: 'Prensa',
+      },
+      send: 'Enviar mensaje',
+      sending: 'Enviando...',
+      success: 'Mensaje enviado. Te responderemos en breve.',
+      error: 'No hemos podido enviar tu mensaje. Inténtalo de nuevo.',
+      consent: 'Acepto la política de privacidad.',
+      required: 'Por favor completa los campos obligatorios.',
     },
     footer: {
       srHeading: 'Pie de página',

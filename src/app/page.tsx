@@ -9,6 +9,7 @@ import PastEventsSection from '@/components/custom/past-events-section';
 import RepertoireSection from '@/components/custom/repertoire-section';
 import MusicSection from '@/components/custom/music-section';
 import SocialPanel from '@/components/custom/social-panel';
+import ContactSection from '@/components/custom/contact-section';
 import Footer from '@/components/custom/footer';
 import FloatingHomeButton from '@/components/custom/floating-home-button';
 import { useLanguage } from '@/context/language-context';
@@ -35,6 +36,7 @@ export default function Home() {
         <RepertoireSection />
         <MusicSection />
         <SocialPanel />
+        <ContactSection />
       </main>
       <FloatingHomeButton />
       <Footer />
