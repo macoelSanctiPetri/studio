@@ -13,11 +13,14 @@ import {
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
+type PeriodFilter = 'unset' | 'all' | 'renaissance' | 'non-renaissance';
+type TypeFilter = 'unset' | 'all' | 'religious' | 'secular' | 'christmas';
+
 export default function RepertoireSection() {
   const { language } = useLanguage();
   const [works, setWorks] = useState<RepertoireWork[]>([]);
-  const [period, setPeriod] = useState<'all' | 'renaissance' | 'non-renaissance'>('all');
-  const [type, setType] = useState<'all' | 'religious' | 'secular' | 'christmas'>('all');
+  const [period, setPeriod] = useState<PeriodFilter>('unset');
+  const [type, setType] = useState<TypeFilter>('unset');
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -40,9 +43,13 @@ export default function RepertoireSection() {
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim());
+    const shouldShow =
+      period !== 'unset' || type !== 'unset' || q.length > 0;
+    if (!shouldShow) return [];
+
     return works.filter((w) => {
-      const periodOk = period === 'all' || w.period === period;
-      const typeOk = type === 'all' || w.type === type;
+      const periodOk = period === 'unset' || period === 'all' || w.period === period;
+      const typeOk = type === 'unset' || type === 'all' || w.type === type;
       if (!periodOk || !typeOk) return false;
       if (!q) return true;
       const hay = (txt?: string) => (txt ? normalize(txt).includes(q) : false);
@@ -84,11 +91,14 @@ export default function RepertoireSection() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
             {labels.period}
-            <Select value={period} onValueChange={(v) => setPeriod(v as typeof period)}>
+            <Select value={period} onValueChange={(v) => setPeriod(v as PeriodFilter)}>
               <SelectTrigger className="h-10 rounded-xl border border-border bg-card px-3 text-sm font-medium text-foreground shadow-sm focus:border-accent focus:ring-2 focus:ring-accent">
-                <SelectValue placeholder={labels.all} />
+                <SelectValue placeholder={language === 'es' ? 'Selecciona periodo' : 'Select period'} />
               </SelectTrigger>
               <SelectContent className="rounded-xl border border-border bg-card text-foreground shadow-lg">
+                <SelectItem value="unset" className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground">
+                  {language === 'es' ? 'Sin seleccionar' : 'Unset'}
+                </SelectItem>
                 <SelectItem value="all" className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground">
                   {labels.all}
                 </SelectItem>
@@ -103,11 +113,14 @@ export default function RepertoireSection() {
           </label>
           <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
             {labels.type}
-            <Select value={type} onValueChange={(v) => setType(v as typeof type)}>
+            <Select value={type} onValueChange={(v) => setType(v as TypeFilter)}>
               <SelectTrigger className="h-10 rounded-xl border border-border bg-card px-3 text-sm font-medium text-foreground shadow-sm focus:border-accent focus:ring-2 focus:ring-accent">
-                <SelectValue placeholder={labels.all} />
+                <SelectValue placeholder={language === 'es' ? 'Selecciona tipo' : 'Select type'} />
               </SelectTrigger>
               <SelectContent className="rounded-xl border border-border bg-card text-foreground shadow-lg">
+                <SelectItem value="unset" className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground">
+                  {language === 'es' ? 'Sin seleccionar' : 'Unset'}
+                </SelectItem>
                 <SelectItem value="all" className="font-medium data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground">
                   {labels.all}
                 </SelectItem>
@@ -138,20 +151,53 @@ export default function RepertoireSection() {
 
         <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-secondary-foreground sm:text-sm">
           <span className="rounded-full bg-accent px-3 py-1 text-accent-foreground">
-            {labels.period}: {period === 'all' ? labels.all : period === 'renaissance' ? labels.renaissance : labels.nonRenaissance}
+            {labels.period}:{' '}
+            {period === 'unset'
+              ? language === 'es' ? 'Sin seleccionar' : 'Unset'
+              : period === 'all'
+              ? labels.all
+              : period === 'renaissance'
+              ? labels.renaissance
+              : labels.nonRenaissance}
           </span>
           <span className="rounded-full bg-accent px-3 py-1 text-accent-foreground">
-            {labels.type}: {type === 'all' ? labels.all : type === 'religious' ? labels.religious : type === 'secular' ? labels.secular : labels.christmas}
+            {labels.type}:{' '}
+            {type === 'unset'
+              ? language === 'es' ? 'Sin seleccionar' : 'Unset'
+              : type === 'all'
+              ? labels.all
+              : type === 'religious'
+              ? labels.religious
+              : type === 'secular'
+              ? labels.secular
+              : labels.christmas}
           </span>
           <span className="rounded-full bg-primary px-3 py-1 text-primary-foreground">
             {language === 'es' ? 'Obras' : 'Works'}: {filtered.length}
           </span>
         </div>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
-          <div className="grid grid-cols-[2fr,1fr,1fr] gap-0 bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-accent-foreground sm:text-sm">
+          <div
+            className={`grid gap-0 bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-accent-foreground sm:text-sm ${
+              // dynamic columns depending on filters
+              period === 'unset' || period === 'all'
+                ? type === 'unset' || type === 'all'
+                  ? 'grid-cols-[2fr,1fr,1fr,0.9fr,0.9fr]'
+                  : 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                : type === 'unset' || type === 'all'
+                ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                : 'grid-cols-[2fr,1fr,1fr]'
+            }`}
+          >
             <span>{language === 'es' ? 'Obra / colección' : 'Work / collection'}</span>
             <span>{language === 'es' ? 'Autor' : 'Composer'}</span>
             <span>{language === 'es' ? 'Voces' : 'Voices'}</span>
+            {(period === 'unset' || period === 'all') && (
+              <span>{language === 'es' ? 'Periodo' : 'Period'}</span>
+            )}
+            {(type === 'unset' || type === 'all') && (
+              <span>{language === 'es' ? 'Tipo' : 'Type'}</span>
+            )}
           </div>
           {filtered.length === 0 ? (
             <p className="px-4 py-3 text-secondary-foreground">{labels.empty}</p>
@@ -160,7 +206,15 @@ export default function RepertoireSection() {
               {filtered.map((work) => (
                 <li
                   key={work.id}
-                  className="grid grid-cols-[2fr,1fr,1fr] items-start gap-2 px-4 py-3 text-sm sm:text-base"
+                  className={`grid items-start gap-2 px-4 py-3 text-sm sm:text-base ${
+                    period === 'unset' || period === 'all'
+                      ? type === 'unset' || type === 'all'
+                        ? 'grid-cols-[2fr,1fr,1fr,0.9fr,0.9fr]'
+                        : 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                      : type === 'unset' || type === 'all'
+                      ? 'grid-cols-[2fr,1fr,1fr,0.9fr]'
+                      : 'grid-cols-[2fr,1fr,1fr]'
+                  }`}
                 >
                   <div className="flex flex-col gap-1">
                     <div className="font-headline text-foreground text-base sm:text-lg leading-tight flex items-center gap-2 flex-wrap">
@@ -185,6 +239,24 @@ export default function RepertoireSection() {
                   <div className="text-secondary-foreground text-sm sm:text-base">
                     {work.voices || '—'}
                   </div>
+                  {(period === 'unset' || period === 'all') && (
+                    <div className="text-secondary-foreground text-xs sm:text-sm flex items-center">
+                      <span className="inline-block rounded-full bg-accent/20 px-2 py-0.5 text-foreground font-semibold uppercase tracking-wide">
+                        {work.period === 'renaissance' ? labels.renaissance : labels.nonRenaissance}
+                      </span>
+                    </div>
+                  )}
+                  {(type === 'unset' || type === 'all') && (
+                    <div className="text-secondary-foreground text-xs sm:text-sm flex items-center">
+                      <span className="inline-block rounded-full bg-accent/20 px-2 py-0.5 text-foreground font-semibold uppercase tracking-wide">
+                        {work.type === 'religious'
+                          ? labels.religious
+                          : work.type === 'secular'
+                          ? labels.secular
+                          : labels.christmas}
+                      </span>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>

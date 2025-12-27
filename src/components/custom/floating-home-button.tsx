@@ -3,15 +3,14 @@ import { ArrowUp } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
 export default function FloatingHomeButton() {
-  const [y, setY] = useState<number>(() =>
-    typeof window !== 'undefined' && typeof window.innerHeight === 'number'
-      ? window.innerHeight * 0.75
-      : 0
-  );
+  // Start at 0 to avoid hydration mismatch; set real value on mount.
+  const [y, setY] = useState<number>(0);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    // set initial position after hydration
+    setY(window.innerHeight * 0.75);
     const handleMove = (e: MouseEvent) => {
       const targetY = Math.min(Math.max(e.clientY, 80), window.innerHeight - 80);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
