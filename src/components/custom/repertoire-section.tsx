@@ -99,7 +99,22 @@ export default function RepertoireSection() {
 
   return (
     <section id="repertoire" className="bg-background py-24 sm:py-32">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        className="relative container mx-auto max-w-7xl px-6 lg:px-8 overflow-hidden"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            opacity: 0.12,
+            backgroundImage: "url('/imagenes/fondo_partitura.png')",
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center center',
+            filter: 'grayscale(100%)',
+          }}
+        />
+        <div className="relative z-10">
         <div id="repertoire-religious" className="h-0 scroll-mt-32" />
         <div id="repertoire-secular" className="h-0 scroll-mt-32" />
         <div id="repertoire-christmas" className="h-0 scroll-mt-32" />
@@ -374,6 +389,7 @@ export default function RepertoireSection() {
             </div>
           </DialogContent>
         </Dialog>
+        </div>
       </div>
     </section>
   );
