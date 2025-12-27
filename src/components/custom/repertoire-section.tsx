@@ -11,7 +11,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 type PeriodFilter = 'unset' | 'all' | 'renaissance' | 'non-renaissance';
 type TypeFilter = 'unset' | 'all' | 'religious' | 'secular' | 'christmas';
@@ -136,7 +137,7 @@ export default function RepertoireSection() {
               </SelectContent>
             </Select>
           </label>
-          <div className="flex justify-end items-end">
+          <div className="flex items-end justify-end gap-3">
             <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary-foreground" />
               <Input
@@ -146,6 +147,16 @@ export default function RepertoireSection() {
                 className="pl-9 h-10 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-secondary-foreground focus:border-accent focus:ring-2 focus:ring-accent"
               />
             </div>
+            <Button
+              asChild
+              variant="outline"
+              className="h-10 shrink-0 rounded-xl border border-border bg-card text-sm font-semibold text-foreground hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2"
+            >
+              <a href="/data/repertorio.pdf" download>
+                <Download className="h-4 w-4" />
+                {language === 'es' ? 'PDF' : 'PDF'}
+              </a>
+            </Button>
           </div>
         </div>
 
