@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/context/language-context";
-import { translations } from "@/lib/translations";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Dialog,
@@ -14,11 +13,10 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const photos = [
   { src: "/carrusel/foto_actual.jpeg", alt: "Coro Nova Mvsica - foto actual" },
@@ -29,14 +27,14 @@ const photos = [
 
 export default function PhotosCarousel() {
   const { language } = useLanguage();
-  const t = translations[language].contactSection;
-  const plugin = useRef(
+  const [open, setOpen] = useState(false);
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const autoplay = useRef(
     Autoplay({
-      delay: 2800,
+      delay: 2600,
       stopOnInteraction: true,
     })
   );
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -50,9 +48,7 @@ export default function PhotosCarousel() {
         window.history.replaceState(null, "", "#photos");
       }
     };
-    if (window.location.hash === "#photos") {
-      openModal();
-    }
+    if (window.location.hash === "#photos") openModal();
     const onHash = () => {
       if (window.location.hash === "#photos") setOpen(true);
     };
@@ -66,11 +62,10 @@ export default function PhotosCarousel() {
 
   return (
     <>
-      {/* ancla para #photos */}
       <div id="photos" className="sr-only" aria-hidden />
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[90vh] overflow-auto sm:max-w-5xl bg-background text-foreground border border-border/60">
+        <DialogContent className="max-h-[90vh] overflow-hidden sm:max-w-5xl bg-background text-foreground border border-border/60">
           <DialogHeader>
             <DialogTitle>{language === "es" ? "Fotos" : "Photos"}</DialogTitle>
             <DialogDescription>
@@ -80,7 +75,14 @@ export default function PhotosCarousel() {
             </DialogDescription>
           </DialogHeader>
 
-          <Carousel plugins={[plugin.current]} className="relative mt-4">
+          <Carousel
+            plugins={[autoplay.current]}
+            opts={{
+              loop: true,
+            }}
+            setApi={setApi}
+            className="relative mt-4"
+          >
             <CarouselContent>
               {photos.map((photo, idx) => (
                 <CarouselItem key={idx} className="basis-full md:basis-1/2">
@@ -98,8 +100,27 @@ export default function PhotosCarousel() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-2 z-20 bg-black/60 text-white hover:bg-black/80 border-none h-10 w-10" />
-            <CarouselNext className="right-2 z-20 bg-black/60 text-white hover:bg-black/80 border-none h-10 w-10" />
+
+            <div className="mt-4 grid place-items-center w-full">
+              <div className="flex items-center justify-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => api?.scrollPrev()}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-neutral-900/90 text-white shadow-lg ring-2 ring-[hsl(46,45%,54%)] transition hover:scale-105 hover:shadow-2xl hover:ring-[hsl(46,45%,54%)]/80 border-none"
+                  aria-label="Anterior"
+                >
+                  <span className="text-xl leading-none">‹</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => api?.scrollNext()}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-neutral-900/90 text-white shadow-lg ring-2 ring-[hsl(46,45%,54%)] transition hover:scale-105 hover:shadow-2xl hover:ring-[hsl(46,45%,54%)]/80 border-none"
+                  aria-label="Siguiente"
+                >
+                  <span className="text-xl leading-none">›</span>
+                </button>
+              </div>
+            </div>
           </Carousel>
         </DialogContent>
       </Dialog>
