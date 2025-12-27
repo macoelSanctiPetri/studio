@@ -11,6 +11,7 @@ export const translations = {
       aboutSub: {
         overview: 'About',
         team: 'Members',
+        photos: 'Photos',
       },
       eventsSub: {
         upcoming: 'Upcoming',
@@ -173,6 +174,7 @@ export const translations = {
       aboutSub: {
         overview: 'Nosotros',
         team: 'Componentes',
+        photos: 'Fotos',
       },
       eventsSub: {
         upcoming: 'Próximos',

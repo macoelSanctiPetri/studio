@@ -81,6 +81,9 @@ export default function Header() {
                         <DropdownMenuItem asChild>
                           <a href="#team" className="w-full">{t.aboutSub.team}</a>
                         </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <a href="#photos" className="w-full">{t.aboutSub.photos}</a>
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </div>
                   </DropdownMenu>
