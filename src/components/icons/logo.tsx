@@ -7,8 +7,8 @@ type LogoProps = {
 
 const Logo = ({ className, size = 64 }: LogoProps) => (
   <Image
-    src="/imagenes/logo_XXXV_aniversario.png"
-    alt="NovaMvsica 35th anniversary logo"
+    src="/imagenes/logo_XXXV_aniversario_festivo.png"
+    alt="NovaMvsica 35th anniversary festive logo"
     width={size}
     height={size}
     className={className}
