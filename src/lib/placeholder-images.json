@@ -40,5 +40,26 @@
     "alt_en": "The choir posing for a group photo.",
     "imageUrl": "https://images.unsplash.com/photo-1762158008445-8355e4137bd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaG9pciUyMGdyb3VwfGVufDB8fHx8MTc2NjY2NzYzOHww&ixlib=rb-4.1.0&q=80&w=1080",
     "imageHint": "choir group"
+  },
+  {
+    "id": "event-buen-pastor",
+    "description": "Concierto de Navidad en la Iglesia del Buen Pastor.",
+    "alt_en": "Christmas concert at Iglesia del Buen Pastor.",
+    "imageUrl": "/actuaciones/El_Buen_pastor_13122025.jpg",
+    "imageHint": "church concert"
+  },
+  {
+    "id": "event-requiem-jerez",
+    "description": "Requiem de Mozart en la Catedral de Jerez.",
+    "alt_en": "Mozart Requiem at Jerez Cathedral.",
+    "imageUrl": "/actuaciones/Requiem_02082025.jpeg",
+    "imageHint": "cathedral concert"
+  },
+  {
+    "id": "event-novena-palma",
+    "description": "Misa de novena en la Iglesia de la Palma (Cádiz).",
+    "alt_en": "Novena Mass at Iglesia de la Palma in Cádiz.",
+    "imageUrl": "/actuaciones/Misa_Novena_Palma_25102025.jpeg",
+    "imageHint": "church mass"
   }
 ]

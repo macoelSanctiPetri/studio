@@ -14,10 +14,10 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const photos = [
+const fallbackPhotos = [
   { src: "/fotos/foto_actual.jpeg", alt: "Coro Nova Mvsica - foto actual" },
   { src: "/fotos/foto_actual_2.jpeg", alt: "Coro Nova Mvsica - foto actual 2" },
   { src: "/fotos/foto_actual_3.jpeg", alt: "Coro Nova Mvsica - foto actual 3" },
@@ -30,6 +30,7 @@ type PhotosCarouselProps = {
 
 export default function PhotosCarousel({ embedded = false }: PhotosCarouselProps) {
   const { language } = useLanguage();
+  const [photos, setPhotos] = useState(fallbackPhotos);
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [api, setApi] = useState<CarouselApi | null>(null);
@@ -39,6 +40,19 @@ export default function PhotosCarousel({ embedded = false }: PhotosCarouselProps
       stopOnInteraction: true,
     })
   );
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data?.photos) && data.photos.length) {
+          setPhotos(data.photos);
+        }
+      })
+      .catch(() => {
+        // keep fallback
+      });
+  }, []);
 
   const heading = embedded ? null : (
     <>

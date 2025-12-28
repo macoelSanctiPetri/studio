@@ -1,4 +1,4 @@
-﻿export const translations = {
+export const translations = {
   en: {
     header: {
       navLinks: [
@@ -69,7 +69,7 @@
       moreInfo: 'More Info',
       events: [
         {
-          title: "W. A. Mozart's Requiem",
+          title: "Mozart's Requiem",
           date: 'October 26, 2024',
           description: "A soul-stirring performance of Mozart's final masterpiece in the historic St. Paul's Cathedral.",
           imageId: 'event-cathedral',
@@ -94,23 +94,16 @@
       moreInfo: 'More Info',
       events: [
         {
-          title: 'Christmas Concert – Iglesia del Buen Pastor',
+          title: 'Requiem Christmas Concert – Iglesia del Buen Pastor',
           date: 'December 13, 2025',
           description: 'Christmas concert at Iglesia del Buen Pastor with works by Rutter, Praetorius, Guerrero, Ruimonte and other seasonal pieces.',
           imageId: 'event-buen-pastor',
         },
         {
-          title: 'Requiem de W. A. Mozart – Catedral de Jerez',
+          title: 'Requiem de Mozart – Catedral de Jerez',
           date: 'August 2, 2025',
           description: 'Mozart Requiem performed in the Cathedral of Jerez.',
           imageId: 'event-requiem-jerez',
-        },
-        
-        {
-          title: 'Novena Mass of Our Lady of La Palma - Iglesia de la Palma, Cádiz',
-          date: 'October 25, 2025',
-          description: 'Function of the Novena Mass honoring Virgen de la Palma at Iglesia de la Palma in Cádiz.',
-          imageId: 'event-novena-palma',
         },
         {
           title: 'Gloria by Vivaldi in Cádiz',
@@ -280,23 +273,17 @@
       description: 'Momentos destacados de temporadas recientes y conciertos emblemáticos.',
       moreInfo: 'Más Info',
       events: [
-         {
-          title: 'Concierto de Navidad – Iglesia del Buen Pastor',
-          date: '13 de diciembre de 2025',
-          description: 'Concierto de Navidad en la Iglesia del Buen Pastor con obras de Rutter, Praetorius, Guerrero, Ruimonte entre otros.',
-          imageId: 'event-buen-pastor',
-        },
         {
-          title: 'Requiem de W. A. Mozart – Catedral de Jerez',
+          title: 'Requiem de Mozart – Catedral de Jerez',
           date: '02 de agosto de 2025',
-          description: 'Interpretación del Requiem de W. A. Mozart en la Catedral de Jerez.',
+          description: 'Interpretación del Requiem de Mozart en la Catedral de Jerez.',
           imageId: 'event-requiem-jerez',
         },
         {
-          title: 'Función de la Novena a la Virgen de la Palma - Iglesia de la Palma (Cádiz)',
-          date: '25 de octubre de 2025',
-          description: 'Función de la misa de novena en honor a la Virgen de la Palma en la Iglesia de la Palma de Cádiz.',
-          imageId: 'event-novena-palma',
+          title: 'Concierto de Navidad – Iglesia del Buen Pastor',
+          date: '13 de diciembre de 2025',
+          description: 'Concierto de Navidad en la Iglesia del Buen Pastor con obras de Rutter, Praetorius, Guerrero, Ruimonte y otros villancicos.',
+          imageId: 'event-buen-pastor',
         },
         {
           title: 'Gloria de Vivaldi en Cádiz',
