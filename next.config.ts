@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Generate standalone output for easier Node hosting (Plesk)
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
