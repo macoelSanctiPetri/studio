@@ -77,14 +77,14 @@ director@novamvsica.com`;
             </p>
           </div>
 
-          <div className="w-full max-w-xl justify-self-center lg:max-w-2xl">
-            <Image
-              src="/portada_disco.png"
-              alt={imageDescription}
-              width={800}
-              height={800}
-              className="w-full h-auto object-contain"
-              priority
+            <div className="w-full max-w-xl justify-self-center lg:max-w-2xl">
+              <Image
+                src="/imagenes/portada_disco.png"
+                alt={imageDescription}
+                width={800}
+                height={800}
+                className="w-full h-auto object-contain"
+                priority
             />
           </div>
         </div>

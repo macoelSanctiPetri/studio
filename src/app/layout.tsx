@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   description: 'Un sitio web para el coro NovaMvsica.',
   icons: {
     icon: [
-      { url: '/favicon.ico?v=2', rel: 'icon', type: 'image/x-icon' },
-      { url: '/favicon.ico?v=2', rel: 'shortcut icon', type: 'image/x-icon' },
+      { url: '/imagenes/favicon.png', rel: 'icon', type: 'image/png' },
+      { url: '/imagenes/favicon.png', rel: 'shortcut icon', type: 'image/png' },
     ],
     apple: '/apple-touch-icon.png?v=2',
   },
@@ -37,8 +37,8 @@ export default function RootLayout({
     <LanguageProvider>
       <html lang="en" className={`dark ${ebGaramond.variable} ${montserrat.variable}`}>
         <head>
-          <link rel="icon" href="/favicon.ico?v=3" />
-          <link rel="shortcut icon" href="/favicon.ico?v=3" />
+          <link rel="icon" href="/imagenes/favicon.png" type="image/png" />
+          <link rel="shortcut icon" href="/imagenes/favicon.png" type="image/png" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
         </head>
         <body className="font-body antialiased">{children}<Toaster /></body>

@@ -12,8 +12,8 @@ export default function HeroSection() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-choir');
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Use the local choir photo placed in /public/coro-hero.jpg
-  const heroImageUrl = '/coro-hero.jpg';
+  // Use the local choir photo placed in /public/imagenes/coro-hero.jpg
+  const heroImageUrl = '/imagenes/coro-hero.jpg';
   const imageDescription = language === 'es'
     ? (heroImage?.description || 'El coro NovaMvsica posando en un altar de una iglesia ornamentada.')
     : (heroImage?.alt_en || 'The NovaMvsica choir posing in an ornate church altar.');
