@@ -7,6 +7,9 @@ export default function AnnouncementBar() {
   const { language } = useLanguage();
   const t = translations[language].announcementBar;
 
+  // Sección temporalmente oculta (compra de entradas)
+  return null;
+
   return (
     <div className="bg-accent text-accent-foreground">
       <div className="container mx-auto max-w-7xl px-6 py-3 sm:px-6 lg:px-8">
