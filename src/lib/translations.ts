@@ -295,7 +295,7 @@
         {
           title: 'Función de la Novena a la Virgen de la Palma - Iglesia de la Palma (Cádiz)',
           date: '25 de octubre de 2025',
-          description: 'Función de la misa de novena en honor a la Virgen de la Palma en la Iglesia de la Palma de Cádiz.',
+          description: 'Función de la misa de Novena en honor a la Virgen de la Palma en la Iglesia de la Palma de Cádiz.',
           imageId: 'event-novena-palma',
         },
         {
