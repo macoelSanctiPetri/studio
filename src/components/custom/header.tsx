@@ -11,10 +11,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/context/language-context';
 import { translations } from '@/lib/translations';
+import { buildSearchEntries, matchEntries } from '@/lib/search-index';
+import { loadTeamData, TeamMember } from '@/lib/team-data';
+import { loadRepertoire, RepertoireWork } from '@/lib/repertoire-loader';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,15 +28,66 @@ import {
 import { Globe } from 'lucide-react';
 
 export default function Header() {
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [aboutOpen, setAboutOpen] = React.useState(false);
   const [eventsOpen, setEventsOpen] = React.useState(false);
   const [mediaOpen, setMediaOpen] = React.useState(false);
+  const [searchOpen, setSearchOpen] = React.useState(false);
+  const [query, setQuery] = React.useState('');
   const { language, setLanguage } = useLanguage();
   const t = translations[language].header;
 
   const navLinks = t.navLinks;
+  const [searchEntries, setSearchEntries] = React.useState(() => buildSearchEntries(language));
+
+  React.useEffect(() => {
+    // base entries por idioma
+    setSearchEntries(buildSearchEntries(language));
+    // añadir componentes desde el CSV si están disponibles
+    loadTeamData().then((team: TeamMember[]) => {
+      if (!team || team.length === 0) return;
+      setSearchEntries((prev) => [
+        ...prev,
+        ...team.map((member, idx) => ({
+          id: `team-${idx}`,
+          title: member.name ?? '',
+          summary: member.role ?? '',
+          href: '#team',
+          kind: 'section' as const,
+        })),
+      ]);
+    });
+    // añadir obras del repertorio (CSV o fallback estático)
+    loadRepertoire().then((works: RepertoireWork[]) => {
+      if (!works || works.length === 0) return;
+      setSearchEntries((prev) => [
+        ...prev,
+        ...works.map((work) => ({
+          id: `rep-${work.id}`,
+          title: work.title ?? '',
+          summary: [work.composer, work.voices].filter(Boolean).join(' · '),
+          href:
+            work.type === 'christmas'
+              ? '#repertoire-christmas'
+              : work.type === 'secular'
+                ? '#repertoire-secular'
+                : '#repertoire-religious',
+          kind: 'media' as const,
+        })),
+      ]);
+    });
+  }, [language]);
+
+  const filteredResults = React.useMemo(() => matchEntries(searchEntries, query), [query, searchEntries]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (filteredResults.length > 0) {
+      window.location.hash = filteredResults[0].href;
+      setSearchOpen(false);
+      setQuery('');
+    }
+  };
   const socialLinks = [
     { name: 'Facebook', href: 'https://www.facebook.com/nmvsica', icon: Facebook },
     { name: 'Instagram', href: 'https://www.instagram.com/novamvsica', icon: Instagram },
@@ -166,15 +221,64 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label={t.openSearch}
-              onClick={() => setIsSearchOpen(true)}
-              className="group hover:bg-transparent focus-visible:ring-0 active:bg-transparent"
-            >
-              <Search className="h-5 w-5 text-white transition-colors group-hover:text-[hsl(46,45%,54%)]" />
-            </Button>
+            <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label={t.openSearch}
+                  className="group hover:bg-transparent focus-visible:ring-0 active:bg-transparent"
+                  onClick={() => setSearchOpen(true)}
+                >
+                  <Search className="h-5 w-5 text-white transition-colors group-hover:text-[hsl(46,45%,54%)]" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-background">
+                <DialogHeader>
+                  <DialogTitle className="font-headline">{t.search.title}</DialogTitle>
+                  <DialogDescription>
+                    {t.search.description}
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleSearchSubmit} className="grid gap-4 py-4">
+                  <Input
+                    id="search"
+                    type="search"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder={t.search.placeholder}
+                    className="col-span-3"
+                    autoFocus
+                  />
+                  <div className="flex flex-col gap-2 max-h-48 overflow-auto">
+                    {filteredResults.length === 0 ? (
+                      <p className="text-sm text-muted-foreground">{t.search.description}</p>
+                    ) : (
+                      filteredResults.map((item) => (
+                        <Button
+                          key={item.href + item.id}
+                          type="button"
+                          variant="ghost"
+                          className="justify-start flex-col items-start"
+                          onClick={() => {
+                            window.location.hash = item.href;
+                            setSearchOpen(false);
+                            setQuery('');
+                          }}
+                        >
+                          <span className="font-medium text-left">{item.title}</span>
+                          {item.summary && (
+                            <span className="text-xs text-muted-foreground line-clamp-1">
+                              {item.summary}
+                            </span>
+                          )}
+                        </Button>
+                      ))
+                    )}
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -315,23 +419,7 @@ export default function Header() {
         </div>
       </header>
       
-      <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-background">
-          <DialogHeader>
-            <DialogTitle className="font-headline">{t.search.title}</DialogTitle>
-            <DialogDescription>
-              {t.search.description}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <Input
-              id="search"
-              placeholder={t.search.placeholder}
-              className="col-span-3"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Dialog ya incrustado arriba como controlled component */}
     </>
   );
 }
