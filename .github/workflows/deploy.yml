@@ -32,12 +32,13 @@ jobs:
       - name: Prepare deploy bundle
         run: |
           rm -rf .next/cache node_modules
-          mkdir deploy
+          mkdir -p deploy/.next
+          # configs y public
           cp package.json package-lock.json next.config.ts deploy/
           cp -r public deploy/public
-          mkdir -p deploy/.next
+          # estructura esperada por Next standalone: .next/standalone y .next/static
           cp -r .next/static deploy/.next/static
-          cp -r .next/standalone deploy/
+          cp -r .next/standalone deploy/.next/standalone
 
       - name: Publish to deploy branch
         uses: peaceiris/actions-gh-pages@v4
