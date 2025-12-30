@@ -40,11 +40,14 @@ jobs:
           cp -r .next/static deploy/.next/static
           cp -r .next/standalone deploy/.next/standalone
 
-      - name: Publish to deploy branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          publish_dir: ./deploy
-          publish_branch: deploy
-          force_orphan: true
-          commit_message: "deploy: ${{ github.event.head_commit.message }} (sha: ${{ github.sha }})"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to deploy branch (force push)
+        run: |
+          cd deploy
+          git init
+          git config user.name "CI"
+          git config user.email "ci@users.noreply.github.com"
+          git add .
+          git commit -m "deploy: ${{ github.event.head_commit.message }} (sha: ${{ github.sha }})" || true
+          git branch -M deploy
+          git remote add origin "${{ github.server_url }}/${{ github.repository }}"
+          git push -f origin deploy
