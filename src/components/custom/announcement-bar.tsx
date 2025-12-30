@@ -7,8 +7,13 @@ export default function AnnouncementBar() {
   const { language } = useLanguage();
   const t = translations[language].announcementBar;
 
-  // Sustituimos la barra por un separador mínimo
-  return <div className="h-6 w-full bg-background" aria-hidden="true" />;
+  // Separador con los mismos colores que tenía la barra oculta
+  return (
+    <div
+      className="w-full h-8 bg-accent border-b-4 border-accent-foreground"
+      aria-hidden="true"
+    />
+  );
 
   return (
     <div className="bg-accent text-accent-foreground">
