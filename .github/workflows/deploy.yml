@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -41,15 +42,17 @@ jobs:
           cp -r .next/static deploy/.next/static
           cp -r .next/standalone deploy/.next/standalone
 
-      - name: Publish to deploy branch (force push)
+      - name: Publish to deploy branch (force push via worktree)
+        env:
+          MSG: "deploy: ${{ github.event.head_commit.message }} (sha: ${{ github.sha }})"
         run: |
-          cd deploy
-          git init
           git config user.name "CI"
           git config user.email "ci@users.noreply.github.com"
+          rm -rf /tmp/deploy-wt
+          git worktree add /tmp/deploy-wt deploy || git worktree add -B deploy /tmp/deploy-wt origin/deploy
+          rm -rf /tmp/deploy-wt/*
+          cp -r deploy/. /tmp/deploy-wt/
+          cd /tmp/deploy-wt
           git add .
-          git commit -m "deploy: ${{ github.event.head_commit.message }} (sha: ${{ github.sha }})" || true
-          git branch -M deploy
-          git remote add origin "${{ github.server_url }}/${{ github.repository }}"
-          git config --global --add safe.directory "$PWD"
-          git push -f origin deploy
+          git commit -m "$MSG" || true
+          git push -f origin HEAD:deploy
