@@ -32,6 +32,7 @@ jobs:
       - name: Prepare deploy bundle
         run: |
           rm -rf .next/cache node_modules
+          rm -rf deploy
           mkdir -p deploy/.next
           # configs y public
           cp package.json package-lock.json next.config.ts deploy/
@@ -50,4 +51,5 @@ jobs:
           git commit -m "deploy: ${{ github.event.head_commit.message }} (sha: ${{ github.sha }})" || true
           git branch -M deploy
           git remote add origin "${{ github.server_url }}/${{ github.repository }}"
+          git config --global --add safe.directory "$PWD"
           git push -f origin deploy
