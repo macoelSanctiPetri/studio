@@ -46,4 +46,5 @@ jobs:
           publish_dir: ./deploy
           publish_branch: deploy
           force_orphan: true
+          commit_message: "deploy: ${{ github.sha }} - ${{ github.event.head_commit.message }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}

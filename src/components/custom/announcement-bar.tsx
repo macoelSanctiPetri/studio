@@ -7,8 +7,8 @@ export default function AnnouncementBar() {
   const { language } = useLanguage();
   const t = translations[language].announcementBar;
 
-  // Sección temporalmente oculta (compra de entradas)
-  return null;
+  // Sustituimos la barra por un separador mínimo
+  return <div className="h-6 w-full bg-background" aria-hidden="true" />;
 
   return (
     <div className="bg-accent text-accent-foreground">
