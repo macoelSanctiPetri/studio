@@ -66,9 +66,12 @@ export default function Header() {
                       className="relative"
                     >
                       <DropdownMenuTrigger asChild>
-                        <button className="transition-colors hover:text-[hsl(46,45%,54%)] focus:outline-none">
+                        <a
+                          href="#about"
+                          className="transition-colors hover:text-[hsl(46,45%,54%)] focus:outline-none"
+                        >
                           {link.name}
-                        </button>
+                        </a>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="start"
@@ -228,7 +231,13 @@ export default function Header() {
                   {navLinks.map((link) => (
                     link.href === '#about' ? (
                       <div key={link.name} className="flex flex-col gap-3">
-                        <span className="text-lg">{link.name}</span>
+                        <a
+                          href="#about"
+                          className="text-lg transition-colors hover:text-[hsl(46,45%,54%)]"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.name}
+                        </a>
                         <a
                           href="#about"
                           className="transition-colors hover:text-[hsl(46,45%,54%)] pl-3 text-base"
