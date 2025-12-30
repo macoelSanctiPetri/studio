@@ -30,30 +30,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/_not-found": {
       "initialStatus": 404,
       "experimentalBypassFor": [
@@ -78,13 +54,37 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
+    },
+    "/": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "1074b8afb527341cf7f024572c4b8dd7",
-    "previewModeSigningKey": "f65d48bb1022fbbb775f20c4efd0d986f50d69bb15657d4d2a2da9f07bca5282",
-    "previewModeEncryptionKey": "e32b1c026b74eeb5a8d553c5f4df7e73b450ae441565b4797b5e09ed568143c3"
+    "previewModeId": "a5b1c78b9652c044825260ebc8f949dc",
+    "previewModeSigningKey": "92edbcd7a303958093f5d88da071b8a548dbe095d3705a571d1daf3646fcb4bd",
+    "previewModeEncryptionKey": "93212746a9ab8363e852140a7a2b8f38397950e75a8d91eb31c20a2ca2ccae04"
   }
 }
