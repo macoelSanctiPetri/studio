@@ -20,29 +20,27 @@ export default function AboutSection() {
   const [bioOpen, setBioOpen] = useState(false);
   const [selectedName, setSelectedName] = useState<string>('');
 
-  const directorBio = `Natural de Cádiz, comienza sus estudios musicales al tiempo que simultanea los estudios universitarios de Filología Anglo-Germánica.
+  const directorBio = `Natural de  Cádiz, comienza sus estudios musicales al tiempo que simultanea los estudios universitarios de Filología Anglo-Germánica.
 
-Obtenida la licenciatura y los estudios correspondientes al Título Profesional de Piano, continúa estudiando Armonía y Contrapunto para marchar posteriormente al Conservatorio Superior de Música de Sevilla "Manuel Castillo" donde recibe clases entre otros, del propio Manuel Castillo, Ignacio Marín y Carlos Baena.
+Obtenida la licenciatura y los estudios correspondientes al Título Profesional de Piano, continúa estudiando Armonía y Contrapunto para marchar posteriormente al 
 
-En junio de 2004 terminó los estudios correspondientes al Título Profesional de Oboe.
+Conservatorio Superior de Música de Sevilla "Manuel Castillo" donde recibe clases entre otros, del propio Manuel Castillo, Ignacio Marín  y Carlos Baena.
 
-Como cantor formó parte de varios coros destacando la Coral Universitaria de Cádiz y el Grupo Vocal de Cámara "Romanza". De manera ocasional, ha colaborado también con el "Taller Hispalense de Música Antigua" y el Conjunto Vocal de Cámara "Francisco Guerrero – Virelay".
+En 2004 terminó los estudios correspondientes al Título Profesional de Oboe.
+Formó parte de varios coros como la Coral Universitaria de Cádiz, el Grupo Vocal de Cámara Romanza, el Conjunto Vocal de Cámara Francisco Guerrero –  Virelay o  el Taller Hispalense de Música Antigua.
 
-Entre sus cursos destacan los realizados con profesores como Ramón Coll, J. López Gimeno, Ricardo Rodríguez, Laurentino Sáenz de Buruaga, Martin Schmidt, Octav Calleya o Harry Christophers y The Sixteen.
+Durante los años 96 a 98 fue segundo director de la Coral Polifónica Canticum Novum de Cádiz.
 
-En el terreno de la dirección coral es director del Coro de Cámara "Nova Mvsica", especializado en la polifonía del renacimiento, desde su fundación en 1991, habiendo dado conciertos por Andalucía, España, Portugal, Austria y Reino Unido así como varias grabaciones.
+Fue profesor de Lenguaje Musical y Piano en la Escuela de Música San José de San Fernando así como impartió para el Centro de Profesores (CEP) de Cádiz varios cursos de iniciación a la dirección coral.
 
-Durante los años 96 a 98 fue además segundo director de la Coral Polifónica "Canticum Novum" de Cádiz.
+En su formación como músico destacan los cursos realizados con profesores como Ramón Coll, J. López Gimeno, Ricardo Rodríguez, Laurentino Sáenz de Buruaga, Martin Schmidt, Octav Calleya o Harry Christophers y The Sixteen. 
 
-Fue profesor durante varios cursos académicos de Lenguaje Musical y piano en la Escuela de Música San José de San Fernando e impartido también para el Centro de Profesores (CEP) de Cádiz varios cursos de iniciación a la dirección coral.
+En el terreno de la dirección coral es director del Coro de Cámara Nova Mvsica, especializado en polifonía del renacimiento, desde su fundación en 1991, habiendo dado conciertos por diversas ciudades de Andalucía y España y en el extranjero en Coimbra (Portugal), Maidstone, (Reino Unido)  y Viena (Austria) así como realizado varias grabaciones.
+	 
+Desde diciembre de 2024 es director asistente de la Joven Orquesta Filarmónica “Campos Andaluces” (JOFCA) de Jerez, formación que ya ha dirigido en Jerez y Viena.
 
-Entre las obras corales con orquesta que ha dirigido destacan el Stabat Mater de Karl Jenkins, junio de 2021, junto al coro de cámara Nova Mvsica, The Maidstone Singers (Kent, Reino Unido) y el ensemble instrumental La Stravaganza, formación de su propia creación, y en 2021 el Gloria de Vivaldi en la catedral de Cádiz.
-
-Desde noviembre de 2024 es director asistente de la Joven Orquesta Filarmónica "Campos Andaluces" (JOFCA) de Jerez.
-
-Actualmente compagina interpretación con composición y dirección.
-
-director@novamvsica.com`;
+Entre las obras para coro y orquesta que ha dirigido, destacan el Stabat Mater de Karl Jenkins y el Gloria de Vivaldi.
+En la actualidad, compagina sus tres vertientes musicales: la interpretación, la composición y la dirección. `;
 
   useEffect(() => {
     let active = true;
@@ -63,29 +61,29 @@ director@novamvsica.com`;
   return (
     <section id="about" className="bg-background py-24 sm:py-32">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-x-16 gap-y-16 lg:grid-cols-2">
-          <div>
-            <div className="w-10 h-0.5 bg-secondary mb-4"></div>
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {t.title}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-secondary-foreground font-body text-justify">
-              {t.p1}
-            </p>
-            <p className="mt-4 text-lg leading-8 text-secondary-foreground font-body text-justify">
-              {t.p2}
-            </p>
-          </div>
-
-            <div className="w-full max-w-xl justify-self-center lg:max-w-2xl">
+        <div>
+          <div className="w-10 h-0.5 bg-secondary mb-4"></div>
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {t.title}
+          </h2>
+          <div className="relative mt-6">
+            <div className="float-none sm:float-right sm:ml-8 sm:mb-4 w-full sm:w-72 lg:w-80">
               <Image
                 src="/imagenes/portada_disco.png"
                 alt={imageDescription}
                 width={800}
                 height={800}
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain rounded-lg"
                 priority
-            />
+              />
+            </div>
+            <p className="text-lg leading-8 text-secondary-foreground font-body text-justify">
+              {t.p1}
+            </p>
+            <p className="mt-4 text-lg leading-8 text-secondary-foreground font-body text-justify">
+              {t.p2}
+            </p>
+            <div className="clearfix"></div>
           </div>
         </div>
 
@@ -125,16 +123,10 @@ director@novamvsica.com`;
                         const isFallback = photoSrc.toLowerCase().includes('fallback');
                         const isBajoEduardo = photoSrc.toLowerCase().includes('bajo_eduardo');
                         const fit = isFallback ? 'object-contain' : 'object-cover';
-                        const objectPosition = isDirector
-                          ? '95% 22%'
-                          : isBajoEduardo
-                            ? '50% 15%'
-                            : '50% 50%';
-                        const size = isBajoEduardo ? 'h-[9.6rem] w-[9.6rem]' : 'h-[9.2rem] w-[9.2rem]';
-                        const displaySrc =
-                          isDirector && !photoSrc.includes('?v=dir')
-                            ? `${photoSrc}?v=dir-shift2`
-                            : photoSrc;
+                        // centramos un poco más alto para evitar cortar cabezas
+                        const objectPosition = isFallback ? '50% 50%' : '50% 22%';
+                        const size = 'h-[9.6rem] w-[9.6rem]';
+                        const displaySrc = photoSrc;
                         return (
                           <>
                             <Image
