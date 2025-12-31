@@ -37,6 +37,7 @@ jobs:
           mkdir -p deploy/.next
           # configs y public
           cp package.json package-lock.json next.config.ts deploy/
+          cp -r scripts deploy/scripts
           cp -r public deploy/public
           # estructura esperada por Next standalone: .next/standalone y .next/static
           cp -r .next/static deploy/.next/static
