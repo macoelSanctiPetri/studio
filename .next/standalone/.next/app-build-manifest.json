@@ -16,19 +16,33 @@
       "static/chunks/94-68546d409849a4b4.js",
       "static/chunks/app/layout-f4e4246969b2e7ee.js"
     ],
-    "/api/photos/route": [
-      "static/chunks/webpack-b3ed34df4c126a26.js",
-      "static/chunks/4bd1b696-c023c6e3521b1417.js",
-      "static/chunks/255-cb395327542b56ef.js",
-      "static/chunks/main-app-1d2347b62c5af9b0.js",
-      "static/chunks/app/api/photos/route-430c4e1b5ccf7d7d.js"
-    ],
     "/api/contact/route": [
       "static/chunks/webpack-b3ed34df4c126a26.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-cb395327542b56ef.js",
       "static/chunks/main-app-1d2347b62c5af9b0.js",
-      "static/chunks/app/api/contact/route-430c4e1b5ccf7d7d.js"
+      "static/chunks/app/api/contact/route-64eb490e59eae20a.js"
+    ],
+    "/api/photos/route": [
+      "static/chunks/webpack-b3ed34df4c126a26.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-cb395327542b56ef.js",
+      "static/chunks/main-app-1d2347b62c5af9b0.js",
+      "static/chunks/app/api/photos/route-64eb490e59eae20a.js"
+    ],
+    "/api/repertory/route": [
+      "static/chunks/webpack-b3ed34df4c126a26.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-cb395327542b56ef.js",
+      "static/chunks/main-app-1d2347b62c5af9b0.js",
+      "static/chunks/app/api/repertory/route-64eb490e59eae20a.js"
+    ],
+    "/api/componentes/route": [
+      "static/chunks/webpack-b3ed34df4c126a26.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-cb395327542b56ef.js",
+      "static/chunks/main-app-1d2347b62c5af9b0.js",
+      "static/chunks/app/api/componentes/route-64eb490e59eae20a.js"
     ],
     "/page": [
       "static/chunks/webpack-b3ed34df4c126a26.js",
@@ -37,7 +51,7 @@
       "static/chunks/main-app-1d2347b62c5af9b0.js",
       "static/chunks/94-68546d409849a4b4.js",
       "static/chunks/475-45f07b37ae5087cf.js",
-      "static/chunks/app/page-9aab9063a8401421.js"
+      "static/chunks/app/page-60355a544a7a7b29.js"
     ]
   }
 }

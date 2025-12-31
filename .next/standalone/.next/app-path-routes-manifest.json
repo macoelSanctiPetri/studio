@@ -1,7 +1,9 @@
 {
   "/_not-found/page": "/_not-found",
-  "/api/photos/route": "/api/photos",
   "/api/contact/route": "/api/contact",
+  "/api/photos/route": "/api/photos",
   "/favicon.ico/route": "/favicon.ico",
+  "/api/repertory/route": "/api/repertory",
+  "/api/componentes/route": "/api/componentes",
   "/page": "/"
 }
