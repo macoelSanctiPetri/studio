@@ -1,3 +1,6 @@
+// Carga variables desde .env en tiempo de ejecución (standalone en Plesk)
+import 'dotenv/config';
+
 export const isDbEnabled = () =>
   process.env.USE_DB === '1' || process.env.NEXT_PUBLIC_USE_DB === '1';
 
