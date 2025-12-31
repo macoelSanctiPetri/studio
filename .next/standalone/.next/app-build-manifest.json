@@ -16,19 +16,19 @@
       "static/chunks/94-68546d409849a4b4.js",
       "static/chunks/app/layout-f4e4246969b2e7ee.js"
     ],
-    "/api/contact/route": [
-      "static/chunks/webpack-b3ed34df4c126a26.js",
-      "static/chunks/4bd1b696-c023c6e3521b1417.js",
-      "static/chunks/255-cb395327542b56ef.js",
-      "static/chunks/main-app-1d2347b62c5af9b0.js",
-      "static/chunks/app/api/contact/route-64eb490e59eae20a.js"
-    ],
     "/api/photos/route": [
       "static/chunks/webpack-b3ed34df4c126a26.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-cb395327542b56ef.js",
       "static/chunks/main-app-1d2347b62c5af9b0.js",
       "static/chunks/app/api/photos/route-64eb490e59eae20a.js"
+    ],
+    "/api/contact/route": [
+      "static/chunks/webpack-b3ed34df4c126a26.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-cb395327542b56ef.js",
+      "static/chunks/main-app-1d2347b62c5af9b0.js",
+      "static/chunks/app/api/contact/route-64eb490e59eae20a.js"
     ],
     "/api/componentes/route": [
       "static/chunks/webpack-b3ed34df4c126a26.js",
