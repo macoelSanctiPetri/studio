@@ -5,22 +5,7 @@ import { useLanguage } from "@/context/language-context";
 import { Download, Music2, Play, Camera } from "lucide-react";
 import PhotosCarousel from "./photos-carousel";
 import { mediaVideos } from "@/data/media";
-
-type CsvRow = {
-  period: string;
-  group_name: string;
-  number: string;
-  parent_number: string;
-  is_collection: string;
-  title: string;
-  composer?: string;
-  composer_inherited?: string;
-  arranger?: string;
-  voices?: string;
-  voices_inherited?: string;
-  note?: string;
-  raw_text?: string;
-};
+import { CsvRow } from "@/lib/repertoire-shared";
 
 type AudioDefinition = {
   slug: string;
@@ -62,73 +47,6 @@ const normalize = (value?: string) =>
     .replace(/[^a-z0-9\s]/gi, "")
     .toLowerCase();
 
-function splitCsvLine(line: string): string[] {
-  const result: string[] = [];
-  let cur = "";
-  let inQuotes = false;
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (ch === '"') {
-      inQuotes = !inQuotes;
-      continue;
-    }
-    if (ch === "," && !inQuotes) {
-      result.push(cur);
-      cur = "";
-    } else {
-      cur += ch;
-    }
-  }
-  result.push(cur);
-  return result;
-}
-
-function parseCsv(text: string): CsvRow[] {
-  const lines = text.split(/\r?\n/).filter((l) => l.trim().length > 0);
-  if (lines.length < 2) return [];
-  const headers = lines[0].split(",").map((h) => h.trim().toLowerCase());
-  const idx = (k: string) => headers.findIndex((h) => h === k);
-  const indices = {
-    period: idx("period"),
-    group_name: idx("group_name"),
-    number: idx("number"),
-    parent_number: idx("parent_number"),
-    is_collection: idx("is_collection"),
-    title: idx("title"),
-    composer: idx("composer"),
-    composer_inherited: idx("composer_inherited"),
-    arranger: idx("arranger"),
-    voices: idx("voices"),
-    voices_inherited: idx("voices_inherited"),
-    note: idx("note"),
-    raw_text: idx("raw_text"),
-  };
-
-  const get = (cols: string[], key: keyof typeof indices) => {
-    const i = indices[key];
-    return i >= 0 ? cols[i] || "" : "";
-  };
-
-  return lines.slice(1).map((line) => {
-    const cols = splitCsvLine(line);
-    return {
-      period: get(cols, "period"),
-      group_name: get(cols, "group_name"),
-      number: get(cols, "number"),
-      parent_number: get(cols, "parent_number"),
-      is_collection: get(cols, "is_collection"),
-      title: get(cols, "title"),
-      composer: get(cols, "composer"),
-      composer_inherited: get(cols, "composer_inherited"),
-      arranger: get(cols, "arranger"),
-      voices: get(cols, "voices"),
-      voices_inherited: get(cols, "voices_inherited"),
-      note: get(cols, "note"),
-      raw_text: get(cols, "raw_text"),
-    };
-  });
-}
-
 export default function MediaSection() {
   const { language } = useLanguage();
   const isEs = language === "es";
@@ -139,10 +57,10 @@ export default function MediaSection() {
     const load = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/data/repertorio.csv", { cache: "no-store" });
-        if (!res.ok) throw new Error("csv fetch failed");
-        const text = await res.text();
-        const rows = parseCsv(text);
+        const res = await fetch("/api/repertory", { cache: "no-store" });
+        if (!res.ok) throw new Error("repertory fetch failed");
+        const payload = await res.json();
+        const rows: CsvRow[] = payload?.rows || [];
         const mapped: AudioTrack[] = audioDefinitions.map((def) => {
           const matchNorm = normalize(def.match);
           const candidates = rows.filter((r) =>

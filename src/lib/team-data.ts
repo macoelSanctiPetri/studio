@@ -6,12 +6,6 @@ export type TeamMember = {
   photoAlt?: string;
 };
 
-function parseCsvLine(line: string): string[] {
-  // naive CSV for quoted, comma-separated values without embedded quotes
-  const trimmed = line.trim().replace(/^"|"$/g, '');
-  return trimmed.split('","');
-}
-
 const roleOrder = [
   'director',
   'soprano',
@@ -47,25 +41,17 @@ function sortTeam(team: TeamMember[]) {
 
 export async function loadTeamData(): Promise<TeamMember[]> {
   try {
-    const res = await fetch('/data/componentes.csv', { cache: 'no-store' });
+    const res = await fetch('/api/componentes', { cache: 'no-store' });
     if (!res.ok) return [];
-    const content = await res.text();
-    const lines = content.split(/\r?\n/).filter((l) => l.trim().length > 0);
-    if (lines.length < 2) return [];
+    const payload = await res.json();
+    const rows: Array<{ nombre: string; apellidos: string; funcion: string; foto: string }> =
+      payload?.rows || [];
 
-    const headers = parseCsvLine(lines[0]).map((h) => h.toLowerCase());
-    const idx = (key: string) => headers.indexOf(key);
-    const iNombre = idx('nombre');
-    const iApellidos = idx('apellidos');
-    const iFuncion = idx('funcion');
-    const iFoto = idx('foto');
-
-    const team = lines.slice(1).map((line) => {
-      const cols = parseCsvLine(line);
-      const first = iNombre >= 0 ? cols[iNombre] ?? '' : '';
-      const last = iApellidos >= 0 ? cols[iApellidos] ?? '' : '';
-      const role = iFuncion >= 0 ? cols[iFuncion] ?? '' : '';
-      const photo = iFoto >= 0 ? cols[iFoto] ?? '' : '';
+    const team = rows.map((row) => {
+      const first = row.nombre ?? '';
+      const last = row.apellidos ?? '';
+      const role = row.funcion ?? '';
+      const photo = row.foto ?? '';
       const fullName = `${first} ${last}`.trim();
       const photoNormalized = photo.trim().toLowerCase();
       let photoUrl: string | undefined;
@@ -77,10 +63,8 @@ export async function loadTeamData(): Promise<TeamMember[]> {
       } else if (photoNormalized === 'fallback' || photoNormalized === '') {
         photoUrl = '/avatars/fallback.png';
       } else if (photo.includes('.')) {
-        // If CSV already provides a path or filename with extension, use it as-is (relative or absolute)
         photoUrl = photo;
       } else {
-        // default: try within avatars, fallback final guard
         photoUrl = `/avatars/${photo}`;
       }
 
@@ -95,7 +79,7 @@ export async function loadTeamData(): Promise<TeamMember[]> {
 
     return sortTeam(team);
   } catch (err) {
-    console.error('No se pudo leer /data/componentes.csv', err);
+    console.error('No se pudo leer componentes desde API', err);
     return [];
   }
 }

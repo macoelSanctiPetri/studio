@@ -41,3 +41,20 @@
 ### Pendiente
 - Respuesta del hosting para habilitar hook automÃ¡tico sin nodenv.
 - Mantener `httpdocs_old` mientras se confirma producciÃ³n; luego borrar/mover fuera de `httpdocs`.
+### Nuevo: CSV ? MySQL y uso de BBDD en producción
+- Script: `npm run sync:db` (requiere `USE_DB=1` + `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`). Lee `public/data/componentes.csv` y `public/data/repertorio.csv`, trunca `componentes` y `repertorio` y reimporta en bloque.
+- Nuevos endpoints API:
+  - `/api/componentes`
+  - `/api/repertory`
+  Con `USE_DB=1` responden desde MySQL; sin esa variable leen los CSV. El front ya consume estas APIs, así que en local sigue con CSV y en Plesk irá contra la BBDD.
+- Variables recomendadas en Plesk:
+  ```
+  USE_DB=1
+  DB_HOST=localhost
+  DB_PORT=3306
+  DB_USER=...
+  DB_PASSWORD=...
+  DB_NAME=admin_novamvsica
+  ```
+- Tarea recomendada tras cada deploy en Plesk (hook/cron):
+  `npm run sync:db --prefix /var/www/vhosts/novamvsica.com/httpdocs/app`
