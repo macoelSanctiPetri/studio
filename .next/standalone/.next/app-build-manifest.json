@@ -30,19 +30,19 @@
       "static/chunks/main-app-1d2347b62c5af9b0.js",
       "static/chunks/app/api/photos/route-64eb490e59eae20a.js"
     ],
-    "/api/repertory/route": [
-      "static/chunks/webpack-b3ed34df4c126a26.js",
-      "static/chunks/4bd1b696-c023c6e3521b1417.js",
-      "static/chunks/255-cb395327542b56ef.js",
-      "static/chunks/main-app-1d2347b62c5af9b0.js",
-      "static/chunks/app/api/repertory/route-64eb490e59eae20a.js"
-    ],
     "/api/componentes/route": [
       "static/chunks/webpack-b3ed34df4c126a26.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-cb395327542b56ef.js",
       "static/chunks/main-app-1d2347b62c5af9b0.js",
       "static/chunks/app/api/componentes/route-64eb490e59eae20a.js"
+    ],
+    "/api/repertory/route": [
+      "static/chunks/webpack-b3ed34df4c126a26.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-cb395327542b56ef.js",
+      "static/chunks/main-app-1d2347b62c5af9b0.js",
+      "static/chunks/app/api/repertory/route-64eb490e59eae20a.js"
     ],
     "/page": [
       "static/chunks/webpack-b3ed34df4c126a26.js",
