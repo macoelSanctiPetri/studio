@@ -43,6 +43,7 @@ export async function GET() {
     return NextResponse.json({ rows });
   } catch (err) {
     console.error('Error cargando repertorio', err);
-    return NextResponse.json({ error: 'No se pudo cargar el repertorio' }, { status: 500 });
+    const message = err instanceof Error ? err.message : 'No se pudo cargar el repertorio';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
