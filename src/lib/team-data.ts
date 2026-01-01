@@ -19,6 +19,7 @@ const photoMap: Record<string, string> = {
   'juan luis macias de la flor': '/avatars/Componente_Tenor_Juan_Luis_Macias_de_la_Flor.png',
   'ignacio moreno garrido': '/avatars/Componente_Tenor_Ignacio_Moreno_Garrido.png',
   'antonio martinez': '/avatars/Componente_Bajo_Antonio_Martinez.png',
+  'antonio martinez sanchez': '/avatars/Componente_Bajo_Antonio_Martinez.png',
   'javier izquierdo anton': '/avatars/Componente_Bajo_Javier_Izquierdo_Anton.png',
   'manuel lopez coello': '/avatars/Componente_Bajo_Manuel_Lopez_Coello.png',
   'marcos a. garcia junio': '/avatars/Componente_Bajo_Marcos_A_Garcia_Junio.png',
@@ -43,7 +44,7 @@ function normalizeName(name: string) {
   return name
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
-    .replace(/[¿?]/g, '?') // marcamos para variantes posteriores
+    .replace(/[¿?]/g, '?')
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase();
@@ -53,7 +54,7 @@ function resolvePhotoByName(fullName: string, role: string) {
   const base = normalizeName(fullName);
   const variants = new Set<string>([
     base,
-    base.replace(/\?/g, ''),           // quitar signos
+    base.replace(/\?/g, ''), // quitar signos
     base.replace(/\?/g, 'a'),
     base.replace(/\?/g, 'e'),
     base.replace(/\?/g, 'i'),
@@ -78,7 +79,6 @@ function sortTeam(team: TeamMember[]) {
     const pa = idx(a.role || '');
     const pb = idx(b.role || '');
     if (pa !== pb) return pa - pb;
-    // dentro de cada grupo, ordenar por apellidos (y luego nombre)
     const la = (a.lastName || '').trim();
     const lb = (b.lastName || '').trim();
     if (la && lb && la.toLowerCase() !== lb.toLowerCase()) {
@@ -105,20 +105,22 @@ export async function loadTeamData(): Promise<TeamMember[]> {
       const photoNormalized = photo.trim().toLowerCase();
       let photoUrl: string | undefined;
 
-      // Primero intentar por nombre (cubre foto vacía y tildes rotas)
-      photoUrl = resolvePhotoByName(fullName, role);
-
-      // Si viene foto explícita, respetarla
-      if (photoNormalized === 'director') {
-        photoUrl = '/avatars/Componente_Director_Eduardo_Gallardo_de_Gomar.png';
-      } else if (photoNormalized === 'bajo_eduardo') {
-        photoUrl = '/avatars/Componente_Bajo_Eduardo_Gallardo_de_Gomar.png';
-      } else if (photoNormalized.startsWith('componente_')) {
-        photoUrl = `/avatars/${photo}`;
-      } else if (photoNormalized && photo.includes('.')) {
-        photoUrl = photo;
-      } else if (photoNormalized && !photoUrl) {
-        photoUrl = `/avatars/${photo}`;
+      // Prioridad: usar la foto indicada si no es "fallback"
+      if (photoNormalized && photoNormalized !== 'fallback') {
+        if (photoNormalized === 'director') {
+          photoUrl = '/avatars/Componente_Director_Eduardo_Gallardo_de_Gomar.png';
+        } else if (photoNormalized === 'bajo_eduardo') {
+          photoUrl = '/avatars/Componente_Bajo_Eduardo_Gallardo_de_Gomar.png';
+        } else if (photoNormalized.startsWith('componente_')) {
+          photoUrl = `/avatars/${photo}`;
+        } else if (photoNormalized && photo.includes('.')) {
+          photoUrl = photo;
+        } else {
+          photoUrl = `/avatars/${photo}`;
+        }
+      } else if (!photoNormalized) {
+        // Sin valor de foto: intentamos resolver por nombre (tildes rotas, etc.)
+        photoUrl = resolvePhotoByName(fullName, role);
       }
 
       if (!photoUrl) {
@@ -144,4 +146,3 @@ export async function loadTeamData(): Promise<TeamMember[]> {
     return [];
   }
 }
-
