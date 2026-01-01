@@ -67,7 +67,7 @@ En la actualidad, compagina sus tres vertientes musicales: la interpretación, l
             {t.title}
           </h2>
           <div className="relative mt-6">
-            <div className="float-none sm:float-right sm:ml-8 sm:mb-4 w-full sm:w-72 lg:w-80">
+            <div className="float-none sm:float-right sm:ml-8 sm:mb-4 w-full sm:w-80 lg:w-96 xl:w-[420px]">
               <Image
                 src="/imagenes/portada_disco.png"
                 alt={imageDescription}
