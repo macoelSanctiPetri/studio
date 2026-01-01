@@ -13,7 +13,7 @@ const photoMap: Record<string, string> = {
   'laura raya leon': '/avatars/Componente_Soprano_Laura_Raya_Leon.png',
   'paqui soto lebron': '/avatars/Componente_Soprano_Paqui_Soto_Lebron.png',
   'rosa gonzalez diaz': '/avatars/Componente_Soprano_Rosa_Gonzalez_Diaz.png',
-  'gemma garcia del amo': '/avatars/Componente_Contralto_Gemma_Garcia_del_Amo.png',
+  'gemma garcia de lamo': '/avatars/Componente_Contralto_Gemma_Garcia_de_Lamo.png',
   'maria jesus crujeiras novas': '/avatars/Componente_Contralto_Maria_Jesus_Crujeiras_Novas.png',
   'susana martinez gomez': '/avatars/Componente_Contralto_Susana_Martinez_Gomez.png',
   'juan luis macias de la flor': '/avatars/Componente_Tenor_Juan_Luis_Macias_de_la_Flor.png',
@@ -43,10 +43,30 @@ function normalizeName(name: string) {
   return name
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
-    .replace(/[¿?]/g, 'a') // parche para nombres con ? por fallo de encoding
+    .replace(/[¿?]/g, '?') // marcamos para variantes posteriores
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase();
+}
+
+function resolvePhotoByName(fullName: string, role: string) {
+  const base = normalizeName(fullName);
+  const variants = new Set<string>([
+    base,
+    base.replace(/\?/g, ''),           // quitar signos
+    base.replace(/\?/g, 'a'),
+    base.replace(/\?/g, 'e'),
+    base.replace(/\?/g, 'i'),
+    base.replace(/\?/g, 'o'),
+    base.replace(/\?/g, 'u'),
+  ]);
+
+  for (const key of variants) {
+    if (photoMap[key]) return photoMap[key];
+    const keyedRole = `${key} (${role.toLowerCase()})`;
+    if (photoMap[keyedRole]) return photoMap[keyedRole];
+  }
+  return undefined;
 }
 
 function sortTeam(team: TeamMember[]) {
@@ -85,20 +105,24 @@ export async function loadTeamData(): Promise<TeamMember[]> {
       const photoNormalized = photo.trim().toLowerCase();
       let photoUrl: string | undefined;
 
+      // Primero intentar por nombre (cubre foto vacía y tildes rotas)
+      photoUrl = resolvePhotoByName(fullName, role);
+
+      // Si viene foto explícita, respetarla
       if (photoNormalized === 'director') {
         photoUrl = '/avatars/Componente_Director_Eduardo_Gallardo_de_Gomar.png';
       } else if (photoNormalized === 'bajo_eduardo') {
         photoUrl = '/avatars/Componente_Bajo_Eduardo_Gallardo_de_Gomar.png';
       } else if (photoNormalized.startsWith('componente_')) {
-        // Nombres de archivo locales del tipo Componente_Soprano_Nombre.png
         photoUrl = `/avatars/${photo}`;
-      } else if (photoNormalized === 'fallback' || photoNormalized === '') {
-        const mapped = photoMap[normalizeName(fullName)] || photoMap[`${normalizeName(fullName)} (${role.toLowerCase()})`];
-        photoUrl = mapped ?? '/avatars/fallback.png';
-      } else if (photo.includes('.')) {
+      } else if (photoNormalized && photo.includes('.')) {
         photoUrl = photo;
-      } else {
+      } else if (photoNormalized && !photoUrl) {
         photoUrl = `/avatars/${photo}`;
+      }
+
+      if (!photoUrl) {
+        photoUrl = '/avatars/fallback.png';
       }
 
       return {
@@ -110,9 +134,14 @@ export async function loadTeamData(): Promise<TeamMember[]> {
       };
     });
 
+    if (process.env.NODE_ENV !== 'production') {
+      console.debug('componentes API rows mapped', rows);
+    }
+
     return sortTeam(team);
   } catch (err) {
     console.error('No se pudo leer componentes desde API', err);
     return [];
   }
 }
+
