@@ -17,9 +17,12 @@ export type Actuacion = {
   hora_puertas?: string | null;
 };
 
+const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
+
 export const actuaciones: Actuacion[] = (actuacionesJson as Actuacion[]).map((a) => ({
   ...a,
-  cartel_url: a.cartel_url ?? a.cabecera_url ?? null,
+  cabecera_url: a.cabecera_url ?? PLACEHOLDER,
+  cartel_url: a.cartel_url ?? a.cabecera_url ?? PLACEHOLDER,
 }));
 
 export const upcomingActuaciones = actuaciones
