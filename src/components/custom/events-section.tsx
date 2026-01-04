@@ -1,22 +1,32 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useLanguage } from '@/context/language-context';
 import { translations } from '@/lib/translations';
-import { Actuacion, formatFechaLarga, formatHora, upcomingActuaciones } from '@/lib/actuaciones';
+import { Actuacion, formatFechaLarga, formatHora } from '@/lib/actuaciones';
+import { useActuaciones } from '@/lib/use-actuaciones';
 import { getFotosFinales, getVideosFinales } from '@/lib/activos';
-import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
-import React, { useMemo, useState } from 'react';
+
+const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
 
 export default function EventsSection() {
   const { language } = useLanguage();
   const t = translations[language].eventsSection;
+  const { data, loading, error } = useActuaciones();
 
-  const events = useMemo(() => upcomingActuaciones, []);
+  const events = useMemo(() => {
+    if (!data) return [];
+    return [...data]
+      .filter((a) => a.estado === 'Proxima')
+      .sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
+  }, [data]);
 
   return (
     <section id="events" className="bg-primary text-primary-foreground py-24 sm:py-32">
@@ -31,7 +41,17 @@ export default function EventsSection() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {events.length === 0 && (
+          {loading && (
+            <p className="text-sm text-primary-foreground/80 col-span-full">
+              {language === 'es' ? 'Cargando actuaciones...' : 'Loading events...'}
+            </p>
+          )}
+          {error && (
+            <p className="text-sm text-red-200 col-span-full">
+              {language === 'es' ? `Error: ${error}` : `Error: ${error}`}
+            </p>
+          )}
+          {!loading && !error && events.length === 0 && (
             <p className="text-sm text-primary-foreground/80 col-span-full">
               {language === 'es' ? 'No hay próximas actuaciones.' : 'No upcoming events.'}
             </p>
@@ -49,7 +69,6 @@ function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: 
   const [open, setOpen] = useState(false);
   const fotos = getFotosFinales(event.id);
   const videos = getVideosFinales(event.id);
-  const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
   const cabeceraSrc = event.cabecera_url || PLACEHOLDER;
   const cartelSrc = event.cartel_url || cabeceraSrc;
 
@@ -208,11 +227,7 @@ function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: 
                       <CarouselContent>
                         {videos.map((v) => (
                           <CarouselItem key={v.id} className="basis-full">
-                            <video
-                              src={v.ruta}
-                              controls
-                              className="w-full rounded border border-muted"
-                            />
+                            <video src={v.ruta} controls className="w-full rounded border border-muted" />
                           </CarouselItem>
                         ))}
                       </CarouselContent>
