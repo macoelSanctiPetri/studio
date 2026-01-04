@@ -40,5 +40,33 @@
     "descripcion_detalle": "Misa de Réquiem KV 626. Director: Pedro Gálvez. Solistas: Asociación de Amigos de la Ópera de Cádiz (ASGAO). Orquesta: Joven Orquesta Campos Andaluces de Jerez (JOFCA). Coros invitados: varios coros de la provincia y de Granada, incluido NovaMvsica.",
     "tickets_url": null,
     "hora_puertas": null
+  },
+  {
+    "id": "ACT-2026-REQUIEM-CARMEN",
+    "titulo": "Réquiem de Mozart",
+    "fecha": "2026-03-14T20:00:00",
+    "lugar": "Iglesia del Carmen, San Fernando",
+    "map_url": null,
+    "estado": "Proxima",
+    "cabecera_url": "/actuaciones/ACT-2026-REQUIEM-CARMEN/cabecera/ACT-2026-REQUIEM-CARMEN_header-md.png",
+    "cartel_url": null,
+    "descripcion_corta": "Réquiem de Mozart en la Iglesia del Carmen.",
+    "descripcion_detalle": "Programa: Réquiem KV 626. Horario y detalles finales por confirmar.",
+    "tickets_url": null,
+    "hora_puertas": null
+  },
+  {
+    "id": "ACT-2026-REQUIEM-CHICLANA",
+    "titulo": "Réquiem de Mozart",
+    "fecha": "2026-03-21T20:00:00",
+    "lugar": "Iglesia por confirmar, Chiclana de la Frontera",
+    "map_url": null,
+    "estado": "Proxima",
+    "cabecera_url": "/actuaciones/ACT-2026-REQUIEM-CHICLANA/cabecera/ACT-2026-REQUIEM-CHICLANA_header-md.png",
+    "cartel_url": null,
+    "descripcion_corta": "Réquiem de Mozart en Chiclana (lugar por confirmar).",
+    "descripcion_detalle": "Programa: Réquiem KV 626. Lugar y horario definitivos por confirmar.",
+    "tickets_url": null,
+    "hora_puertas": null
   }
 ]
