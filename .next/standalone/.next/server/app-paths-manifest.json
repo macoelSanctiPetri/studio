@@ -3,7 +3,7 @@
   "/api/contact/route": "app/api/contact/route.js",
   "/api/photos/route": "app/api/photos/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/componentes/route": "app/api/componentes/route.js",
   "/api/repertory/route": "app/api/repertory/route.js",
+  "/api/componentes/route": "app/api/componentes/route.js",
   "/page": "app/page.js"
 }

@@ -3,7 +3,7 @@
   "/api/contact/route": "/api/contact",
   "/api/photos/route": "/api/photos",
   "/favicon.ico/route": "/favicon.ico",
-  "/api/componentes/route": "/api/componentes",
   "/api/repertory/route": "/api/repertory",
+  "/api/componentes/route": "/api/componentes",
   "/page": "/"
 }

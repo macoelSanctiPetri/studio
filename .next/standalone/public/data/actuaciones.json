@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ACT-2025-NAVIDAD-SF",
+    "titulo": "Concierto de Navidad",
+    "fecha": "2025-12-13T20:00:00",
+    "lugar": "Iglesia del Buen Pastor, San Fernando",
+    "map_url": "https://maps.app.goo.gl/UNKUbgLPRLJU2ekw5",
+    "estado": "Pasada",
+    "cabecera_url": "/actuaciones/ACT-2025-NAVIDAD-SF/cabecera/ACT-2025-NAVIDAD-SF_header-md.jpg",
+    "cartel_url": "/actuaciones/ACT-2025-NAVIDAD-SF/cartel/ACT-2025-NAVIDAD-SF_cartel-v02-md.jpeg",
+    "descripcion_corta": "Programa navideño.",
+    "descripcion_detalle": "Concierto de Navidad con repertorio de villancicos y piezas clásicas. Invitados: coro juvenil local.",
+    "tickets_url": null,
+    "hora_puertas": "19:30:00"
+  },
+  {
+    "id": "ACT-2025-PALMA",
+    "titulo": "Función Novena Virgen de la Palma",
+    "fecha": "2025-10-25T20:00:00",
+    "lugar": "Iglesia de la Palma, Cádiz",
+    "map_url": "https://maps.app.goo.gl/VGmZVuUXrPnw9bZv6",
+    "estado": "Pasada",
+    "cabecera_url": "/actuaciones/ACT-2025-PALMA/cabecera/ACT-2025-PALMA_header-md.jpeg",
+    "cartel_url": "/actuaciones/ACT-2025-PALMA/cartel/ACT-2025-PALMA_cartel-md.jpg",
+    "descripcion_corta": "Función de la Cofradía de la Palma.",
+    "descripcion_detalle": "Novena a la Virgen de la Palma con repertorio sacro y motetes.",
+    "tickets_url": null,
+    "hora_puertas": "19:15:00"
+  },
+  {
+    "id": "ACT-2025-REQUIEM-JEREZ",
+    "titulo": "Réquiem de Mozart",
+    "fecha": "2025-08-02T20:00:00",
+    "lugar": "Catedral de Jerez",
+    "map_url": "https://maps.app.goo.gl/uwhqT4dfznwnhumZ8",
+    "estado": "Pasada",
+    "cabecera_url": "/actuaciones/ACT-2025-REQUIEM-JEREZ/cabecera/ACT-2025-REQUIEM-JEREZ_header-md.jpeg",
+    "cartel_url": "/actuaciones/ACT-2025-REQUIEM-JEREZ/cartel/ACT-2025-REQUIEM-JEREZ_cartel-md.jpg",
+    "descripcion_corta": "Réquiem de Mozart en la Catedral de Jerez.",
+    "descripcion_detalle": "Misa de Réquiem KV 626. Director: Pedro Gálvez. Solistas: Asociación de Amigos de la Ópera de Cádiz (ASGAO). Orquesta: Joven Orquesta Campos Andaluces de Jerez (JOFCA). Coros invitados: varios coros de la provincia y de Granada, incluido NovaMvsica.",
+    "tickets_url": null,
+    "hora_puertas": null
+  }
+]
