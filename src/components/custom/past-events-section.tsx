@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { Actuacion, formatFechaLarga, formatHora, pastActuaciones } from '@/lib/
 import { getFotosFinales, getVideosFinales } from '@/lib/activos';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 export default function PastEventsSection() {
   const { language } = useLanguage();
@@ -33,7 +33,7 @@ export default function PastEventsSection() {
         <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {events.length === 0 && (
             <p className="text-sm text-primary-foreground/80 col-span-full">
-              {language === 'es' ? 'Todavía no hay actuaciones anteriores.' : 'No past events yet.'}
+              {language === 'es' ? 'TodavÃ­a no hay actuaciones anteriores.' : 'No past events yet.'}
             </p>
           )}
           {events.map((event) => (
@@ -65,13 +65,53 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
       </div>
       <div className="mt-6 w-full">
         <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
-          {formatFechaLarga(event.fecha)}
+          {formatFechaLarga(event.fecha, event.fecha_visible)}
         </p>
-        <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">{event.titulo}</h3>
+        <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">
+          {event.id === 'ACT-2026-MAIDSTONE' && event.titulo.includes('Maidstone Singers') ? (
+            <>
+              {event.titulo.split('Maidstone Singers').map((part, idx, arr) => (
+                <React.Fragment key={idx}>
+                  {part}
+                  {idx < arr.length - 1 ? (
+                    <Link
+                      href="http://www.themaidstonesingers.org.uk/"
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-accent underline"
+                    >
+                      Maidstone Singers <ExternalLink className="h-4 w-4" />
+                    </Link>
+                  ) : null}
+                </React.Fragment>
+              ))}
+            </>
+          ) : (
+            event.titulo
+          )}
+        </h3>
         <p className="text-sm text-primary-foreground/80">{event.lugar}</p>
-        {event.descripcion_corta && (
+        {event.descripcion_corta && event.id !== 'ACT-2026-MAIDSTONE' && (
           <p className="mt-3 line-clamp-3 text-sm leading-6 text-primary-foreground/85 font-body">
-            {event.descripcion_corta}
+            {event.id === 'ACT-2026-MAIDSTONE' && event.descripcion_corta.includes('Maidstone Singers') ? (
+              <>
+                {event.descripcion_corta.split('Maidstone Singers').map((part, idx, arr) => (
+                  <React.Fragment key={idx}>
+                    {part}
+                    {idx < arr.length - 1 ? (
+                      <Link
+                        href="http://www.themaidstonesingers.org.uk/"
+                        target="_blank"
+                        className="inline-flex items-center gap-1 text-accent underline"
+                      >
+                        Maidstone Singers <ExternalLink className="h-4 w-4" />
+                      </Link>
+                    ) : null}
+                  </React.Fragment>
+                ))}
+              </>
+            ) : (
+              event.descripcion_corta
+            )}
           </p>
         )}
 
@@ -85,12 +125,33 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
             <DialogHeader>
               <DialogTitle className="font-headline text-xl">{event.titulo}</DialogTitle>
               <p className="text-sm text-muted-foreground">
-                {formatFechaLarga(event.fecha)} · {formatHora(event.fecha)} · {event.lugar}
+                {formatFechaLarga(event.fecha, event.fecha_visible)} Â· {formatHora(event.fecha)} Â· {event.lugar}
               </p>
             </DialogHeader>
             <div className="space-y-3 text-sm text-foreground">
               {event.descripcion_detalle && (
-                <p className="leading-6 text-foreground/90">{event.descripcion_detalle}</p>
+                <p className="leading-6 text-foreground/90">
+                  {event.id === 'ACT-2026-MAIDSTONE' && event.descripcion_detalle.includes('Maidstone Singers') ? (
+                    <>
+                      {event.descripcion_detalle.split('Maidstone Singers').map((part, idx, arr) => (
+                        <React.Fragment key={idx}>
+                          {part}
+                          {idx < arr.length - 1 ? (
+                            <Link
+                              href="http://www.themaidstonesingers.org.uk/"
+                              target="_blank"
+                              className="inline-flex items-center gap-1 text-accent underline"
+                            >
+                              Maidstone Singers <ExternalLink className="h-4 w-4" />
+                            </Link>
+                          ) : null}
+                        </React.Fragment>
+                      ))}
+                    </>
+                  ) : (
+                    event.descripcion_detalle
+                  )}
+                </p>
               )}
               {event.hora_puertas && (
                 <p>
@@ -141,7 +202,7 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
               </div>
               {fotos.length > 0 && (
                 <div className="pt-3 space-y-2">
-                  <p className="font-semibold">Galería</p>
+                  <p className="font-semibold">GalerÃ­a</p>
                   <div className="relative">
                     <Carousel opts={{ loop: true }}>
                       <CarouselContent>
@@ -165,7 +226,7 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
               )}
               {videos.length > 0 && (
                 <div className="pt-3 space-y-2">
-                  <p className="font-semibold">Vídeos</p>
+                  <p className="font-semibold">VÃ­deos</p>
                   <div className="relative">
                     <Carousel opts={{ loop: true }}>
                       <CarouselContent>
@@ -192,3 +253,4 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
     </article>
   );
 }
+
