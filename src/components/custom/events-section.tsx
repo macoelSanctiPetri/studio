@@ -1,24 +1,22 @@
+"use client";
+
 import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useLanguage } from '@/context/language-context';
 import { translations } from '@/lib/translations';
+import { Actuacion, formatFechaLarga, formatHora, upcomingActuaciones } from '@/lib/actuaciones';
+import { getFotosFinales, getVideosFinales } from '@/lib/activos';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
+import { useMemo, useState } from 'react';
 
 export default function EventsSection() {
   const { language } = useLanguage();
   const t = translations[language].eventsSection;
 
-  const events = t.events.map((eventData, index) => {
-    const p = PlaceHolderImages.find(p => p.id === eventData.imageId);
-    return {
-      ...eventData,
-      image: p ? {
-        url: p.imageUrl,
-        description: language === 'es' ? p.description : (p.alt_en || p.description),
-        hint: p.imageHint
-      } : undefined
-    }
-  });
+  const events = useMemo(() => upcomingActuaciones, []);
 
   return (
     <section id="events" className="bg-primary text-primary-foreground py-24 sm:py-32">
@@ -33,38 +31,164 @@ export default function EventsSection() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          {events.length === 0 && (
+            <p className="text-sm text-primary-foreground/80 col-span-full">
+              {language === 'es' ? 'No hay próximas actuaciones.' : 'No upcoming events.'}
+            </p>
+          )}
           {events.map((event) => (
-              <article key={event.title} className="flex flex-col items-start">
-                <div className="relative w-full">
-                  {event.image && (
-                    <Image
-                      src={event.image.url}
-                      alt={event.image.description}
-                      width={800}
-                      height={600}
-                      className="aspect-[4/3] w-full object-cover"
-                      data-ai-hint={event.image.hint}
-                    />
-                  )}
-                </div>
-                <div className="mt-6 w-full">
-                  <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
-                    {event.date}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">
-                      {event.title}
-                  </h3>
-                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-primary-foreground font-body">
-                    {event.description}
-                  </p>
-                  <Button variant="link" className="p-0 h-auto mt-4 text-accent rounded-none">
-                    {t.moreInfo}
-                  </Button>
-                </div>
-              </article>
-            ))}
+            <EventCard key={event.id} event={event} moreInfoLabel={t.moreInfo} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: string }) {
+  const [open, setOpen] = useState(false);
+  const fotos = getFotosFinales(event.id);
+  const videos = getVideosFinales(event.id);
+
+  return (
+    <article className="flex flex-col items-start">
+      <div className="relative w-full">
+        {event.cabecera_url && (
+          <Image
+            src={event.cabecera_url}
+            alt={event.titulo}
+            width={800}
+            height={600}
+            className="aspect-[4/3] w-full object-cover"
+          />
+        )}
+      </div>
+      <div className="mt-6 w-full">
+        <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
+          {formatFechaLarga(event.fecha)}
+        </p>
+        <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">{event.titulo}</h3>
+        <p className="text-sm text-primary-foreground/80">{event.lugar}</p>
+        {event.descripcion_corta && (
+          <p className="mt-3 line-clamp-3 text-sm leading-6 text-primary-foreground font-body">
+            {event.descripcion_corta}
+          </p>
+        )}
+
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            <Button variant="link" className="p-0 h-auto mt-4 text-accent rounded-none">
+              {moreInfoLabel}
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-lg sm:max-w-xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="font-headline text-xl">{event.titulo}</DialogTitle>
+              <p className="text-sm text-muted-foreground">
+                {formatFechaLarga(event.fecha)} · {formatHora(event.fecha)} · {event.lugar}
+              </p>
+            </DialogHeader>
+            <div className="space-y-3 text-sm text-foreground">
+              {event.descripcion_detalle && (
+                <p className="leading-6 text-foreground/90">{event.descripcion_detalle}</p>
+              )}
+              {event.hora_puertas && (
+                <p>
+                  <strong>Hora de apertura:</strong> {event.hora_puertas}
+                </p>
+              )}
+              <div className="space-y-1">
+                <p className="font-semibold">Lugar</p>
+                <p className="text-muted-foreground">{event.lugar}</p>
+                {event.map_url && (
+                  <Link
+                    href={event.map_url}
+                    target="_blank"
+                    className="inline-flex items-center gap-1 text-accent underline"
+                  >
+                    Ver en mapa <ExternalLink className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
+              {event.cartel_url && (
+                <Image
+                  src={event.cartel_url}
+                  alt={`Cartel ${event.titulo}`}
+                  width={720}
+                  height={960}
+                  className="w-full max-w-md mx-auto h-auto object-contain border border-muted"
+                />
+              )}
+              {!event.cartel_url && event.cabecera_url && (
+                <Image
+                  src={event.cabecera_url}
+                  alt={`Cabecera ${event.titulo}`}
+                  width={720}
+                  height={960}
+                  className="w-full max-w-md mx-auto h-auto object-contain border border-muted"
+                />
+              )}
+              <div className="flex flex-wrap gap-3 pt-2">
+                {event.tickets_url && (
+                  <Link
+                    href={event.tickets_url}
+                    target="_blank"
+                    className="inline-flex items-center gap-1 text-accent underline"
+                  >
+                    Entradas <ExternalLink className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
+              {fotos.length > 0 && (
+                <div className="pt-3 space-y-2">
+                  <p className="font-semibold">Galería</p>
+                  <div className="relative">
+                    <Carousel opts={{ loop: true }}>
+                      <CarouselContent>
+                        {fotos.map((f) => (
+                          <CarouselItem key={f.id} className="basis-full">
+                            <Image
+                              src={f.ruta}
+                              alt={event.titulo}
+                              width={900}
+                              height={600}
+                              className="w-full h-auto object-cover rounded border border-muted"
+                            />
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2 bg-background/80 shadow-sm border" />
+                      <CarouselNext className="right-2 bg-background/80 shadow-sm border" />
+                    </Carousel>
+                  </div>
+                </div>
+              )}
+              {videos.length > 0 && (
+                <div className="pt-3 space-y-2">
+                  <p className="font-semibold">Vídeos</p>
+                  <div className="relative">
+                    <Carousel opts={{ loop: true }}>
+                      <CarouselContent>
+                        {videos.map((v) => (
+                          <CarouselItem key={v.id} className="basis-full">
+                            <video
+                              src={v.ruta}
+                              controls
+                              className="w-full rounded border border-muted"
+                            />
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2 bg-background/80 shadow-sm border" />
+                      <CarouselNext className="right-2 bg-background/80 shadow-sm border" />
+                    </Carousel>
+                  </div>
+                </div>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
+    </article>
   );
 }
