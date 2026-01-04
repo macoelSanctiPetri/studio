@@ -1,5 +1,3 @@
-import actuacionesJson from '@/../public/data/actuaciones.json';
-
 export type EstadoActuacion = 'Proxima' | 'Pasada';
 
 export type Actuacion = {
@@ -17,22 +15,6 @@ export type Actuacion = {
   tickets_url?: string | null;
   hora_puertas?: string | null;
 };
-
-const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
-
-export const actuaciones: Actuacion[] = (actuacionesJson as Actuacion[]).map((a) => ({
-  ...a,
-  cabecera_url: a.cabecera_url ?? PLACEHOLDER,
-  cartel_url: a.cartel_url ?? a.cabecera_url ?? PLACEHOLDER,
-}));
-
-export const upcomingActuaciones = actuaciones
-  .filter((a) => a.estado === 'Proxima')
-  .sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
-
-export const pastActuaciones = actuaciones
-  .filter((a) => a.estado === 'Pasada')
-  .sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
 
 export const formatFechaLarga = (fecha: string, fechaVisible?: string | null, locale = 'es-ES') => {
   if (fechaVisible) return fechaVisible;

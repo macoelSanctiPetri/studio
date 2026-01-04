@@ -49,19 +49,20 @@ function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: 
   const [open, setOpen] = useState(false);
   const fotos = getFotosFinales(event.id);
   const videos = getVideosFinales(event.id);
+  const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
+  const cabeceraSrc = event.cabecera_url || PLACEHOLDER;
+  const cartelSrc = event.cartel_url || cabeceraSrc;
 
   return (
     <article className="flex flex-col items-start">
       <div className="relative w-full">
-        {event.cabecera_url && (
-          <Image
-            src={event.cabecera_url}
-            alt={event.titulo}
-            width={800}
-            height={600}
-            className="aspect-[4/3] w-full object-cover"
-          />
-        )}
+        <Image
+          src={cabeceraSrc}
+          alt={event.titulo}
+          width={800}
+          height={600}
+          className="aspect-[4/3] w-full object-cover"
+        />
       </div>
       <div className="mt-6 w-full">
         <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
@@ -157,24 +158,13 @@ function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: 
                   </Link>
                 )}
               </div>
-              {event.cartel_url && (
-                <Image
-                  src={event.cartel_url}
-                  alt={`Cartel ${event.titulo}`}
-                  width={720}
-                  height={960}
-                  className="w-full max-w-md mx-auto h-auto object-contain border border-muted"
-                />
-              )}
-              {!event.cartel_url && event.cabecera_url && (
-                <Image
-                  src={event.cabecera_url}
-                  alt={`Cabecera ${event.titulo}`}
-                  width={720}
-                  height={960}
-                  className="w-full max-w-md mx-auto h-auto object-contain border border-muted"
-                />
-              )}
+              <Image
+                src={cartelSrc}
+                alt={`Imagen ${event.titulo}`}
+                width={720}
+                height={960}
+                className="w-full max-w-md mx-auto h-auto object-contain border border-muted"
+              />
               <div className="flex flex-wrap gap-3 pt-2">
                 {event.tickets_url && (
                   <Link
