@@ -21,6 +21,7 @@ type ActuacionRow = {
 };
 
 async function loadFromJson(): Promise<ActuacionRow[]> {
+  // Carga defensiva para evitar 500 si el archivo no existe o estГЎ corrupto
   const file = path.join(process.cwd(), 'public', 'data', 'actuaciones.json');
   const content = await fs.readFile(file, 'utf8');
   const data = JSON.parse(content) as ActuacionRow[];
@@ -52,7 +53,13 @@ async function loadFromDb(): Promise<ActuacionRow[]> {
 
 export async function GET() {
   try {
-    const rows = isDbEnabled() ? await loadFromDb() : await loadFromJson();
+    // Si se activa la BD pero algo falla, hacemos fallback silencioso al JSON
+    const rows = isDbEnabled()
+      ? await loadFromDb().catch((err) => {
+          console.warn('Fallo al consultar BD, usando JSON estГЎtico', err);
+          return loadFromJson();
+        })
+      : await loadFromJson();
     return NextResponse.json({ rows });
   } catch (err) {
     console.error('Error cargando actuaciones', err);
