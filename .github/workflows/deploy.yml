@@ -32,16 +32,16 @@ jobs:
 
       - name: Prepare deploy bundle
         run: |
-          rm -rf .next/cache node_modules
           rm -rf deploy
-          mkdir -p deploy/.next
+          mkdir -p deploy
           # configs y public
           cp package.json package-lock.json next.config.ts deploy/
           cp -r scripts deploy/scripts
           cp -r public deploy/public
-          # estructura esperada por Next standalone: .next/standalone y .next/static
-          cp -r .next/static deploy/.next/static
-          cp -r .next/standalone deploy/.next/standalone
+          # copiar la carpeta .next completa para que incluya BUILD_ID y manifests
+          cp -r .next deploy/.next
+          # limpiar caché innecesaria
+          rm -rf deploy/.next/cache deploy/.next/server
 
       - name: Publish to deploy branch (force push via worktree)
         env:
