@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   // Generate standalone output for easier Node hosting (Plesk)
   output: 'standalone',
   images: {
+    // En Plesk/Apache, el optimizador de Next puede devolver 500 intermitentes.
+    // Con imágenes ya optimizadas, mejor servirlas sin procesamiento.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
