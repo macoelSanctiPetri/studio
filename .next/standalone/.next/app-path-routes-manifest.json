@@ -4,7 +4,8 @@
   "/api/photos/route": "/api/photos",
   "/favicon.ico/route": "/favicon.ico",
   "/api/actuaciones/route": "/api/actuaciones",
-  "/api/componentes/route": "/api/componentes",
   "/api/repertory/route": "/api/repertory",
+  "/api/componentes/route": "/api/componentes",
+  "/api/audios/route": "/api/audios",
   "/page": "/"
 }
