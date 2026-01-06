@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Search, Download, Play } from 'lucide-react';
+import { Search, Download, Play, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -30,6 +30,8 @@ export default function RepertoireSection() {
   const [works, setWorks] = useState<RepertoireWork[]>([]);
   const [audioIds, setAudioIds] = useState<Set<string>>(new Set());
   const [audioMap, setAudioMap] = useState<Map<string, string>>(new Map());
+  const [videoIds, setVideoIds] = useState<Set<string>>(new Set());
+  const [videoMap, setVideoMap] = useState<Map<string, string>>(new Map());
   const [player, setPlayer] = useState<{ title: string; src: string } | null>(null);
   const [period, setPeriod] = useState<PeriodFilter>('unset');
   const [type, setType] = useState<TypeFilter>('unset');
@@ -76,6 +78,26 @@ export default function RepertoireSection() {
         }
       })
       .catch((err) => console.warn('No se pudieron cargar audios para marcar repertorio', err));
+
+    // cargar IDs con vídeo disponible
+    fetch('/api/videos', { cache: 'no-store' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((payload) => {
+        if (payload?.rows) {
+          const ids = new Set<string>();
+          const map = new Map<string, string>();
+          payload.rows.forEach((r: { slug?: string; src?: string; parent_number?: string }) => {
+            const slug = r.slug ? String(r.slug) : null;
+            if (slug) {
+              ids.add(slug);
+              if (r.src) map.set(slug, r.src);
+            }
+          });
+          setVideoIds(ids);
+          setVideoMap(map);
+        }
+      })
+      .catch((err) => console.warn('No se pudieron cargar videos para marcar repertorio', err));
   }, []);
 
   const normalize = (s: string) =>
@@ -323,7 +345,7 @@ export default function RepertoireSection() {
                 >
                   <div className="flex flex-col gap-1">
                     <div className="font-headline text-foreground text-base sm:text-lg leading-tight flex items-center gap-2 flex-wrap">
-                      {audioIds.has(work.id) && (
+                      {audioIds.has(work.id) && audioMap.get(work.id) && (
                         <button
                           type="button"
                           onClick={() =>
@@ -338,31 +360,41 @@ export default function RepertoireSection() {
                           <Play className="h-4 w-4" />
                         </button>
                       )}
-                      {work.title}
-                      {audioIds.has(work.id) && (
-                        <Music2 className="h-4 w-4 text-accent" aria-label="Audio disponible" />
+                      {videoIds.has(work.id) && videoMap.get(work.id) && (
+                        <a
+                          href={videoMap.get(work.id)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center rounded-full border border-red-500/70 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition px-2 py-1"
+                          title={language === 'es' ? 'Ver vídeo' : 'Watch video'}
+                        >
+                          <Youtube className="h-4 w-4" />
+                        </a>
                       )}
-                    {work.items && work.items.length > 0 && (
-                      <span className="rounded-full bg-primary text-primary-foreground px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                        {labels.collection}
-                      </span>
-                    )}
-                  </div>
+                      {work.title}
+                      {work.items && work.items.length > 0 && (
+                        <span className="rounded-full bg-primary text-primary-foreground px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                          {labels.collection}
+                        </span>
+                      )}
+                    </div>
                     {work.items && work.items.length > 0 && (
                       <ul className="ml-4 list-disc space-y-1 text-sm text-foreground">
                         {work.items.map((item, idx) => {
                           const itemId = work.itemIds?.[idx];
                           const hasAudio = itemId ? audioIds.has(itemId) : false;
-                          const src = itemId ? audioMap.get(itemId) : undefined;
+                          const audioSrc = itemId ? audioMap.get(itemId) : undefined;
+                          const hasVideo = itemId ? videoIds.has(itemId) : false;
+                          const videoSrc = itemId ? videoMap.get(itemId) : undefined;
                           return (
                             <li key={item} className="flex items-center gap-2">
-                              {hasAudio && src && (
+                              {hasAudio && audioSrc && (
                                 <button
                                   type="button"
                                   onClick={() =>
                                     setPlayer({
                                       title: item,
-                                      src,
+                                      src: audioSrc,
                                     })
                                   }
                                   className="inline-flex items-center justify-center rounded-full border border-accent/70 bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition px-2 py-1"
@@ -370,6 +402,17 @@ export default function RepertoireSection() {
                                 >
                                   <Play className="h-4 w-4" />
                                 </button>
+                              )}
+                              {hasVideo && videoSrc && (
+                                <a
+                                  href={videoSrc}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center justify-center rounded-full border border-red-500/70 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition px-2 py-1"
+                                  title={language === 'es' ? 'Ver vídeo' : 'Watch video'}
+                                >
+                                  <Youtube className="h-4 w-4" />
+                                </a>
                               )}
                               <span>{item}</span>
                             </li>
