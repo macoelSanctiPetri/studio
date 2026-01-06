@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Search, Download } from 'lucide-react';
+import { Search, Download, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -19,6 +19,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { Music2 } from 'lucide-react';
 
 type PeriodFilter = 'unset' | 'all' | 'renaissance' | 'non-renaissance';
 type TypeFilter = 'unset' | 'all' | 'religious' | 'secular' | 'christmas';
@@ -27,6 +28,9 @@ type AuthorFilter = 'unset' | 'all' | string;
 export default function RepertoireSection() {
   const { language } = useLanguage();
   const [works, setWorks] = useState<RepertoireWork[]>([]);
+  const [audioIds, setAudioIds] = useState<Set<string>>(new Set());
+  const [audioMap, setAudioMap] = useState<Map<string, string>>(new Map());
+  const [player, setPlayer] = useState<{ title: string; src: string } | null>(null);
   const [period, setPeriod] = useState<PeriodFilter>('unset');
   const [type, setType] = useState<TypeFilter>('unset');
   const [author, setAuthor] = useState<AuthorFilter>('unset');
@@ -52,6 +56,26 @@ export default function RepertoireSection() {
       });
       setAuthors(Array.from(set).sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' })));
     });
+
+    // cargar IDs con audio disponible
+    fetch('/api/audios', { cache: 'no-store' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((payload) => {
+        if (payload?.rows) {
+          const ids = new Set<string>();
+          const map = new Map<string, string>();
+          payload.rows.forEach((r: { slug?: string; src?: string; parent_number?: string }) => {
+            const slug = r.slug ? String(r.slug) : null;
+            if (slug) {
+              ids.add(slug);
+              if (r.src) map.set(slug, r.src);
+            }
+          });
+          setAudioIds(ids);
+          setAudioMap(map);
+        }
+      })
+      .catch((err) => console.warn('No se pudieron cargar audios para marcar repertorio', err));
   }, []);
 
   const normalize = (s: string) =>
@@ -98,11 +122,12 @@ export default function RepertoireSection() {
   };
 
   return (
-    <section id="repertoire" className="bg-background py-24 sm:py-32">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        <div id="repertoire-religious" className="h-0 scroll-mt-32" />
-        <div id="repertoire-secular" className="h-0 scroll-mt-32" />
-        <div id="repertoire-christmas" className="h-0 scroll-mt-32" />
+    <>
+      <section id="repertoire" className="bg-background py-24 sm:py-32">
+        <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+          <div id="repertoire-religious" className="h-0 scroll-mt-32" />
+          <div id="repertoire-secular" className="h-0 scroll-mt-32" />
+          <div id="repertoire-christmas" className="h-0 scroll-mt-32" />
         <div className="w-10 h-0.5 bg-secondary mb-4"></div>
         <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           {labels.heading}
@@ -298,24 +323,64 @@ export default function RepertoireSection() {
                 >
                   <div className="flex flex-col gap-1">
                     <div className="font-headline text-foreground text-base sm:text-lg leading-tight flex items-center gap-2 flex-wrap">
-                      {work.title}
-                      {work.items && work.items.length > 0 && (
-                        <span className="rounded-full bg-primary text-primary-foreground px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                          {labels.collection}
-                        </span>
+                      {audioIds.has(work.id) && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPlayer({
+                              title: work.title,
+                              src: audioMap.get(work.id) || '',
+                            })
+                          }
+                          className="inline-flex items-center justify-center rounded-full border border-accent/70 bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition px-2 py-1"
+                          title={language === 'es' ? 'Reproducir audio' : 'Play audio'}
+                        >
+                          <Play className="h-4 w-4" />
+                        </button>
                       )}
-                    </div>
+                      {work.title}
+                      {audioIds.has(work.id) && (
+                        <Music2 className="h-4 w-4 text-accent" aria-label="Audio disponible" />
+                      )}
+                    {work.items && work.items.length > 0 && (
+                      <span className="rounded-full bg-primary text-primary-foreground px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                        {labels.collection}
+                      </span>
+                    )}
+                  </div>
                     {work.items && work.items.length > 0 && (
                       <ul className="ml-4 list-disc space-y-1 text-sm text-foreground">
-                        {work.items.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
+                        {work.items.map((item, idx) => {
+                          const itemId = work.itemIds?.[idx];
+                          const hasAudio = itemId ? audioIds.has(itemId) : false;
+                          const src = itemId ? audioMap.get(itemId) : undefined;
+                          return (
+                            <li key={item} className="flex items-center gap-2">
+                              {hasAudio && src && (
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setPlayer({
+                                      title: item,
+                                      src,
+                                    })
+                                  }
+                                  className="inline-flex items-center justify-center rounded-full border border-accent/70 bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition px-2 py-1"
+                                  title={language === 'es' ? 'Reproducir audio' : 'Play audio'}
+                                >
+                                  <Play className="h-4 w-4" />
+                                </button>
+                              )}
+                              <span>{item}</span>
+                            </li>
+                          );
+                        })}
                       </ul>
                     )}
                   </div>
                   {(author === 'unset' || author === 'all') && (
                     <div className="text-secondary-foreground text-sm sm:text-base">
-                      {work.composer || '—'}
+                      {work.composer || '-'}
                     </div>
                   )}
                   <div className="text-secondary-foreground text-sm sm:text-base">
@@ -375,7 +440,43 @@ export default function RepertoireSection() {
           </DialogContent>
         </Dialog>
       </div>
-    </section>
+      </section>
+
+    {/* Mini reproductor flotante */}
+    {player && player.src && (
+      <div
+        className="fixed bottom-6 left-6 sm:left-8 z-50 w-80 max-w-[92vw] rounded-2xl border border-accent/40 bg-card shadow-2xl backdrop-blur-md p-4 space-y-3"
+        style={{ boxShadow: "0 10px 30px rgba(0,0,0,0.35)" }}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div className="space-y-1">
+            <p className="text-xs uppercase tracking-wide text-secondary-foreground font-semibold">
+              {language === 'es' ? 'Reproduciendo' : 'Now playing'}
+            </p>
+            <p className="text-sm font-semibold text-foreground leading-tight line-clamp-2">
+              {player.title}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setPlayer(null)}
+            className="text-secondary-foreground hover:text-accent font-semibold text-sm"
+          >
+            ✕
+          </button>
+        </div>
+        <audio
+          controls
+          autoPlay
+          className="w-full"
+          style={{ accentColor: "#c8a45a" }}
+        >
+          <source src={player.src} type="audio/mpeg" />
+          {language === 'es' ? 'Tu navegador no soporta audio.' : 'Your browser does not support audio.'}
+        </audio>
+      </div>
+    )}
+    </>
   );
 }
 

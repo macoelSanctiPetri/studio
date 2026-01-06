@@ -9,6 +9,7 @@ export type RepertoireWork = {
   period: Period;
   type: WorkType;
   items?: string[];
+  itemIds?: string[]; // ids (number) de piezas hijas, alineados con items
 };
 
 export type CsvRow = {
@@ -144,12 +145,14 @@ export function normalizeRows(rows: CsvRow[]): RepertoireWork[] {
         period,
         type,
         items: [],
+        itemIds: [],
       };
       parents.set(row.number, work);
       works.push(work);
     } else if (row.parent_number && parents.has(row.parent_number)) {
       const parent = parents.get(row.parent_number)!;
       parent.items?.push(composeItemText(row));
+      parent.itemIds?.push(id);
     } else {
       works.push({
         id,

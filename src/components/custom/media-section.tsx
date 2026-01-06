@@ -1,19 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/language-context";
 import { Download, Music2, Play, Camera } from "lucide-react";
 import PhotosCarousel from "./photos-carousel";
 import { mediaVideos } from "@/data/media";
-import { CsvRow } from "@/lib/repertoire-shared";
-
-type AudioDefinition = {
-  slug: string;
-  match: string;
-  src: string;
-  period?: string;
-  group?: string;
-};
 
 type AudioTrack = {
   slug: string;
@@ -25,28 +16,6 @@ type AudioTrack = {
   src: string;
 };
 
-const audioDefinitions: AudioDefinition[] = [
-  { slug: "verbo-caro", match: "verbum caro", src: "/audio/Verbum_Caro.mp3" },
-  { slug: "jubilate-deo", match: "jubilate", src: "/audio/Jubilate_deo.mp3" },
-  { slug: "coventry-carol", match: "coventry carol", src: "/audio/Coventry_Carol.mp3" },
-  { slug: "tambalagumba", match: "tambalagumba", src: "/audio/Tambalagumba.mp3" },
-  { slug: "nino-de-mil-sales", match: "nino de mil sales", src: "/audio/nino_de_mil_sales.mp3" },
-  {
-    slug: "nino-dios",
-    match: "nino dios d amor herido",
-    src: "/audio/Nino_dios_de_amor_herido.mp3",
-    period: "Polifonía del Renacimiento",
-    group: "Navideñas",
-  },
-];
-
-const normalize = (value?: string) =>
-  (value || "")
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "")
-    .replace(/[^a-z0-9\s]/gi, "")
-    .toLowerCase();
-
 export default function MediaSection() {
   const { language } = useLanguage();
   const isEs = language === "es";
@@ -57,41 +26,13 @@ export default function MediaSection() {
     const load = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/repertory", { cache: "no-store" });
-        if (!res.ok) throw new Error("repertory fetch failed");
+        const res = await fetch("/api/audios", { cache: "no-store" });
+        if (!res.ok) throw new Error("audio fetch failed");
         const payload = await res.json();
-        const rows: CsvRow[] = payload?.rows || [];
-        const mapped: AudioTrack[] = audioDefinitions.map((def) => {
-          const matchNorm = normalize(def.match);
-          const candidates = rows.filter((r) =>
-            [r.title, r.raw_text].some((v) => normalize(v).includes(matchNorm))
-          );
-          const pickScore = (r: CsvRow) =>
-            (normalize(r.group_name).includes("nav") ? 2 : 0) +
-            (r.is_collection === "0" ? 1 : 0);
-          const row = candidates.sort((a, b) => pickScore(b) - pickScore(a))[0];
-          const composer = row?.composer?.trim() || row?.composer_inherited?.trim();
-          const forcedTitle =
-            def.slug === "nino-dios" ? "Niño Dios D´Amor Herido" : undefined;
-          const forcedComposer = def.slug === "nino-dios" ? "F. Guerrero" : undefined;
-          const collection =
-            row?.parent_number &&
-            rows.find(
-              (r) => r.number === row.parent_number && r.is_collection === "1"
-            )?.title;
-          return {
-            slug: def.slug,
-            title: forcedTitle || row?.title?.trim() || row?.raw_text?.trim() || def.match,
-            composer: forcedComposer || composer,
-            period: def.period || row?.period?.trim(),
-            group: def.group || row?.group_name?.trim(),
-            collection: collection?.trim(),
-            src: def.src,
-          };
-        });
-        setTracks(mapped);
+        const rows: AudioTrack[] = payload?.rows || [];
+        setTracks(rows);
       } catch (err) {
-        console.warn("No se pudo leer repertorio.csv para audios", err);
+        console.warn("No se pudieron cargar los audios", err);
         setTracks([]);
       } finally {
         setLoading(false);
@@ -123,20 +64,20 @@ export default function MediaSection() {
           </p>
 
           {/* Fotos */}
-        <div className="mt-10" id="photos">
-          <div className="flex items-center gap-2 text-base font-semibold uppercase tracking-wide text-white mb-2">
-            <Camera className="h-4 w-4 text-accent" />
-            <span>{isEs ? "Fotos" : "Photos"}</span>
+          <div className="mt-10" id="photos">
+            <div className="flex items-center gap-2 text-base font-semibold uppercase tracking-wide text-white mb-2">
+              <Camera className="h-4 w-4 text-accent" />
+              <span>{isEs ? "Fotos" : "Photos"}</span>
+            </div>
+            <PhotosCarousel embedded />
           </div>
-          <PhotosCarousel embedded />
-        </div>
 
-        {/* Vídeos */}
-        <div className="mt-12" id="media-videos">
-          <div className="flex items-center gap-2 text-base font-semibold uppercase tracking-wide text-white mb-3">
-            <Play className="h-4 w-4 text-accent" />
-            <span>{isEs ? "Vídeos" : "Videos"}</span>
-          </div>
+          {/* Vídeos */}
+          <div className="mt-12" id="media-videos">
+            <div className="flex items-center gap-2 text-base font-semibold uppercase tracking-wide text-white mb-3">
+              <Play className="h-4 w-4 text-accent" />
+              <span>{isEs ? "Vídeos" : "Videos"}</span>
+            </div>
             <div className="grid gap-6 lg:grid-cols-2">
               {mediaVideos.map((video) => (
                 <article
@@ -174,15 +115,17 @@ export default function MediaSection() {
             </div>
           </div>
 
-        {/* Audios */}
-        <div className="mt-12" id="media-audios">
-          <div className="flex items-center gap-2 text-base font-semibold uppercase tracking-wide text-white mb-3">
-            <Music2 className="h-4 w-4 text-accent" />
-            <span>{headerLabel}</span>
-          </div>
+          {/* Audios */}
+          <div className="mt-12" id="media-audios">
+            <div className="flex items-center gap-2 text-base font-semibold uppercase tracking-wide text-white mb-3">
+              <Music2 className="h-4 w-4 text-accent" />
+              <span>{headerLabel}</span>
+            </div>
             <div className="grid gap-6 lg:grid-cols-2">
               {loading && (
-                <p className="text-secondary-foreground text-sm">{isEs ? "Cargando audios..." : "Loading audio..."}</p>
+                <p className="text-secondary-foreground text-sm">
+                  {isEs ? "Cargando audios..." : "Loading audio..."}
+                </p>
               )}
               {!loading && tracks.length === 0 && (
                 <p className="text-secondary-foreground text-sm">{emptyLabel}</p>
@@ -198,16 +141,14 @@ export default function MediaSection() {
                     }}
                   >
                     <div className="flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-secondary-foreground">
-                      <span>
-                        {[audio.group, audio.period].filter(Boolean).join(" · ")}
-                      </span>
+                      <span>{[audio.group, audio.period].filter(Boolean).join(" · ")}</span>
                     </div>
                     <h3 className="text-lg font-headline font-semibold text-foreground flex items-center gap-2">
                       <Music2 className="h-4 w-4 text-accent" />
                       {audio.title}
                     </h3>
                     <p className="text-sm text-secondary-foreground">
-                      {audio.composer || (isEs ? "Datos incompletos en el CSV" : "Incomplete data in CSV")}
+                      {audio.composer || (isEs ? "Datos incompletos" : "Incomplete data")}
                     </p>
                     {audio.collection && (
                       <p className="text-xs text-secondary-foreground/90">
@@ -219,9 +160,7 @@ export default function MediaSection() {
                       controls
                       className="w-full audio-gold"
                       preload="none"
-                      style={{
-                        accentColor: "#c8a45a",
-                      }}
+                      style={{ accentColor: "#c8a45a" }}
                     >
                       <source src={audio.src} type="audio/mpeg" />
                       {isEs ? "Tu navegador no soporta audio." : "Your browser does not support audio."}
