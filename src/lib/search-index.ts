@@ -36,6 +36,13 @@ export function buildSearchEntries(language: Language): SearchEntry[] {
       kind: 'section',
     },
     {
+      id: 'programs',
+      title: t.header.navLinks.find((l) => l.href === '#programs')?.name ?? 'Programas',
+      summary: t?.repertoireSection?.description ?? '',
+      href: '#programs',
+      kind: 'section',
+    },
+    {
       id: 'repertoire',
       title: t.header.navLinks.find((l) => l.href === '#repertoire')?.name ?? 'Repertorio',
       summary: t.repertoireSection?.description ?? '',

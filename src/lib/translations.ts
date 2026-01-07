@@ -4,6 +4,7 @@ export const translations = {
       navLinks: [
         { name: 'About', href: '#about' },
         { name: 'Events', href: '#events' },
+        { name: 'Programs', href: '#programs' },
         { name: 'Repertoire', href: '#repertoire' },
         { name: 'Multimedia', href: '#media' },
         { name: 'Contact', href: '#contact' },
@@ -167,6 +168,7 @@ export const translations = {
       navLinks: [
         { name: 'Nosotros', href: '#about' },
         { name: 'Eventos', href: '#events' },
+        { name: 'Programas', href: '#programs' },
         { name: 'Repertorio', href: '#repertoire' },
         { name: 'Multimedia', href: '#media' },
         { name: 'Contacto', href: '#contact' },

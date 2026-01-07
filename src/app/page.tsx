@@ -6,6 +6,7 @@ import AnnouncementBar from '@/components/custom/announcement-bar';
 import AboutSection from '@/components/custom/about-section';
 import EventsSection from '@/components/custom/events-section';
 import PastEventsSection from '@/components/custom/past-events-section';
+import ProgramsSection from '@/components/custom/programs-section';
 import RepertoireSection from '@/components/custom/repertoire-section';
 import MediaSection from '@/components/custom/media-section';
 import SocialPanel from '@/components/custom/social-panel';
@@ -33,6 +34,7 @@ export default function Home() {
         <AboutSection />
         <EventsSection />
         <PastEventsSection />
+        <ProgramsSection />
         <RepertoireSection />
         <MediaSection />
         <SocialPanel />
