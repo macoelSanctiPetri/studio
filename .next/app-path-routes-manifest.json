@@ -4,6 +4,7 @@
   "/api/photos/route": "/api/photos",
   "/favicon.ico/route": "/favicon.ico",
   "/api/actuaciones/route": "/api/actuaciones",
+  "/api/programas/route": "/api/programas",
   "/api/componentes/route": "/api/componentes",
   "/api/repertory/route": "/api/repertory",
   "/api/videos/route": "/api/videos",
