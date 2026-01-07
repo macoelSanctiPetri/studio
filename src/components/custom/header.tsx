@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import * as React from 'react';
-import { Facebook, Instagram, Menu, Search, X, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Menu, Search, X, Youtube, KeyRound, LogOut } from 'lucide-react';
 import Logo from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -33,6 +33,11 @@ export default function Header() {
   const [eventsOpen, setEventsOpen] = React.useState(false);
   const [mediaOpen, setMediaOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
+  const [authOpen, setAuthOpen] = React.useState(false);
+  const [authSecret, setAuthSecret] = React.useState('');
+  const [authError, setAuthError] = React.useState('');
+  const [authLoading, setAuthLoading] = React.useState(false);
+  const [isAuthed, setIsAuthed] = React.useState(false);
   const [query, setQuery] = React.useState('');
   const { language, setLanguage } = useLanguage();
   const t = translations[language].header;
@@ -78,6 +83,19 @@ export default function Header() {
     });
   }, [language]);
 
+  React.useEffect(() => {
+    const checkAuth = () => {
+      fetch('/api/auth/status', { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : { ok: false }))
+        .then((d) => setIsAuthed(Boolean(d.ok)))
+        .catch(() => setIsAuthed(false));
+    };
+    checkAuth();
+    const listener = () => checkAuth();
+    window.addEventListener('nm-auth-change', listener);
+    return () => window.removeEventListener('nm-auth-change', listener);
+  }, []);
+
   const filteredResults = React.useMemo(() => matchEntries(searchEntries, query), [query, searchEntries]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -86,6 +104,42 @@ export default function Header() {
       window.location.hash = filteredResults[0].href;
       setSearchOpen(false);
       setQuery('');
+    }
+  };
+
+  const handleAuthSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthLoading(true);
+    setAuthError('');
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret: authSecret }),
+    });
+    setAuthLoading(false);
+    if (res.ok) {
+      setIsAuthed(true);
+      setAuthSecret('');
+      setAuthOpen(false);
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new Event('nm-auth-change'));
+      }
+    } else {
+      setAuthError('Clave incorrecta');
+    }
+  };
+
+  const handleLogout = async () => {
+    if (!window.confirm('¿Seguro que quieres salir?')) return;
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (err) {
+      console.warn('No se pudo cerrar sesión en el servidor', err);
+    } finally {
+      setIsAuthed(false);
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new Event('nm-auth-change'));
+      }
     }
   };
   const socialLinks = [
@@ -105,7 +159,6 @@ export default function Header() {
           >
             <Logo className="h-[5rem] w-auto transition-transform duration-200 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(196,168,80,0.45)]" />
           </a>
-
           <div className="flex flex-1 items-center justify-end space-x-6">
             <nav className="hidden md:flex md:items-center md:gap-6 text-base font-medium">
               {navLinks.map((link) =>
@@ -314,6 +367,61 @@ export default function Header() {
                   <link.icon className="h-[18px] w-[18px]" aria-hidden="true" />
                 </a>
               ))}
+            </div>
+            <div className="flex items-center space-x-2 pl-2">
+              {isAuthed ? (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Salir"
+                  className="group hover:bg-transparent focus-visible:ring-0 active:bg-transparent"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-5 w-5 text-white transition-colors group-hover:text-[hsl(46,45%,54%)]" />
+                </Button>
+              ) : (
+                <Dialog open={authOpen} onOpenChange={setAuthOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      aria-label="Entrar"
+                      className="group hover:bg-transparent focus-visible:ring-0 active:bg-transparent"
+                      onClick={() => setAuthOpen(true)}
+                    >
+                      <KeyRound className="h-5 w-5 text-white transition-colors group-hover:text-[hsl(46,45%,54%)]" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px] bg-background">
+                    <DialogHeader>
+                      <DialogTitle className="font-headline">Acceso privado</DialogTitle>
+                      <DialogDescription>
+                        Introduce la clave para activar la zona privada.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleAuthSubmit} className="grid gap-4 py-4">
+                      <Input
+                        type="password"
+                        value={authSecret}
+                        onChange={(e) => setAuthSecret(e.target.value)}
+                        placeholder="Introduce la clave"
+                        className="col-span-3"
+                        autoFocus
+                        required
+                      />
+                      {authError && <p className="text-sm text-red-500">{authError}</p>}
+                      <div className="flex justify-end gap-2">
+                        <Button type="button" variant="ghost" onClick={() => setAuthOpen(false)}>
+                          Cancelar
+                        </Button>
+                        <Button type="submit" disabled={authLoading}>
+                          {authLoading ? 'Validando...' : 'Entrar'}
+                        </Button>
+                      </div>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              )}
             </div>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>

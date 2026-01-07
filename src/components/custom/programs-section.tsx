@@ -3,10 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/context/language-context";
 import { loadPrograms, Program, ProgramType } from "@/lib/programs-loader";
+import { loadRepertoire } from "@/lib/repertoire-loader";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
-import { Search, Music2, ListFilter, Clock } from "lucide-react";
+import { Search, Music2, ListFilter, Clock, Plus, Pencil, Trash2, GripVertical, MessageSquare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 
 type FilterType = "unset" | ProgramType | "all";
 
@@ -32,9 +36,62 @@ export default function ProgramsSection() {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [type, setType] = useState<FilterType>("unset");
   const [query, setQuery] = useState("");
+  const [isAuthed, setIsAuthed] = useState(false);
+  const [repertoireMap, setRepertoireMap] = useState<
+    Record<string, { title: string; composer?: string }>
+  >({});
+  const [repertoireList, setRepertoireList] = useState<
+    Array<{ id: string; title: string; composer?: string }>
+  >([]);
+  const [addOpen, setAddOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
+  const [editSaving, setEditSaving] = useState(false);
+  const [editId, setEditId] = useState<number | null>(null);
+  const [editType, setEditType] = useState<ProgramType>("religioso");
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editDuration, setEditDuration] = useState<string>("");
+  const [editPieces, setEditPieces] = useState<
+    Array<{ number: string; part: number; notes?: string; title?: string; composer?: string }>
+  >([]);
+  const [activePieceIndex, setActivePieceIndex] = useState<number | null>(null);
+  const [noteOpenIndex, setNoteOpenIndex] = useState<number | null>(null);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
   useEffect(() => {
     loadPrograms().then(setPrograms);
+    loadRepertoire().then((works) => {
+      const map: Record<string, { title: string; composer?: string }> = {};
+      const list: Array<{ id: string; title: string; composer?: string }> = [];
+      works.forEach((w) => {
+        map[w.id] = { title: w.title, composer: w.composer };
+        list.push({ id: w.id, title: w.title, composer: w.composer });
+        if (w.items && w.itemIds) {
+          w.items.forEach((item, idx) => {
+            const id = w.itemIds?.[idx];
+            if (id) {
+              map[id] = { title: item, composer: w.composer };
+              list.push({ id, title: item, composer: w.composer });
+            }
+          });
+        }
+      });
+      setRepertoireMap(map);
+      setRepertoireList(list);
+    });
+
+    const checkAuth = () => {
+      fetch("/api/auth/status", { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : { ok: false }))
+        .then((d) => setIsAuthed(Boolean(d.ok)))
+        .catch(() => setIsAuthed(false));
+    };
+    checkAuth();
+    const listener = () => checkAuth();
+    window.addEventListener("nm-auth-change", listener);
+    return () => window.removeEventListener("nm-auth-change", listener);
   }, []);
 
   const normalize = (s: string) =>
@@ -42,6 +99,13 @@ export default function ProgramsSection() {
       .normalize("NFD")
       .replace(/\p{Diacritic}/gu, "")
       .toLowerCase();
+
+  const normalizeProgramType = (raw?: string): ProgramType => {
+    const t = (raw || "").toLowerCase();
+    if (t.includes("nav")) return "navideno";
+    if (t.includes("prof")) return "profano";
+    return "religioso";
+  };
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim());
@@ -97,6 +161,69 @@ export default function ProgramsSection() {
       .filter((piece) => piece.part === part)
       .sort((a, b) => a.order - b.order);
 
+  const refreshPrograms = async () => {
+    const list = await loadPrograms();
+    setPrograms(list);
+  };
+
+  const openAdd = () => {
+    setEditId(null);
+    setEditLoading(false);
+    setEditType("religioso");
+    setEditName("");
+    setEditDescription("");
+    setEditDuration("");
+    setEditPieces([]);
+    setAddOpen(true);
+  };
+
+  const openEdit = async (program: Program) => {
+    setEditOpen(true);
+    setEditLoading(true);
+    try {
+      const res = await fetch(`/api/programas/${program.id}`, { cache: "no-store" });
+      if (!res.ok) throw new Error("No se pudo cargar el programa");
+      const payload = await res.json();
+      const p = payload?.program;
+      const pieces = Array.isArray(payload?.pieces) ? payload.pieces : [];
+      setEditId(program.id);
+      setEditType(normalizeProgramType(p?.tipo ?? program.type));
+      setEditName(p?.nombre ?? program.name);
+      setEditDescription(p?.descripcion ?? program.description ?? "");
+      setEditDuration(p?.duracion_total_min ? String(p.duracion_total_min) : "");
+      setEditPieces(
+        pieces.map((piece: any) => ({
+          number: piece.pieza_number ?? piece.number ?? "",
+          part: piece.parte ?? piece.part ?? 1,
+          notes: piece.notas ?? piece.notes ?? "",
+          title: piece.pieza_titulo ?? piece.title ?? "",
+          composer: piece.pieza_compositor ?? piece.composer ?? "",
+        })),
+      );
+    } catch (err) {
+      console.error(err);
+      alert(language === "es" ? "No se pudo cargar el programa." : "Unable to load program.");
+      setEditOpen(false);
+    } finally {
+      setEditLoading(false);
+    }
+  };
+
+  const deleteProgram = async (program: Program) => {
+    const msg =
+      language === "es"
+        ? "¿Seguro que quieres eliminar este programa? Se borrarán también sus piezas."
+        : "Are you sure you want to delete this program? Its pieces will also be deleted.";
+    if (!window.confirm(msg)) return;
+    const res = await fetch(`/api/programas/${program.id}`, { method: "DELETE" });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      alert(err?.error || "No se pudo eliminar el programa.");
+      return;
+    }
+    await refreshPrograms();
+  };
+
   const toRoman = (n: number) => {
     const map: Array<[number, string]> = [
       [1000, "M"],
@@ -139,6 +266,7 @@ export default function ProgramsSection() {
   };
 
   return (
+    <>
     <section id="programs" className="bg-muted/30 py-24 sm:py-32">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
         <div className="w-10 h-0.5 bg-secondary mb-4" />
@@ -150,7 +278,7 @@ export default function ProgramsSection() {
         </div>
         <p className="mt-4 text-lg text-secondary-foreground font-body max-w-3xl">{lbl.intro}</p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-[220px_1fr]">
+        <div className="mt-8 grid gap-4 sm:grid-cols-[220px_1fr_auto]">
           <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
             {lbl.type}
             <Select value={type} onValueChange={(v) => setType(v as FilterType)}>
@@ -179,6 +307,17 @@ export default function ProgramsSection() {
               className="pl-9 h-10 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-secondary-foreground focus:border-accent focus:ring-2 focus:ring-accent"
             />
           </div>
+          {isAuthed && (
+            <div className="flex items-end justify-end">
+              <Button
+                onClick={openAdd}
+                className="h-10 rounded-xl border border-border bg-accent text-sm font-semibold text-accent-foreground hover:bg-accent/90 inline-flex items-center gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                {language === "es" ? "Añadir" : "Add"}
+              </Button>
+            </div>
+          )}
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-secondary-foreground sm:text-sm">
@@ -217,11 +356,33 @@ export default function ProgramsSection() {
                           </span>
                         ) : null}
                       </div>
-                      <h3 className="text-2xl font-headline font-bold text-foreground leading-tight">
-                        {language === "es"
-                          ? `Programa ${toRoman(p.displayNum ?? filtered.indexOf(p) + 1)}: ${p.name}`
-                          : `Program ${toRoman(p.displayNum ?? filtered.indexOf(p) + 1)}: ${p.name}`}
-                      </h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {isAuthed && (
+                          <div className="flex items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => openEdit(p)}
+                              className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card text-foreground hover:bg-accent hover:text-accent-foreground transition px-2 py-1"
+                              title={language === "es" ? "Editar" : "Edit"}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => deleteProgram(p)}
+                              className="inline-flex items-center justify-center rounded-full border border-red-500/60 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition px-2 py-1"
+                              title={language === "es" ? "Eliminar" : "Delete"}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        )}
+                        <h3 className="text-2xl font-headline font-bold text-foreground leading-tight">
+                          {language === "es"
+                            ? `Programa ${toRoman(p.displayNum ?? filtered.indexOf(p) + 1)}: ${p.name}`
+                            : `Program ${toRoman(p.displayNum ?? filtered.indexOf(p) + 1)}: ${p.name}`}
+                        </h3>
+                      </div>
                       {p.description && (
                         <p className="text-secondary-foreground text-sm sm:text-base max-w-3xl">
                           {p.description}
@@ -306,5 +467,346 @@ export default function ProgramsSection() {
         </div>
       </div>
     </section>
+
+    <Dialog
+      open={addOpen || editOpen}
+      onOpenChange={(open) => {
+        if (!open) {
+          setAddOpen(false);
+          setEditOpen(false);
+        }
+      }}
+    >
+      <DialogContent className="w-[80vw] max-w-none bg-background max-h-[85vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="font-headline">
+            {language === "es"
+              ? editId
+                ? "Editar programa"
+                : "Añadir programa"
+              : editId
+                ? "Edit program"
+                : "Add program"}
+          </DialogTitle>
+        </DialogHeader>
+
+        {editLoading ? (
+          <p className="text-sm text-secondary-foreground">
+            {language === "es" ? "Cargando..." : "Loading..."}
+          </p>
+        ) : (
+          <div className="grid gap-4">
+            <div className="grid gap-4 md:grid-cols-3">
+              <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
+                {language === "es" ? "Tipo de programa" : "Program type"}
+                <Select value={editType} onValueChange={(v) => setEditType(v as ProgramType)}>
+                  <SelectTrigger className="h-10 rounded-xl border border-border bg-card px-3 text-sm font-medium text-foreground shadow-sm">
+                    <SelectValue placeholder={typeLabels[language === "es" ? "es" : "en"].unset} />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-xl border border-border bg-card text-foreground shadow-lg">
+                    {(["navideno", "religioso", "profano"] as ProgramType[]).map((val) => (
+                      <SelectItem key={val} value={val}>
+                        {typeLabels[language === "es" ? "es" : "en"][val as keyof typeof typeLabels["es"]]}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
+                {language === "es" ? "Nombre" : "Name"}
+                <Input value={editName} onChange={(e) => setEditName(e.target.value)} />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
+                {language === "es" ? "Duración (min)" : "Duration (min)"}
+                <Input
+                  value={editDuration}
+                  onChange={(e) => setEditDuration(e.target.value)}
+                  inputMode="numeric"
+                />
+              </label>
+            </div>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-foreground/80">
+              {language === "es" ? "Descripción" : "Description"}
+              <Input
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
+              />
+            </label>
+
+            <div className="space-y-3 rounded-2xl border border-border/60 bg-card px-4 py-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wide text-accent-foreground bg-accent/80 rounded-full px-3 py-1 inline-flex">
+                  {language === "es" ? "Piezas del programa" : "Program pieces"}
+                </span>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                {([1, 2] as number[]).map((part) => {
+                  const list = editPieces
+                    .map((p, idx) => ({ ...p, _idx: idx }))
+                    .filter((p) => p.part === part);
+                  const header = part === 1 ? lbl.part1 : lbl.part2;
+                  return (
+                    <div key={part} className="space-y-3 rounded-2xl border border-border/60 bg-background/60 p-4">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                          <span className="inline-block h-2 w-2 rounded-full bg-secondary" />
+                          <span>{header}</span>
+                          <span className="text-xs font-semibold text-secondary-foreground">
+                            ({list.length})
+                          </span>
+                        </h4>
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          onClick={() =>
+                            setEditPieces((prev) => [
+                              ...prev,
+                              { number: "", part, notes: "" },
+                            ])
+                          }
+                        >
+                          <Plus className="h-4 w-4 mr-2" />
+                          {language === "es" ? "Añadir" : "Add"}
+                        </Button>
+                      </div>
+
+                      {list.length === 0 ? (
+                        <p className="text-sm text-secondary-foreground">
+                          {language === "es" ? "Sin piezas" : "No pieces"}
+                        </p>
+                      ) : (
+                        <div className="space-y-2">
+                          {list.map((piece) => {
+                            const globalIndex = piece._idx;
+                            const ref = piece.number ? repertoireMap[piece.number] : undefined;
+                            const isNoteOpen = noteOpenIndex === globalIndex;
+                            return (
+                              <div key={`${piece.number}-${part}-${globalIndex}`} className="space-y-2">
+                                <div
+                                  className={`grid grid-cols-[auto,1fr,auto] gap-2 items-center rounded-lg px-2 py-2 ${
+                                    dragOverIndex === globalIndex ? "ring-2 ring-accent/70 bg-accent/10" : ""
+                                  }`}
+                                  onDragOver={(e) => {
+                                    e.preventDefault();
+                                    setDragOverIndex(globalIndex);
+                                  }}
+                                  onDrop={() => {
+                                    if (dragIndex === null || dragIndex === globalIndex) return;
+                                    setEditPieces((prev) => {
+                                      const next = [...prev];
+                                      const [moved] = next.splice(dragIndex, 1);
+                                      moved.part = part;
+                                      next.splice(globalIndex, 0, moved);
+                                      return next;
+                                    });
+                                    setDragIndex(null);
+                                    setDragOverIndex(null);
+                                  }}
+                                  onDragLeave={() => {
+                                    if (dragOverIndex === globalIndex) setDragOverIndex(null);
+                                  }}
+                                >
+                                  <button
+                                    type="button"
+                                    className="text-secondary-foreground hover:text-foreground cursor-move"
+                                    title={language === "es" ? "Reordenar" : "Reorder"}
+                                    draggable
+                                    onDragStart={(e) => {
+                                      e.dataTransfer.setData("text/plain", String(globalIndex));
+                                      setDragIndex(globalIndex);
+                                    }}
+                                    onDragEnd={() => {
+                                      setDragIndex(null);
+                                      setDragOverIndex(null);
+                                    }}
+                                  >
+                                    <GripVertical className="h-4 w-4" />
+                                  </button>
+                                  <div className="space-y-1 relative">
+                                    <Input
+                                      value={piece.title ?? ""}
+                                      onChange={(e) => {
+                                        const title = e.target.value;
+                                        const exact = repertoireList.find(
+                                          (r) => normalize(r.title) === normalize(title)
+                                        );
+                                        setEditPieces((prev) =>
+                                          prev.map((p, i) =>
+                                            i === globalIndex
+                                              ? {
+                                                  ...p,
+                                                  title,
+                                                  number: exact?.id ?? p.number,
+                                                  composer: exact?.composer ?? p.composer,
+                                                }
+                                              : p,
+                                          ),
+                                        );
+                                        setActivePieceIndex(globalIndex);
+                                      }}
+                                      onFocus={() => setActivePieceIndex(globalIndex)}
+                                      onBlur={() => setTimeout(() => setActivePieceIndex(null), 150)}
+                                      placeholder={language === "es" ? "Nombre de la pieza" : "Piece name"}
+                                    />
+                                    {activePieceIndex === globalIndex && (
+                                      <div className="absolute z-50 mt-1 w-full max-h-48 overflow-auto rounded-xl border border-border bg-card shadow-lg">
+                                        {repertoireList
+                                          .filter((r) =>
+                                            normalize(r.title).includes(normalize(piece.title || ""))
+                                          )
+                                          .slice(0, 50)
+                                          .map((r) => (
+                                            <button
+                                              key={r.id}
+                                              type="button"
+                                              onClick={() => {
+                                                setEditPieces((prev) =>
+                                                  prev.map((p, i) =>
+                                                    i === globalIndex
+                                                      ? {
+                                                          ...p,
+                                                          title: r.title,
+                                                          number: r.id,
+                                                          composer: r.composer,
+                                                        }
+                                                      : p,
+                                                  ),
+                                                );
+                                                setActivePieceIndex(null);
+                                              }}
+                                              className="block w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                                            >
+                                              {r.title}
+                                              {r.composer ? ` · ${r.composer}` : ""}
+                                            </button>
+                                          ))}
+                                      </div>
+                                    )}
+                                    {ref?.title ? (
+                                      <p className="text-[11px] text-secondary-foreground">
+                                        {ref.title}
+                                        {ref.composer ? ` · ${ref.composer}` : ""}
+                                      </p>
+                                    ) : null}
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Button
+                                      type="button"
+                                      size="icon"
+                                      variant={isNoteOpen ? "secondary" : "ghost"}
+                                      title={language === "es" ? "Notas" : "Notes"}
+                                      onClick={() =>
+                                        setNoteOpenIndex(isNoteOpen ? null : globalIndex)
+                                      }
+                                    >
+                                      <MessageSquare className="h-4 w-4" />
+                                    </Button>
+                                    <Button
+                                      type="button"
+                                      size="icon"
+                                      variant="ghost"
+                                      title={language === "es" ? "Eliminar" : "Remove"}
+                                      onClick={() =>
+                                        setEditPieces((prev) => prev.filter((_p, i) => i !== globalIndex))
+                                      }
+                                    >
+                                      ✕
+                                    </Button>
+                                  </div>
+                                </div>
+                                {isNoteOpen && (
+                                  <div className="rounded-lg border border-border/60 bg-background/60 p-2">
+                                    <Textarea
+                                      value={piece.notes ?? ""}
+                                      onChange={(e) => {
+                                        const notes = e.target.value;
+                                        setEditPieces((prev) =>
+                                          prev.map((p, i) => (i === globalIndex ? { ...p, notes } : p)),
+                                        );
+                                      }}
+                                      placeholder={language === "es" ? "Notas" : "Notes"}
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="flex justify-end gap-2">
+          <Button
+            variant="ghost"
+            onClick={() => {
+              const msg =
+                language === "es"
+                  ? "¿Seguro que quieres cancelar? No se guardarán los cambios."
+                  : "Are you sure you want to cancel? Changes will not be saved.";
+              if (!window.confirm(msg)) return;
+              setAddOpen(false);
+              setEditOpen(false);
+            }}
+          >
+            {language === "es" ? "Cancelar" : "Cancel"}
+          </Button>
+          <Button
+            type="button"
+            disabled={editSaving || editLoading}
+            onClick={async () => {
+              if (!editName.trim()) {
+                alert(language === "es" ? "Indica un nombre." : "Please provide a name.");
+                return;
+              }
+              const payload = {
+                tipo: editType,
+                nombre: editName,
+                descripcion: editDescription || null,
+                duracion_total_min: editDuration ? Number(editDuration) : null,
+                pieces: editPieces
+                  .filter((p) => p.number)
+                  .map((p) => ({
+                    number: p.number,
+                    part: p.part,
+                    notes: p.notes || null,
+                  })),
+              };
+              try {
+                setEditSaving(true);
+                const res = await fetch(
+                  editId ? `/api/programas/${editId}` : "/api/programas",
+                  {
+                    method: editId ? "PUT" : "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                  },
+                );
+                if (!res.ok) {
+                  const err = await res.json().catch(() => ({}));
+                  alert(err?.error || (language === "es" ? "No se pudo guardar." : "Save failed."));
+                  return;
+                }
+                await refreshPrograms();
+                setAddOpen(false);
+                setEditOpen(false);
+              } finally {
+                setEditSaving(false);
+              }
+            }}
+          >
+            {language === "es" ? "Guardar" : "Save"}
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 }

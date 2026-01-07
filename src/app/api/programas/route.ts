@@ -94,3 +94,55 @@ export async function GET() {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+
+export async function POST(req: Request) {
+  if (!isDbEnabled()) {
+    return NextResponse.json({ error: 'DB no habilitada' }, { status: 500 });
+  }
+
+  try {
+    const payload = await req.json();
+    const pool = await getDbPool();
+    const conn = await pool.getConnection();
+    try {
+      await conn.beginTransaction();
+      const [result] = await conn.query<any>(
+        `INSERT INTO programas (tipo, nombre, descripcion, duracion_total_min, fecha_creacion, fecha_ultima_revision)
+         VALUES (?, ?, ?, ?, CURDATE(), CURDATE())`,
+        [
+          payload.tipo,
+          payload.nombre,
+          payload.descripcion ?? null,
+          payload.duracion_total_min ?? null,
+        ],
+      );
+      const programId = result.insertId;
+      const pieces: Array<{ number: string; part: number; notes?: string | null }> =
+        Array.isArray(payload.pieces) ? payload.pieces : [];
+      const orderByPart = new Map<number, number>();
+      for (const piece of pieces) {
+        if (!piece?.number) continue;
+        const part = Number(piece.part) || 1;
+        const nextOrder = (orderByPart.get(part) ?? 0) + 1;
+        orderByPart.set(part, nextOrder);
+        await conn.query(
+          `INSERT INTO programa_piezas
+            (programa_id, pieza_number, parte, orden_en_parte, notas)
+           VALUES (?, ?, ?, ?, ?)`,
+          [programId, piece.number, part, nextOrder, piece.notes ?? null],
+        );
+      }
+      await conn.commit();
+      return NextResponse.json({ ok: true, id: programId });
+    } catch (err) {
+      await conn.rollback();
+      throw err;
+    } finally {
+      conn.release();
+    }
+  } catch (err) {
+    console.error('Error creando programa', err);
+    const message = err instanceof Error ? err.message : 'No se pudo crear programa';
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}

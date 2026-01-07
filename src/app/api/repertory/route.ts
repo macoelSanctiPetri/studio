@@ -15,7 +15,26 @@ async function loadFromCsv(): Promise<CsvRow[]> {
 async function loadFromDb(): Promise<CsvRow[]> {
   const pool = await getDbPool();
   const [rows] = await pool.query<RowDataPacket[]>(
-    `SELECT update_date, period, group_num, group_name, number, parent_number, is_collection, title, composer, composer_inherited, arranger, voices, voices_inherited, note, page, raw_text FROM repertorio`,
+    `SELECT
+      r.update_date,
+      p.descripcion AS period,
+      r.genero_id AS group_num,
+      g.nombre AS group_name,
+      r.number,
+      r.parent_number,
+      r.is_collection,
+      r.title,
+      r.composer,
+      r.composer_inherited,
+      r.arranger,
+      r.voices,
+      r.voices_inherited,
+      r.note,
+      r.page,
+      r.raw_text
+     FROM repertorio r
+     LEFT JOIN periodos p ON p.id = r.period_id
+     LEFT JOIN generos g ON g.id = r.genero_id`,
   );
   return rows.map((r) => ({
     update_date: r.update_date?.toString?.() ?? '',
@@ -44,6 +63,64 @@ export async function GET() {
   } catch (err) {
     console.error('Error cargando repertorio', err);
     const message = err instanceof Error ? err.message : 'No se pudo cargar el repertorio';
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    if (!isDbEnabled()) {
+      return NextResponse.json({ error: 'DB desactivada' }, { status: 400 });
+    }
+    const body = await req.json().catch(() => ({}));
+    const number = body.number ? String(body.number) : '';
+    if (!number) {
+      return NextResponse.json({ error: 'number requerido' }, { status: 400 });
+    }
+
+    const generoId = body.genero_id
+      ? Number(body.genero_id)
+      : body.group_name
+        ? body.group_name.toLowerCase().includes('prof')
+          ? 2
+          : body.group_name.toLowerCase().includes('nav')
+            ? 3
+            : 1
+        : null;
+    const periodId = body.period_id
+      ? Number(body.period_id)
+      : body.period
+        ? String(body.period).toLowerCase().includes('no renac')
+          ? 2
+          : 1
+        : null;
+
+    const pool = await getDbPool();
+    await pool.query(
+      `INSERT INTO repertorio
+        (number, parent_number, period_id, genero_id, title, composer, composer_inherited, arranger, voices, voices_inherited, note, is_collection, page, update_date, raw_text)
+       VALUES
+        (?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, NULL, CURDATE(), ?)`,
+      [
+        number,
+        body.parent_number ?? null,
+        periodId,
+        generoId,
+        body.title ?? null,
+        body.composer ?? null,
+        body.composer_inherited ?? null,
+        body.voices ?? null,
+        body.voices_inherited ?? null,
+        body.note ?? null,
+        body.is_collection ? 1 : 0,
+        body.raw_text ?? null,
+      ],
+    );
+
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error('Error insertando repertorio', err);
+    const message = err instanceof Error ? err.message : 'No se pudo insertar repertorio';
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

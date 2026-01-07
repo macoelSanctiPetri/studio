@@ -97,8 +97,17 @@ async function loadFromDb(): Promise<AudioTrack[]> {
 
   // Cargamos repertorio para obtener títulos/compositores y colecciones
   const [repRows] = await pool.query<RowDataPacket[]>(
-    `SELECT number, parent_number, is_collection, title, composer, composer_inherited, period, group_name
-     FROM repertorio`,
+    `SELECT r.number,
+            r.parent_number,
+            r.is_collection,
+            r.title,
+            r.composer,
+            r.composer_inherited,
+            p.descripcion AS period,
+            g.nombre AS group_name
+     FROM repertorio r
+     LEFT JOIN periodos p ON p.id = r.period_id
+     LEFT JOIN generos g ON g.id = r.genero_id`,
   );
   const repMap = new Map<
     string,
