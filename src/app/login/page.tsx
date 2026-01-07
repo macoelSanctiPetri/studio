@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const search = useSearchParams();
   const redirect = search.get("redirect") || "/#repertoire";
@@ -50,5 +50,13 @@ export default function LoginPage() {
         </Button>
       </form>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+      <LoginForm />
+    </Suspense>
   );
 }
