@@ -42,6 +42,20 @@
     "hora_puertas": null
   },
   {
+    "id": "ACT-2026-PALMA",
+    "titulo": "Función Virgen de la Palma",
+    "fecha": "2026-03-08T12:00:00",
+    "lugar": "Iglesia de la Palma, Cádiz",
+    "map_url": "https://maps.app.goo.gl/VGmZVuUXrPnw9bZv6",
+    "estado": "Proxima",
+    "cabecera_url": "/actuaciones/ACT-2025-PALMA/cabecera/ACT-2025-PALMA_header-md.jpeg",
+    "cartel_url": null,
+    "descripcion_corta": "Función en la Iglesia de la Palma.",
+    "descripcion_detalle": "Celebración en honor a la Virgen de la Palma. Horario y detalles finales por confirmar.",
+    "tickets_url": null,
+    "hora_puertas": null
+  },
+  {
     "id": "ACT-2026-REQUIEM-CARMEN",
     "titulo": "Réquiem de Mozart",
     "fecha": "2026-03-14T20:00:00",
