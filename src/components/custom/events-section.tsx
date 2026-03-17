@@ -20,6 +20,7 @@ export default function EventsSection() {
   const { language } = useLanguage();
   const t = translations[language].eventsSection;
   const { data, loading, error } = useActuaciones();
+  const [openEventId, setOpenEventId] = useState<string | null>(null);
 
   const events = useMemo(() => {
     if (!data) return [];
@@ -27,6 +28,21 @@ export default function EventsSection() {
       .filter((a) => a.estado === 'Proxima')
       .sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime());
   }, [data]);
+
+  React.useEffect(() => {
+    const syncFromHash = () => {
+      const hash = window.location.hash;
+      if (!hash.startsWith('#event-')) {
+        setOpenEventId(null);
+        return;
+      }
+      const id = decodeURIComponent(hash.slice('#event-'.length));
+      setOpenEventId(id || null);
+    };
+    syncFromHash();
+    window.addEventListener('hashchange', syncFromHash);
+    return () => window.removeEventListener('hashchange', syncFromHash);
+  }, []);
 
   return (
     <section id="events" className="bg-primary text-primary-foreground py-24 sm:py-32">
@@ -57,7 +73,12 @@ export default function EventsSection() {
             </p>
           )}
           {events.map((event) => (
-            <EventCard key={event.id} event={event} moreInfoLabel={t.moreInfo} />
+            <EventCard
+              key={event.id}
+              event={event}
+              moreInfoLabel={t.moreInfo}
+              autoOpen={openEventId === event.id}
+            />
           ))}
         </div>
       </div>
@@ -65,15 +86,27 @@ export default function EventsSection() {
   );
 }
 
-function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: string }) {
+function EventCard({
+  event,
+  moreInfoLabel,
+  autoOpen = false,
+}: {
+  event: Actuacion;
+  moreInfoLabel: string;
+  autoOpen?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const fotos = getFotosFinales(event.id);
   const videos = getVideosFinales(event.id);
   const cabeceraSrc = event.cabecera_url || PLACEHOLDER;
   const cartelSrc = event.cartel_url || cabeceraSrc;
 
+  React.useEffect(() => {
+    if (autoOpen) setOpen(true);
+  }, [autoOpen]);
+
   return (
-    <article className="flex flex-col items-start">
+    <article id={`event-${event.id}`} className="flex flex-col items-start">
       <div className="relative w-full">
         <Image
           src={cabeceraSrc}
@@ -85,7 +118,7 @@ function EventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLabel: 
       </div>
       <div className="mt-6 w-full">
         <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
-          {formatFechaLarga(event.fecha, event.fecha_visible)}
+          {formatFechaLarga(event.fecha, event.fecha_visible)} · {formatHora(event.fecha)}
         </p>
         <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">
           {event.id === 'ACT-2026-MAIDSTONE' && event.titulo.includes('Maidstone Singers') ? (

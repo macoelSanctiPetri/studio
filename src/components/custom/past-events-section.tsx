@@ -85,7 +85,7 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
       </div>
       <div className="mt-6 w-full">
         <p className="text-xs uppercase tracking-wider text-primary-foreground/70 font-headline">
-          {formatFechaLarga(event.fecha, event.fecha_visible)}
+          {formatFechaLarga(event.fecha, event.fecha_visible)} · {formatHora(event.fecha)}
         </p>
         <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">
           {event.id === 'ACT-2026-MAIDSTONE' && event.titulo.includes('Maidstone Singers') ? (

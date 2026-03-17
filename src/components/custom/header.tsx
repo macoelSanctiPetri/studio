@@ -38,6 +38,7 @@ export default function Header() {
   const [authError, setAuthError] = React.useState('');
   const [authLoading, setAuthLoading] = React.useState(false);
   const [isAuthed, setIsAuthed] = React.useState(false);
+  const [nextConcert, setNextConcert] = React.useState<{ id: string; titulo: string; fecha: string; lugar: string } | null>(null);
   const [query, setQuery] = React.useState('');
   const { language, setLanguage } = useLanguage();
   const t = translations[language].header;
@@ -96,7 +97,51 @@ export default function Header() {
     return () => window.removeEventListener('nm-auth-change', listener);
   }, []);
 
+  React.useEffect(() => {
+    fetch('/api/actuaciones', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : { rows: [] }))
+      .then((payload) => {
+        type UpcomingActuacion = {
+          id?: string;
+          estado?: string;
+          fecha?: string;
+          titulo?: string;
+          lugar?: string;
+        };
+        const rows: UpcomingActuacion[] = Array.isArray(payload?.rows) ? payload.rows : [];
+        const now = Date.now();
+        const upcoming = rows
+          .filter((a) => a.estado === 'Proxima' && typeof a.fecha === 'string')
+          .filter((a) => new Date(a.fecha as string).getTime() >= now)
+          .sort(
+            (a, b) =>
+              new Date(a.fecha as string).getTime() - new Date(b.fecha as string).getTime(),
+          );
+        if (upcoming.length === 0) {
+          setNextConcert(null);
+          return;
+        }
+        setNextConcert({
+          id: upcoming[0].id ?? '',
+          titulo: upcoming[0].titulo ?? '',
+          fecha: upcoming[0].fecha,
+          lugar: upcoming[0].lugar ?? '',
+        });
+      })
+      .catch(() => setNextConcert(null));
+  }, []);
+
   const filteredResults = React.useMemo(() => matchEntries(searchEntries, query), [query, searchEntries]);
+  const bannerDate = React.useMemo(() => {
+    if (!nextConcert?.fecha) return '';
+    return new Intl.DateTimeFormat(language === 'es' ? 'es-ES' : 'en-GB', {
+      weekday: 'long',
+      day: '2-digit',
+      month: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).format(new Date(nextConcert.fecha));
+  }, [nextConcert, language]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -522,6 +567,27 @@ export default function Header() {
                 </nav>
               </SheetContent>
             </Sheet>
+            </div>
+          </div>
+        </div>
+        <div className="w-full bg-gradient-to-r from-[#b8860b] via-[#d4af37] to-[#f3d25b] text-[#1f1a0a] border-t border-[#f6df8d]/50">
+          <div className="container max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs sm:text-sm font-semibold leading-5">
+                {nextConcert
+                  ? (
+                    language === 'es'
+                      ? `Próximo concierto: ${nextConcert.titulo} · ${bannerDate} · ${nextConcert.lugar} · Entrada libre hasta completar aforo.`
+                      : `Next concert: ${nextConcert.titulo} · ${bannerDate} · ${nextConcert.lugar} · Free entry until full capacity.`
+                  )
+                  : (language === 'es' ? 'Próximo concierto: información disponible en Eventos. Entrada libre hasta completar aforo.' : 'Next concert: details available in Events. Free entry until full capacity.')}
+              </p>
+              <a
+                href={nextConcert?.id ? `#event-${nextConcert.id}` : '#events'}
+                className="text-xs sm:text-sm font-bold underline underline-offset-2 hover:opacity-85 transition-opacity"
+              >
+                {language === 'es' ? 'Más info' : 'More info'}
+              </a>
             </div>
           </div>
         </div>
