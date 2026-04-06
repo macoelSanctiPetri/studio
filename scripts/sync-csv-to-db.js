@@ -2,16 +2,16 @@
 /**
  * Sincroniza los CSV locales con la base de datos MySQL (Plesk).
  * Usa las variables de entorno:
- *   USE_DB=1
  *   DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME
  *
  * Ejemplo (Plesk/cron):
- *   USE_DB=1 DB_HOST=... DB_USER=... DB_PASSWORD=... DB_NAME=admin_novamvsica node scripts/sync-csv-to-db.js
+ *   DB_HOST=... DB_USER=... DB_PASSWORD=... DB_NAME=admin_novamvsica node scripts/sync-csv-to-db.js
  */
 
 const fs = require('fs/promises');
 const path = require('path');
 const mysql = require('mysql2/promise');
+require('dotenv').config({ path: path.join(process.cwd(), '.env.local') });
 require('dotenv').config();
 
 const requiredEnv = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'];
@@ -101,7 +101,15 @@ async function importTable(table, columns, rows) {
   }
   const conn = await pool.getConnection();
   try {
-    await conn.query(`TRUNCATE TABLE \`${table}\``);
+    try {
+      await conn.query(`TRUNCATE TABLE \`${table}\``);
+    } catch (err) {
+      if (err && err.code === 'ER_TRUNCATE_ILLEGAL_FK') {
+        await conn.query(`DELETE FROM \`${table}\``);
+      } else {
+        throw err;
+      }
+    }
     const sql = `INSERT INTO \`${table}\` (${columns.map((c) => `\`${c}\``).join(',')}) VALUES ?`;
     const values = rows.map((row) => columns.map((c) => row[c] ?? null));
     await conn.query(sql, [values]);

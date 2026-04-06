@@ -13,6 +13,7 @@ import { translations } from '@/lib/translations';
 import { Actuacion, formatFechaLarga, formatHora } from '@/lib/actuaciones';
 import { useActuaciones } from '@/lib/use-actuaciones';
 import { getFotosFinales, getVideosFinales } from '@/lib/activos';
+import { parseProgramDescription } from '@/lib/event-description';
 
 const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
 
@@ -96,6 +97,9 @@ function EventCard({
   autoOpen?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const parsedDescription = event.descripcion_detalle
+    ? parseProgramDescription(event.descripcion_detalle)
+    : null;
   const fotos = getFotosFinales(event.id);
   const videos = getVideosFinales(event.id);
   const cabeceraSrc = event.cabecera_url || PLACEHOLDER;
@@ -169,28 +173,42 @@ function EventCard({
             </DialogHeader>
             <div className="space-y-3 text-sm text-foreground">
               {event.descripcion_detalle && (
-                <p className="leading-6 text-foreground/90">
-                  {event.id === 'ACT-2026-MAIDSTONE' && event.descripcion_detalle.includes('Maidstone Singers') ? (
-                    <>
-                      {event.descripcion_detalle.split('Maidstone Singers').map((part, idx, arr) => (
-                        <React.Fragment key={idx}>
-                          {part}
-                          {idx < arr.length - 1 ? (
-                            <Link
-                              href="http://www.themaidstonesingers.org.uk/"
-                              target="_blank"
-                              className="inline-flex items-center gap-1 text-accent underline"
-                            >
-                              Maidstone Singers <ExternalLink className="h-4 w-4" />
-                            </Link>
-                          ) : null}
-                        </React.Fragment>
+                parsedDescription ? (
+                  <div className="space-y-2 text-foreground/90">
+                    {parsedDescription.intro && (
+                      <p className="leading-6">{parsedDescription.intro}</p>
+                    )}
+                    <p className="font-semibold">Programa</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {parsedDescription.items.map((item) => (
+                        <li key={item}>{item}</li>
                       ))}
-                    </>
-                  ) : (
-                    event.descripcion_detalle
-                  )}
-                </p>
+                    </ul>
+                  </div>
+                ) : (
+                  <p className="leading-6 text-foreground/90">
+                    {event.id === 'ACT-2026-MAIDSTONE' && event.descripcion_detalle.includes('Maidstone Singers') ? (
+                      <>
+                        {event.descripcion_detalle.split('Maidstone Singers').map((part, idx, arr) => (
+                          <React.Fragment key={idx}>
+                            {part}
+                            {idx < arr.length - 1 ? (
+                              <Link
+                                href="http://www.themaidstonesingers.org.uk/"
+                                target="_blank"
+                                className="inline-flex items-center gap-1 text-accent underline"
+                              >
+                                Maidstone Singers <ExternalLink className="h-4 w-4" />
+                              </Link>
+                            ) : null}
+                          </React.Fragment>
+                        ))}
+                      </>
+                    ) : (
+                      event.descripcion_detalle
+                    )}
+                  </p>
+                )
               )}
               {event.hora_puertas && (
                 <p>
