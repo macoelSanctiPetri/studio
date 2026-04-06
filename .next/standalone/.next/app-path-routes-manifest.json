@@ -7,17 +7,17 @@
   "/api/photos/route": "/api/photos",
   "/favicon.ico/route": "/favicon.ico",
   "/api/actuaciones/route": "/api/actuaciones",
-  "/api/audios/route": "/api/audios",
   "/api/generos/route": "/api/generos",
   "/api/periodos/route": "/api/periodos",
+  "/api/audios/route": "/api/audios",
   "/api/componentes/route": "/api/componentes",
   "/api/programas/[id]/route": "/api/programas/[id]",
-  "/api/repertory/[id]/route": "/api/repertory/[id]",
   "/api/programas/route": "/api/programas",
+  "/api/repertory/[id]/route": "/api/repertory/[id]",
   "/api/repertory/route": "/api/repertory",
   "/api/videos/route": "/api/videos",
   "/api/repertory/collection/route": "/api/repertory/collection",
   "/admin/page": "/admin",
-  "/page": "/",
-  "/login/page": "/login"
+  "/login/page": "/login",
+  "/page": "/"
 }
