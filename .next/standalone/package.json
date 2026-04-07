@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "sync:db": "node scripts/sync-csv-to-db.js"
+    "sync:db": "node scripts/sync-csv-to-db.js",
+    "sync:actuaciones": "node scripts/sync-actuaciones-to-db.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
