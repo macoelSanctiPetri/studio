@@ -140,12 +140,18 @@ function PastEventCard({ event, moreInfoLabel }: { event: Actuacion; moreInfoLab
                     {parsedDescription.intro && (
                       <p className="leading-6">{parsedDescription.intro}</p>
                     )}
-                    <p className="font-semibold">Programa</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {parsedDescription.items.map((item) => (
-                        <li key={item}>{item}</li>
+                    <div className="space-y-2">
+                      {parsedDescription.sections.map((section) => (
+                        <div key={section.title} className="space-y-1">
+                          <p className="font-semibold">{section.title}</p>
+                          <ul className="list-disc pl-5 space-y-1">
+                            {section.items.map((item) => (
+                              <li key={`${section.title}-${item}`}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ) : (
                   <p className="leading-6 text-foreground/90">
