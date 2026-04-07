@@ -9,15 +9,15 @@
   "/api/actuaciones/route": "/api/actuaciones",
   "/api/generos/route": "/api/generos",
   "/api/periodos/route": "/api/periodos",
-  "/api/audios/route": "/api/audios",
-  "/api/componentes/route": "/api/componentes",
   "/api/programas/[id]/route": "/api/programas/[id]",
   "/api/programas/route": "/api/programas",
+  "/api/audios/route": "/api/audios",
   "/api/repertory/[id]/route": "/api/repertory/[id]",
-  "/api/repertory/route": "/api/repertory",
   "/api/videos/route": "/api/videos",
   "/api/repertory/collection/route": "/api/repertory/collection",
+  "/api/componentes/route": "/api/componentes",
+  "/api/repertory/route": "/api/repertory",
   "/admin/page": "/admin",
-  "/login/page": "/login",
-  "/page": "/"
+  "/page": "/",
+  "/login/page": "/login"
 }
