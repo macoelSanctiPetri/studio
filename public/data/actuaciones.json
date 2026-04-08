@@ -49,7 +49,7 @@
         "map_url":  "https://maps.app.goo.gl/VGmZVuUXrPnw9bZv6",
         "estado":  "Pasada",
         "cabecera_url":  "/actuaciones/ACT-2025-PALMA/cabecera/ACT-2025-PALMA_header-md.jpeg",
-        "cartel_url":  null,
+        "cartel_url":  "/actuaciones/ACT-2025-PALMA/cartel/ACT-2025-PALMA_cartel-md.jpg",
         "descripcion_corta":  "Función en la Iglesia de la Palma.",
         "descripcion_detalle":  "Celebración en honor a la Virgen de la Palma. Horario y detalles finales por confirmar.",
         "tickets_url":  null,
@@ -91,10 +91,10 @@
         "map_url":  "https://maps.app.goo.gl/9hpTCzvWsUFWifwf9",
         "estado":  "Proxima",
         "cabecera_url":  "/actuaciones/ACT-2026-GUADIX/cabecera/ACT-2026-GUADIX_header-md.jpg",
-        "cartel_url":  null,
+        "cartel_url":  "/actuaciones/ACT-2026-GUADIX/cartel/ACT-2026-GUADIX_cartel-md.jpeg",
         "descripcion_corta":  "Ubi Caritas, Deus Ibi Est. Iglesia de Santiago Apostol, Guadix.",
         "descripcion_detalle":  "Concierto Ubi Caritas, Deus Ibi Est. Sabado 18/04/2026, 20:30 h, Iglesia de Santiago Apostol, Guadix. Programa: Primera parte: Peccantem Me Quotidie (Cristobal de Morales); O Salutaris Hostia (Pierre de la Rue); Per Signum Crucis (Francisco Guerrero); Iudas Mercator Pessimus (Tomas Luis de Victoria); Abendlied (Josef Rheinberger); Antes Que Comais (Francisco Guerrero); Todo Quanto Pudo Dar (Francisco Guerrero) || Segunda parte: If Ye Love Me (Thomas Tallis); O Vos Omnes (Tomas Luis de Victoria); Ave Maria (Tomas Luis de Victoria); O Haupt voll Blut und Wunden (Johann Sebastian Bach); A Hymn to the Virgin (Benjamin Britten); Thou Knowest Lord (Henry Purcell); Ave Verum (Karl Jenkins).",
-        "tickets_url":  null,
+        "tickets_url":  "/actuaciones/ACT-2026-GUADIX/programa/ACT-2026-GUADIX_programa-de-mano.pdf",
         "hora_puertas":  null
     },
     {
