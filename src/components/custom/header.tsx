@@ -38,7 +38,7 @@ export default function Header() {
   const [authError, setAuthError] = React.useState('');
   const [authLoading, setAuthLoading] = React.useState(false);
   const [isAuthed, setIsAuthed] = React.useState(false);
-  const [nextConcert, setNextConcert] = React.useState<{ id: string; titulo: string; fecha: string; lugar: string } | null>(null);
+  const [nextConcert, setNextConcert] = React.useState<{ id: string; titulo: string; fecha: string; lugar: string; tickets_url?: string | null } | null>(null);
   const [query, setQuery] = React.useState('');
   const { language, setLanguage } = useLanguage();
   const t = translations[language].header;
@@ -107,6 +107,7 @@ export default function Header() {
           fecha?: string;
           titulo?: string;
           lugar?: string;
+          tickets_url?: string | null;
         };
         const rows: UpcomingActuacion[] = Array.isArray(payload?.rows) ? payload.rows : [];
         const now = Date.now();
@@ -121,11 +122,17 @@ export default function Header() {
           setNextConcert(null);
           return;
         }
+        const first = upcoming[0];
+        const fallbackProgramUrl =
+          first.id === 'ACT-2026-GUADIX'
+            ? '/actuaciones/ACT-2026-GUADIX/programa/ACT-2026-GUADIX_programa-de-mano.pdf'
+            : null;
         setNextConcert({
           id: upcoming[0].id ?? '',
           titulo: upcoming[0].titulo ?? '',
           fecha: upcoming[0].fecha,
           lugar: upcoming[0].lugar ?? '',
+          tickets_url: first.tickets_url ?? fallbackProgramUrl,
         });
       })
       .catch(() => setNextConcert(null));
@@ -582,12 +589,24 @@ export default function Header() {
                   )
                   : (language === 'es' ? 'Próximo concierto: información disponible en Eventos. Entrada libre hasta completar aforo.' : 'Next concert: details available in Events. Free entry until full capacity.')}
               </p>
-              <a
-                href={nextConcert?.id ? `#event-${nextConcert.id}` : '#events'}
-                className="text-xs sm:text-sm font-bold underline underline-offset-2 hover:opacity-85 transition-opacity"
-              >
-                {language === 'es' ? 'Más info' : 'More info'}
-              </a>
+              <div className="flex items-center gap-3">
+                {nextConcert?.tickets_url && (
+                  <a
+                    href={nextConcert.tickets_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs sm:text-sm font-bold underline underline-offset-2 hover:opacity-85 transition-opacity whitespace-nowrap"
+                  >
+                    {language === 'es' ? 'Programa (PDF)' : 'Program (PDF)'}
+                  </a>
+                )}
+                <a
+                  href={nextConcert?.id ? `#event-${nextConcert.id}` : '#events'}
+                  className="text-xs sm:text-sm font-bold underline underline-offset-2 hover:opacity-85 transition-opacity whitespace-nowrap"
+                >
+                  {language === 'es' ? 'Más info' : 'More info'}
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,6 +16,32 @@ import { getFotosFinales, getVideosFinales } from '@/lib/activos';
 import { parseProgramDescription } from '@/lib/event-description';
 
 const PLACEHOLDER = '/actuaciones/PLACEHOLDER/cabecera/placeholder-md.png';
+const GUADIX_OVERRIDES: Partial<Actuacion> = {
+  cartel_url: '/actuaciones/ACT-2026-GUADIX/cartel/ACT-2026-GUADIX_cartel-md.jpeg',
+  tickets_url: '/actuaciones/ACT-2026-GUADIX/programa/ACT-2026-GUADIX_programa-de-mano.pdf',
+};
+
+const fixMojibake = (text?: string | null) => {
+  if (!text) return text ?? null;
+  if (!/[ÃÂï¿½]/.test(text)) return text;
+  try {
+    return decodeURIComponent(escape(text));
+  } catch {
+    return text;
+  }
+};
+
+const normalizeEvent = (event: Actuacion): Actuacion => {
+  const base = event.id === 'ACT-2026-GUADIX' ? { ...event, ...GUADIX_OVERRIDES } : event;
+  return {
+    ...base,
+    titulo: fixMojibake(base.titulo) ?? base.titulo,
+    lugar: fixMojibake(base.lugar) ?? base.lugar,
+    fecha_visible: fixMojibake(base.fecha_visible) ?? base.fecha_visible,
+    descripcion_corta: fixMojibake(base.descripcion_corta),
+    descripcion_detalle: fixMojibake(base.descripcion_detalle),
+  };
+};
 
 export default function EventsSection() {
   const { language } = useLanguage();
@@ -73,12 +99,12 @@ export default function EventsSection() {
               {language === 'es' ? 'No hay próximas actuaciones.' : 'No upcoming events.'}
             </p>
           )}
-          {events.map((event) => (
+          {events.map((rawEvent) => (
             <EventCard
-              key={event.id}
-              event={event}
+              key={rawEvent.id}
+              event={normalizeEvent(rawEvent)}
               moreInfoLabel={t.moreInfo}
-              autoOpen={openEventId === event.id}
+              autoOpen={openEventId === rawEvent.id}
             />
           ))}
         </div>
@@ -104,6 +130,7 @@ function EventCard({
   const videos = getVideosFinales(event.id);
   const cabeceraSrc = event.cabecera_url || PLACEHOLDER;
   const cartelSrc = event.cartel_url || cabeceraSrc;
+  const isProgramPdf = event.tickets_url?.toLowerCase().endsWith('.pdf') ?? false;
 
   React.useEffect(() => {
     if (autoOpen) setOpen(true);
@@ -248,7 +275,7 @@ function EventCard({
                     target="_blank"
                     className="inline-flex items-center gap-1 text-accent underline"
                   >
-                    Entradas <ExternalLink className="h-4 w-4" />
+                    {isProgramPdf ? 'Programa (PDF)' : 'Entradas'} <ExternalLink className="h-4 w-4" />
                   </Link>
                 )}
               </div>
