@@ -31,6 +31,30 @@ export type CsvRow = {
   raw_text?: string;
 };
 
+const parseNumberSegments = (value: string): number[] => {
+  const normalized = (value || '').trim();
+  if (!normalized) return [];
+  return normalized
+    .split('.')
+    .map((part) => Number(part))
+    .map((n) => (Number.isFinite(n) ? n : Number.MAX_SAFE_INTEGER));
+};
+
+const compareByNumberCode = (a: string, b: string): number => {
+  const aParts = parseNumberSegments(a);
+  const bParts = parseNumberSegments(b);
+  const len = Math.max(aParts.length, bParts.length);
+  for (let i = 0; i < len; i++) {
+    const av = aParts[i];
+    const bv = bParts[i];
+    if (av === undefined && bv === undefined) break;
+    if (av === undefined) return -1;
+    if (bv === undefined) return 1;
+    if (av !== bv) return av - bv;
+  }
+  return a.localeCompare(b, 'es', { sensitivity: 'base' });
+};
+
 const typeFromGroup = (group: string): WorkType => {
   const g = group.toLowerCase();
   if (g.includes('nav')) return 'christmas';
@@ -126,10 +150,11 @@ export function parseRepertoireCsv(text: string): CsvRow[] {
 }
 
 export function normalizeRows(rows: CsvRow[]): RepertoireWork[] {
+  const orderedRows = [...rows].sort((a, b) => compareByNumberCode(a.number || '', b.number || ''));
   const parents = new Map<string, RepertoireWork>();
   const works: RepertoireWork[] = [];
 
-  rows.forEach((row, idx) => {
+  orderedRows.forEach((row, idx) => {
     const period = periodFromText(row.period);
     const type = typeFromGroup(row.group_name);
     const id = row.number || `row-${idx}`;
