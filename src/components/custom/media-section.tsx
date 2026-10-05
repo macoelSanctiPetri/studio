@@ -133,7 +133,7 @@ export default function MediaSection() {
               {!loading &&
                 tracks.map((audio) => (
                   <article
-                    key={audio.slug}
+                    key={`${audio.slug}-${audio.src}`}
                     className="rounded-2xl border bg-card shadow-sm p-4 flex flex-col gap-3"
                     style={{
                       borderColor: "rgba(200,164,90,0.8)",

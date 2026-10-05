@@ -42,8 +42,17 @@ export const translations = {
       title: 'Celebrating our XXXV anniversary',
       description:
         'Experience the sublime power and beauty of choral music that transcends time. Join NovaMvsica on a journey through centuries of divine harmony and vocal excellence.',
-      button1: 'View Schedule',
-      button2: 'Learn More',
+      programsButton: 'View programs',
+      programsTitle: 'Two concerts with The Maidstone Singers',
+      programsDescription: 'Explore the programmes from the joint concerts in Cádiz and Jerez.',
+      cadizProgramTitle: 'Cádiz · Iglesia de San José',
+      cadizProgramMeta: 'Sunday, 4 October 2026 · 13:00',
+      cadizProgramIntro:
+        'NovaMvsica and The Maidstone Singers join voices in Cádiz for a programme featuring Gabriel Fauré’s Pavane, Requiem and Cantique de Jean Racine, alongside other works.',
+      jerezProgramTitle: 'Jerez · Claustros de Santo Domingo',
+      jerezProgramMeta: 'Wednesday, 7 October 2026 · 20:00',
+      jerezProgramIntro:
+        'The joint concert continues in the historic cloister of Santo Domingo in Jerez. The complete programme is available below.',
     },
     announcementBar: {
       upcoming: 'Upcoming Concert:',
@@ -206,8 +215,17 @@ export const translations = {
       title: 'Celebrando nuestro XXXV aniversario',
       description:
         'Experimenta el poder sublime y la belleza de la música coral que trasciende el tiempo. Únete a NovaMvsica en un viaje a través de siglos de armonía divina y excelencia vocal.',
-      button1: 'Ver Programa',
-      button2: 'Saber Más',
+      programsButton: 'Ver programas',
+      programsTitle: 'Dos conciertos con The Maidstone Singers',
+      programsDescription: 'Consulta los programas de los conciertos conjuntos de Cádiz y Jerez.',
+      cadizProgramTitle: 'Cádiz · Iglesia de San José',
+      cadizProgramMeta: 'Domingo, 4 de octubre de 2026 · 13:00 h',
+      cadizProgramIntro:
+        'NovaMvsica y The Maidstone Singers se unen en Cádiz con un programa que reúne la Pavana, el Réquiem y el Cantique de Jean Racine de Gabriel Fauré, entre otras obras.',
+      jerezProgramTitle: 'Jerez · Claustros de Santo Domingo',
+      jerezProgramMeta: 'Miércoles, 7 de octubre de 2026 · 20:00 h',
+      jerezProgramIntro:
+        'El concierto conjunto continúa en los históricos Claustros de Santo Domingo de Jerez. A continuación puedes consultar el programa completo.',
     },
     announcementBar: {
       upcoming: 'Próximo Concierto:',

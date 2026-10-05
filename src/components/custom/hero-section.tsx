@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useLanguage } from '@/context/language-context';
 import { translations } from '@/lib/translations';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useState } from 'react';
 
 export default function HeroSection() {
@@ -54,32 +54,45 @@ export default function HeroSection() {
                 className="rounded-none border-2 border-white text-white hover:bg-white hover:text-black"
                 onClick={() => setModalOpen(true)}
               >
-                {t.button1}
-              </Button>
-              <Button
-                variant="ghost"
-                className="rounded-none border border-white/60 text-white hover:bg-white/10 hover:text-white"
-                onClick={() => setModalOpen(true)}
-              >
-                {t.button2}
+                {t.programsButton}
               </Button>
             </div>
           </div>
         </div>
       </div>
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="w-[calc(100vw-2rem)] max-w-6xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Próximamente</DialogTitle>
+            <DialogTitle className="font-headline text-2xl">
+              {t.programsTitle}
+            </DialogTitle>
+            <DialogDescription>{t.programsDescription}</DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center">
-            <Image
-              src="/imagenes/XXXV_Aniversario_No_Disponible.png"
-              alt={language === 'es' ? 'Sección no disponible' : 'Section not available yet'}
-              width={900}
-              height={600}
-              className="rounded-xl border border-border shadow-lg"
-            />
+          <div className="space-y-8">
+            <section className="space-y-4">
+              <div>
+                <h3 className="font-headline text-xl font-semibold">{t.cadizProgramTitle}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{t.cadizProgramMeta}</p>
+                <p className="mt-3 text-sm leading-6">{t.cadizProgramIntro}</p>
+              </div>
+              <iframe
+                src="/actuaciones/ACT-2026-MAIDSTONE/programa/ACT-2026-MAIDSTONE_programa-de-mano.pdf#view=FitH"
+                title={t.cadizProgramTitle}
+                className="h-[min(65vh,700px)] min-h-[360px] w-full border border-border bg-muted"
+              />
+            </section>
+            <section className="space-y-4 border-t border-border pt-8">
+              <div>
+                <h3 className="font-headline text-xl font-semibold">{t.jerezProgramTitle}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{t.jerezProgramMeta}</p>
+                <p className="mt-3 text-sm leading-6">{t.jerezProgramIntro}</p>
+              </div>
+              <iframe
+                src="/actuaciones/ACT-2026-35ANIV/programa/ACT-2026-35ANIV_programa-de-mano.pdf#view=FitH"
+                title={t.jerezProgramTitle}
+                className="h-[min(65vh,700px)] min-h-[360px] w-full border border-border bg-muted"
+              />
+            </section>
           </div>
         </DialogContent>
       </Dialog>

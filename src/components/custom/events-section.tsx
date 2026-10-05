@@ -152,7 +152,7 @@ function EventCard({
           {formatFechaLarga(event.fecha, event.fecha_visible)} · {formatHora(event.fecha)}
         </p>
         <h3 className="mt-2 text-xl font-semibold leading-6 font-headline">
-          {event.id === 'ACT-2026-MAIDSTONE' && event.titulo.includes('Maidstone Singers') ? (
+          {event.titulo.includes('Maidstone Singers') ? (
             <>
               {event.titulo.split('Maidstone Singers').map((part, idx, arr) => (
                 <React.Fragment key={idx}>
@@ -174,12 +174,7 @@ function EventCard({
           )}
         </h3>
         <p className="text-sm text-primary-foreground/80">{event.lugar}</p>
-        {event.id === 'ACT-2026-MAIDSTONE' && (
-          <p className="mt-2 text-sm text-primary-foreground/85 font-body">
-            Repertorio previsto: Pavana (Fauré), Réquiem (Fauré), Serenata (Elgar).
-          </p>
-        )}
-        {event.descripcion_corta && event.id !== 'ACT-2026-MAIDSTONE' && (
+        {event.descripcion_corta && (
           <p className="mt-3 line-clamp-3 text-sm leading-6 text-primary-foreground font-body">
             {event.descripcion_corta}
           </p>
@@ -220,7 +215,7 @@ function EventCard({
                   </div>
                 ) : (
                   <p className="leading-6 text-foreground/90">
-                    {event.id === 'ACT-2026-MAIDSTONE' && event.descripcion_detalle.includes('Maidstone Singers') ? (
+                    {event.descripcion_detalle.includes('Maidstone Singers') ? (
                       <>
                         {event.descripcion_detalle.split('Maidstone Singers').map((part, idx, arr) => (
                           <React.Fragment key={idx}>
