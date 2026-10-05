@@ -38,6 +38,9 @@ const pool = mysql.createPool({
 
 function toMysqlDatetime(value) {
   if (!value) return null;
+  const localDateTime = /^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})(?:\.\d+)?$/.exec(value);
+  if (localDateTime) return `${localDateTime[1]} ${localDateTime[2]}`;
+
   const d = new Date(value);
   if (Number.isNaN(d.getTime())) return null;
   return d.toISOString().slice(0, 19).replace('T', ' ');
